@@ -358,8 +358,8 @@ public final class AdminRegister extends javax.swing.JFrame {
             
             String userName = username.getText();
             String emailAddress = email.getText();
-            String passWord = password.getText();
-            String confirmPassWord = confirmpassword.getText();
+            String passWord = new String(password.getPassword());
+            String confirmPassWord = new String(confirmpassword.getPassword());
         
         try{
             
