@@ -8,6 +8,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import java.sql.*;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -367,7 +368,9 @@ public final class AdminRegister extends javax.swing.JFrame {
             if("".equals(userName)){
                  JOptionPane.showMessageDialog(this, "Please enter your name");
             }else if("".equals(emailAddress)){
-                JOptionPane.showMessageDialog(this, "Pleass enter your email");
+                JOptionPane.showMessageDialog(this, "Pleass enter valid email");
+            }else if(!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[g]{1}+[m]{1}+[a]{1}+[i]{1}+[l]{1}+[.]{1}+[c]{1}+[o]{1}+[m]{1}+$", emailAddress))){
+                 JOptionPane.showMessageDialog(this, "Pleass enter valid email");
             }else if("".equals(passWord)){
                 JOptionPane.showMessageDialog(this, "Please set a password");
             }else if("".equals(confirmPassWord)){
@@ -379,9 +382,9 @@ public final class AdminRegister extends javax.swing.JFrame {
                       String query1="INSERT INTO `cms`.`admin` (`fullname`, `email`, `password`) VALUES(?, ?, ?)";
                       PreparedStatement st = con.prepareStatement(query1); 
 
-                      st.setString(1, username.getText());
-                      st.setString(2, email.getText());
-                      st.setString(3, password.getText());
+                      st.setString(1, userName);
+                      st.setString(2, emailAddress);
+                      st.setString(3, passWord);
 
                       st.executeUpdate(); // record added. 
                       con.close(); 
