@@ -360,6 +360,8 @@ public final class AdminLogin extends javax.swing.JFrame {
                           this.dispose();
                           AdminDashboard i = new AdminDashboard();
                           i.setVisible(true);
+                      }else{
+                          JOptionPane.showMessageDialog(this, "Admin not found!");
                       }
                       
 

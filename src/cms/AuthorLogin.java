@@ -4,11 +4,15 @@
  */
 package cms;
 
-import cms.AdminLogin;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
-import cms.AuthorRegister;
+import javax.swing.JOptionPane;
+import java.sql.*;
 
 /**
  *
@@ -24,7 +28,7 @@ public final class AuthorLogin extends javax.swing.JFrame {
         ImageIcon image = new javax.swing.ImageIcon(getClass().getResource("/cms/images/author_login.png"));
         
         Image img1 = image.getImage();
-        Image img2 = img1.getScaledInstance(300, 200, 0);
+        Image img2 = img1.getScaledInstance(500, 350, 40);
         ImageIcon image1 = new javax.swing.ImageIcon(img2);
         
          BackgroundImage.setIcon(image1); 
@@ -65,10 +69,16 @@ public final class AuthorLogin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         are_you = new javax.swing.JLabel();
         copyright = new javax.swing.JLabel();
-        or_text = new javax.swing.JLabel();
         register = new javax.swing.JLabel();
+        or_text = new javax.swing.JLabel();
         close = new javax.swing.JLabel();
         back = new javax.swing.JLabel();
+        inputs = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        email = new javax.swing.JTextField();
+        login = new javax.swing.JButton();
+        password = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -104,8 +114,6 @@ public final class AuthorLogin extends javax.swing.JFrame {
 
         copyright.setText("All rights reserved @TeamNewbie 2022 (Sonargaon University)");
 
-        or_text.setText("OR,");
-
         register.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         register.setForeground(new java.awt.Color(51, 0, 204));
         register.setText("Not registered, Register Now");
@@ -116,35 +124,36 @@ public final class AuthorLogin extends javax.swing.JFrame {
             }
         });
 
+        or_text.setText("OR,");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(copyright)
-                .addGap(0, 329, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
+                        .addGap(152, 152, 152)
                         .addComponent(are_you))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addComponent(or_text))
-                            .addComponent(register))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(199, 199, 199)
+                        .addComponent(or_text))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(129, 129, 129)
+                        .addComponent(register))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(copyright)))
+                .addContainerGap(285, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(32, Short.MAX_VALUE)
                 .addComponent(register)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(or_text)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(2, 2, 2)
                 .addComponent(are_you)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(copyright))
@@ -165,6 +174,71 @@ public final class AuthorLogin extends javax.swing.JFrame {
             }
         });
 
+        inputs.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("Email address: ");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText("Password:");
+
+        email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        email.setToolTipText("Enter your username");
+        email.setAutoscrolls(false);
+        email.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        email.setOpaque(false);
+        email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailActionPerformed(evt);
+            }
+        });
+
+        login.setBackground(new java.awt.Color(51, 51, 255));
+        login.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        login.setForeground(new java.awt.Color(255, 255, 255));
+        login.setText("LOG IN");
+        login.setActionCommand("submit");
+        login.setBorder(new javax.swing.border.MatteBorder(null));
+        login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        login.setPreferredSize(new java.awt.Dimension(90, 30));
+        login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginActionPerformed(evt);
+            }
+        });
+
+        password.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        javax.swing.GroupLayout inputsLayout = new javax.swing.GroupLayout(inputs);
+        inputs.setLayout(inputsLayout);
+        inputsLayout.setHorizontalGroup(
+            inputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(inputsLayout.createSequentialGroup()
+                .addGap(133, 133, 133)
+                .addGroup(inputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(password)
+                    .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        inputsLayout.setVerticalGroup(
+            inputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(inputsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
         MainPanel.setLayout(MainPanelLayout);
         MainPanelLayout.setHorizontalGroup(
@@ -172,37 +246,40 @@ public final class AuthorLogin extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(back)
-                .addGap(67, 67, 67)
-                .addComponent(HeadingText, javax.swing.GroupLayout.PREFERRED_SIZE, 621, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(close)
                 .addGap(219, 219, 219))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(188, 188, 188))
             .addGroup(MainPanelLayout.createSequentialGroup()
-                .addGap(265, 265, 265)
-                .addComponent(BackgroundImage, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(HeadingText, javax.swing.GroupLayout.PREFERRED_SIZE, 1001, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(178, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
+                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(MainPanelLayout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(BackgroundImage, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(inputs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(MainPanelLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(188, 188, 188))
         );
         MainPanelLayout.setVerticalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MainPanelLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(MainPanelLayout.createSequentialGroup()
-                        .addComponent(HeadingText, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                        .addGap(57, 57, 57))
-                    .addGroup(MainPanelLayout.createSequentialGroup()
-                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(back)
-                            .addComponent(close))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(BackgroundImage, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(back)
+                    .addComponent(close))
+                .addGap(23, 23, 23)
+                .addComponent(HeadingText, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BackgroundImage, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(326, Short.MAX_VALUE))
+                .addContainerGap(330, Short.MAX_VALUE))
         );
 
         close.getAccessibleContext().setAccessibleName("closeBtn");
@@ -221,14 +298,14 @@ public final class AuthorLogin extends javax.swing.JFrame {
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
         // TODO add your handling code here:
-        dispose();
-        AdminLogin i = new AdminLogin();
+        this.dispose();
+        HomePage i = new HomePage();
         i.setVisible(true);
     }//GEN-LAST:event_backMouseClicked
 
     private void are_youMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_are_youMouseClicked
         // TODO add your handling code here:
-        dispose();
+        this.dispose();
         AdminLogin i = new AdminLogin();
         i.setVisible(true);
     }//GEN-LAST:event_are_youMouseClicked
@@ -239,6 +316,62 @@ public final class AuthorLogin extends javax.swing.JFrame {
         AuthorRegister i = new AuthorRegister();
         i.setVisible(true);
     }//GEN-LAST:event_registerMouseClicked
+
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailActionPerformed
+
+    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
+        // TODO add your handling code here:
+        
+            String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+            String user = "root";
+            String passw = "";
+            
+            String emailAddress = email.getText();
+            String passWord = new String(password.getPassword());
+        
+        
+        try{
+            if(!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[g]{1}+[m]{1}+[a]{1}+[i]{1}+[l]{1}+[.]{1}+[c]{1}+[o]{1}+[m]{1}+$", emailAddress))){
+                 JOptionPane.showMessageDialog(this, "Pleass enter valid email");
+            }else if("".equals(emailAddress)){
+                JOptionPane.showMessageDialog(this, "Please enter email");
+            }else if("".equals(passWord)){
+                JOptionPane.showMessageDialog(this, "Please enter password");
+            }else{
+                       Class.forName("org.mariadb.jdbc.Driver");
+                      Connection con = DriverManager.getConnection(url,user,passw);
+                      
+                      
+                      String query1="Select  email, password from `cms`.`author` where email=? and password=?";
+                      PreparedStatement st = con.prepareStatement(query1); 
+
+                      st.setString(1, emailAddress);
+                      st.setString(2, passWord);
+                
+                      ResultSet result = st.executeQuery(); // record added. 
+                      con.close(); 
+                      if(result.next()){
+                          
+                          JOptionPane.showMessageDialog(this, "Login successfully");
+                          
+                            //If new Admin login successfully redirecting to the Admin Dashboard
+                          this.dispose();
+                          AdminDashboard i = new AdminDashboard();
+                          i.setVisible(true);
+                      }else{
+                          JOptionPane.showMessageDialog(this, "Author not found!");
+                      }
+                      
+
+                
+               
+            }
+        }catch(Exception e){
+            
+        }
+    }//GEN-LAST:event_loginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -290,8 +423,14 @@ public final class AuthorLogin extends javax.swing.JFrame {
     private javax.swing.JLabel back;
     private javax.swing.JLabel close;
     private javax.swing.JLabel copyright;
+    private javax.swing.JTextField email;
+    private javax.swing.JPanel inputs;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton login;
     private javax.swing.JLabel or_text;
+    private javax.swing.JPasswordField password;
     private javax.swing.JLabel register;
     // End of variables declaration//GEN-END:variables
 }
