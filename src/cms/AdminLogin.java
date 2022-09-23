@@ -6,7 +6,13 @@ package cms;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import java.sql.*;
 
 /**
  *
@@ -69,10 +75,10 @@ public final class AdminLogin extends javax.swing.JFrame {
         back = new javax.swing.JLabel();
         inputs = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        username = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        username1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        email = new javax.swing.JTextField();
+        login = new javax.swing.JButton();
+        password = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -171,46 +177,37 @@ public final class AdminLogin extends javax.swing.JFrame {
         inputs.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("User name: ");
-
-        username.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        username.setToolTipText("Enter your password");
-        username.setAutoscrolls(false);
-        username.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        username.setOpaque(false);
-        username.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameActionPerformed(evt);
-            }
-        });
+        jLabel1.setText("Email address: ");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("Password:");
 
-        username1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        username1.setToolTipText("Enter your username");
-        username1.setAutoscrolls(false);
-        username1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        username1.setOpaque(false);
-        username1.addActionListener(new java.awt.event.ActionListener() {
+        email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        email.setToolTipText("Enter your username");
+        email.setAutoscrolls(false);
+        email.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        email.setOpaque(false);
+        email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                username1ActionPerformed(evt);
+                emailActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(51, 51, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("LOG IN");
-        jButton1.setActionCommand("submit");
-        jButton1.setBorder(new javax.swing.border.MatteBorder(null));
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setPreferredSize(new java.awt.Dimension(90, 30));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        login.setBackground(new java.awt.Color(51, 51, 255));
+        login.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        login.setForeground(new java.awt.Color(255, 255, 255));
+        login.setText("LOG IN");
+        login.setActionCommand("submit");
+        login.setBorder(new javax.swing.border.MatteBorder(null));
+        login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        login.setPreferredSize(new java.awt.Dimension(90, 30));
+        login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                loginActionPerformed(evt);
             }
         });
+
+        password.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         javax.swing.GroupLayout inputsLayout = new javax.swing.GroupLayout(inputs);
         inputs.setLayout(inputsLayout);
@@ -218,13 +215,13 @@ public final class AdminLogin extends javax.swing.JFrame {
             inputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(inputsLayout.createSequentialGroup()
                 .addGap(133, 133, 133)
-                .addGroup(inputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(username1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(inputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(password)
+                    .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(143, Short.MAX_VALUE))
+                    .addComponent(jLabel2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         inputsLayout.setVerticalGroup(
             inputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,13 +229,13 @@ public final class AdminLogin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(username1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -254,7 +251,7 @@ public final class AdminLogin extends javax.swing.JFrame {
                 .addGap(219, 219, 219))
             .addGroup(MainPanelLayout.createSequentialGroup()
                 .addComponent(HeadingText, javax.swing.GroupLayout.PREFERRED_SIZE, 1001, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(178, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(MainPanelLayout.createSequentialGroup()
@@ -320,17 +317,59 @@ public final class AdminLogin extends javax.swing.JFrame {
         i.setVisible(true);
     }//GEN-LAST:event_registerMouseClicked
 
-    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usernameActionPerformed
+    }//GEN-LAST:event_emailActionPerformed
 
-    private void username1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_username1ActionPerformed
+    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_username1ActionPerformed
+        
+            String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+            String user = "root";
+            String passw = "";
+            
+            String emailAddress = email.getText();
+            String passWord = new String(password.getPassword());
+        
+        
+        try{
+            if(!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[g]{1}+[m]{1}+[a]{1}+[i]{1}+[l]{1}+[.]{1}+[c]{1}+[o]{1}+[m]{1}+$", emailAddress))){
+                 JOptionPane.showMessageDialog(this, "Pleass enter valid email");
+            }else if("".equals(emailAddress)){
+                JOptionPane.showMessageDialog(this, "Please enter email");
+            }else if("".equals(passWord)){
+                JOptionPane.showMessageDialog(this, "Please enter password");
+            }else{
+                       Class.forName("org.mariadb.jdbc.Driver");
+                      Connection con = DriverManager.getConnection(url,user,passw);
+                      
+                      
+                      String query1="Select  email, password from `cms`.`admin` where email=? and password=?";
+                      PreparedStatement st = con.prepareStatement(query1); 
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+                      st.setString(1, emailAddress);
+                      st.setString(2, passWord);
+                
+                      ResultSet result = st.executeQuery(); // record added. 
+                      con.close(); 
+                      if(result.next()){
+                          
+                          JOptionPane.showMessageDialog(this, "Login successfully");
+                          
+                            //If new Admin login successfully redirecting to the Admin Dashboard
+                          this.dispose();
+                          AdminDashboard i = new AdminDashboard();
+                          i.setVisible(true);
+                      }
+                      
+
+                
+               
+            }
+        }catch(Exception e){
+            
+        }
+    }//GEN-LAST:event_loginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -378,14 +417,14 @@ public final class AdminLogin extends javax.swing.JFrame {
     private javax.swing.JLabel back;
     private javax.swing.JLabel close;
     private javax.swing.JLabel copyright;
+    private javax.swing.JTextField email;
     private javax.swing.JPanel inputs;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton login;
     private javax.swing.JLabel or_text;
+    private javax.swing.JPasswordField password;
     private javax.swing.JLabel register;
-    private javax.swing.JTextField username;
-    private javax.swing.JTextField username1;
     // End of variables declaration//GEN-END:variables
 }
