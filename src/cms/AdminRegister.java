@@ -396,7 +396,7 @@ public final class AdminRegister extends javax.swing.JFrame {
                       AdminLogin i = new AdminLogin();
                       i.setVisible(true);
                    }else{
-                        JOptionPane.showMessageDialog(this, "Password don not matched!");
+                        JOptionPane.showMessageDialog(this, "Password don't matched!");
                    }
             }
             

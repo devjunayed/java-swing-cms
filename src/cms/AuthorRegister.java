@@ -395,7 +395,7 @@ public final class AuthorRegister extends javax.swing.JFrame {
                       AuthorLogin i = new AuthorLogin();
                       i.setVisible(true);
                    }else{
-                        JOptionPane.showMessageDialog(this, "Password don not matched!");
+                        JOptionPane.showMessageDialog(this, "Password don't matched!");
                    }
             }
             
