@@ -7,6 +7,8 @@ package cms;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
+import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -68,7 +70,7 @@ public final class AdminRegister extends javax.swing.JFrame {
         close = new javax.swing.JLabel();
         back = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        username1 = new javax.swing.JTextField();
+        username = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         password = new javax.swing.JTextField();
         Register = new javax.swing.JButton();
@@ -173,14 +175,14 @@ public final class AdminRegister extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Your Name:");
 
-        username1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        username1.setToolTipText("Enter your username");
-        username1.setAutoscrolls(false);
-        username1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        username1.setOpaque(false);
-        username1.addActionListener(new java.awt.event.ActionListener() {
+        username.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        username.setToolTipText("Enter your username");
+        username.setAutoscrolls(false);
+        username.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        username.setOpaque(false);
+        username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                username1ActionPerformed(evt);
+                usernameActionPerformed(evt);
             }
         });
 
@@ -256,7 +258,7 @@ public final class AdminRegister extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
                         .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(username1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -296,7 +298,7 @@ public final class AdminRegister extends javax.swing.JFrame {
                                     .addGroup(MainPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel1)
                                         .addGap(18, 18, 18)
-                                        .addComponent(username1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(MainPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addGap(18, 18, 18)
@@ -355,9 +357,9 @@ public final class AdminRegister extends javax.swing.JFrame {
         i.setVisible(true);
     }//GEN-LAST:event_registerMouseClicked
 
-    private void username1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_username1ActionPerformed
+    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_username1ActionPerformed
+    }//GEN-LAST:event_usernameActionPerformed
 
     private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
         // TODO add your handling code here:
@@ -365,10 +367,60 @@ public final class AdminRegister extends javax.swing.JFrame {
 
     private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
         // TODO add your handling code here:
+        
+        
+    
+            String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+            String user = "root";
+            String passw = "";
+            
+            String userName = username.getText();
+            String emailAddress = email.getText();
+            String passWord = password.getText();
+            String confirmPassWord = confirmpassword.getText();
+        
         try{
             
+            
+            if("".equals(userName)){
+                 JOptionPane.showMessageDialog(this, "Please enter your name");
+            }else if("".equals(emailAddress)){
+                JOptionPane.showMessageDialog(this, "Pleass enter your email");
+            }else if("".equals(passWord)){
+                JOptionPane.showMessageDialog(this, "Please set a password");
+            }else if("".equals(confirmPassWord)){
+                JOptionPane.showMessageDialog(this, "Please confirm your password");
+            }else{
+                    if( passWord.equals(confirmPassWord)){
+                       Class.forName("org.mariadb.jdbc.Driver");
+                      Connection con = DriverManager.getConnection(url,user,passw);
+                      String query1="INSERT INTO `cms`.`admin` (`fullname`, `email`, `password`) VALUES(?, ?, ?)";
+                      PreparedStatement st = con.prepareStatement(query1); 
+
+                      st.setString(1, username.getText());
+                      st.setString(2, email.getText());
+                      st.setString(3, password.getText());
+
+                      st.executeUpdate(); // record added. 
+                      con.close(); 
+                      JOptionPane.showMessageDialog(this, "Registered successfully");
+
+
+                      //Closing this window and setting new one
+                      this.dispose();
+                      AdminLogin i = new AdminLogin();
+                      i.setVisible(true);
+                   }else{
+                        JOptionPane.showMessageDialog(this, "Password don not matched!");
+                   }
+            }
+            
+           
+            
+
+                
         }catch(Exception e){
-            JPane.
+             JOptionPane.showMessageDialog(this , e);
         }
     }//GEN-LAST:event_RegisterActionPerformed
 
@@ -441,6 +493,6 @@ public final class AdminRegister extends javax.swing.JFrame {
     private javax.swing.JLabel or_text;
     private javax.swing.JTextField password;
     private javax.swing.JLabel register;
-    private javax.swing.JTextField username1;
+    private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 }
