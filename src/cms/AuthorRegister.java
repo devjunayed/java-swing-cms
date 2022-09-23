@@ -23,33 +23,27 @@ public final class AuthorRegister extends javax.swing.JFrame {
     public AuthorRegister() {
         initComponents();
         ImageIcon image = new javax.swing.ImageIcon(getClass().getResource("/cms/images/cms.png"));
-        
+
         Image img1 = image.getImage();
         Image img2 = img1.getScaledInstance(500, 350, 40);
         ImageIcon image1 = new javax.swing.ImageIcon(img2);
-        
-         BackgroundImage.setIcon(image1); 
-         
-         
-         
+
+        BackgroundImage.setIcon(image1);
+
         ImageIcon closeImg = new javax.swing.ImageIcon(getClass().getResource("/cms/images/close.png"));
         Image cli1 = closeImg.getImage();
         Image cli2 = cli1.getScaledInstance(25, 25, 40);
         ImageIcon closeImage = new javax.swing.ImageIcon(cli2);
-        
-         close.setIcon(closeImage); 
-         
-         
+
+        close.setIcon(closeImage);
+
         ImageIcon backImg = new javax.swing.ImageIcon(getClass().getResource("/cms/images/back.png"));
         Image bki1 = backImg.getImage();
         Image bki2 = bki1.getScaledInstance(25, 25, 0);
         ImageIcon backimg = new javax.swing.ImageIcon(bki2);
-        
-         back.setIcon(backimg); 
+
+        back.setIcon(backimg);
     }
-        
-        
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -349,62 +343,71 @@ public final class AuthorRegister extends javax.swing.JFrame {
 
     private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
         // TODO add your handling code here:
-        
-        
-    
-            String url = "jdbc:mariadb://127.0.0.1:3306/cms";
-            String user = "root";
-            String passw = "";
-            
-            String userName = username.getText();
-            String emailAddress = email.getText();
-            String passWord = new String(password.getPassword());
-            String confirmPassWord = new String(confirmpassword.getPassword());
-        
-        try{
-            
-            
-            if("".equals(userName)){
-                 JOptionPane.showMessageDialog(this, "Please enter your name");
-            }else if("".equals(emailAddress)){
-                JOptionPane.showMessageDialog(this, "Pleass enter valid email");
-            }else if(!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[g]{1}+[m]{1}+[a]{1}+[i]{1}+[l]{1}+[.]{1}+[c]{1}+[o]{1}+[m]{1}+$", emailAddress))){
-                 JOptionPane.showMessageDialog(this, "Pleass enter valid email");
-            }else if("".equals(passWord)){
-                JOptionPane.showMessageDialog(this, "Please set a password");
-            }else if("".equals(confirmPassWord)){
-                JOptionPane.showMessageDialog(this, "Please confirm your password");
+
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+
+        String userName = username.getText();
+        String emailAddress = email.getText();
+        String passWord = new String(password.getPassword());
+        String confirmPassWord = new String(confirmpassword.getPassword());
+
+        try {
+
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+            String insertingToDB = "INSERT INTO `cms`.`author` (`fullname`, `email`, `password`) VALUES(?, ?, ?)";
+            String checkingDB = "Select * from `cms`.`author` where email=?";
+
+            PreparedStatement checkStatement = con.prepareStatement(checkingDB);
+
+            checkStatement.setString(1, emailAddress);
+
+            ResultSet result = checkStatement.executeQuery(); // record added. 
+
+            if (result.next()) {
+
+                JOptionPane.showMessageDialog(this,"Author already register");
+
+               
             }else{
-                    if( passWord.equals(confirmPassWord)){
-                       Class.forName("org.mariadb.jdbc.Driver");
-                      Connection con = DriverManager.getConnection(url,user,passw);
-                      String query1="INSERT INTO `cms`.`author` (`fullname`, `email`, `password`) VALUES(?, ?, ?)";
-                      PreparedStatement st = con.prepareStatement(query1); 
 
-                      st.setString(1, userName);
-                      st.setString(2, emailAddress);
-                      st.setString(3, passWord);
+            if ("".equals(userName)) {
+                JOptionPane.showMessageDialog(this, "Please enter your name");
+            } else if ("".equals(emailAddress)) {
+                JOptionPane.showMessageDialog(this, "Pleass enter valid email");
+            } else if (!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[g]{1}+[m]{1}+[a]{1}+[i]{1}+[l]{1}+[.]{1}+[c]{1}+[o]{1}+[m]{1}+$", emailAddress))) {
+                JOptionPane.showMessageDialog(this, "Pleass enter valid email");
+            } else if ("".equals(passWord)) {
+                JOptionPane.showMessageDialog(this, "Please set a password");
+            } else if ("".equals(confirmPassWord)) {
+                JOptionPane.showMessageDialog(this, "Please confirm your password");
+            } else {
+                if (passWord.equals(confirmPassWord)) {
 
-                      st.executeUpdate(); // record added. 
-                      con.close(); 
-                      JOptionPane.showMessageDialog(this, "Registered successfully");
+                    PreparedStatement st = con.prepareStatement(insertingToDB);
 
+                    st.setString(1, userName);
+                    st.setString(2, emailAddress);
+                    st.setString(3, passWord);
 
-                      //Closing this window and setting new one
-                      this.dispose();
-                      AuthorLogin i = new AuthorLogin();
-                      i.setVisible(true);
-                   }else{
-                        JOptionPane.showMessageDialog(this, "Password don't matched!");
-                   }
+                    st.executeUpdate(); // record added. 
+                    con.close();
+                    JOptionPane.showMessageDialog(this, "Registered successfully");
+
+                    //Closing this window and setting new one
+                    this.dispose();
+                    AuthorLogin i = new AuthorLogin();
+                    i.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Password don't matched!");
+                }
             }
-            
-           
-            
+            }
 
-                
-        }catch(Exception e){
-             JOptionPane.showMessageDialog(this , e);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
         }
     }//GEN-LAST:event_RegisterActionPerformed
 
