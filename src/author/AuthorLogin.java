@@ -2,8 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package cms;
+package author;
 
+import dashboard.AdminDashboard;
+import cms.AdminLogin;
+import homepage.HomePage;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.sql.Connection;
@@ -18,14 +21,14 @@ import java.sql.*;
  *
  * @author Junayed
  */
-public final class AdminLogin extends javax.swing.JFrame {
+public final class AuthorLogin extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminRegister
      */
-    public AdminLogin() {
+    public AuthorLogin() {
         initComponents();
-        ImageIcon image = new javax.swing.ImageIcon(getClass().getResource("/cms/images/admin_login.png"));
+        ImageIcon image = new javax.swing.ImageIcon(getClass().getResource("/cms/images/author_login.png"));
         
         Image img1 = image.getImage();
         Image img2 = img1.getScaledInstance(500, 350, 40);
@@ -85,7 +88,6 @@ public final class AdminLogin extends javax.swing.JFrame {
         setBackground(new java.awt.Color(204, 255, 204));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1000, 600));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -93,7 +95,7 @@ public final class AdminLogin extends javax.swing.JFrame {
 
         HeadingText.setFont(new java.awt.Font("Arial Narrow", 1, 24)); // NOI18N
         HeadingText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        HeadingText.setText("Hello admin, glad to see you");
+        HeadingText.setText("Hello author, happy to see you");
         HeadingText.setAlignmentY(0.0F);
         HeadingText.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
@@ -104,7 +106,7 @@ public final class AdminLogin extends javax.swing.JFrame {
 
         are_you.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         are_you.setForeground(new java.awt.Color(102, 102, 255));
-        are_you.setText("Are you not admin?");
+        are_you.setText("Are you not author?");
         are_you.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         are_you.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -306,14 +308,14 @@ public final class AdminLogin extends javax.swing.JFrame {
     private void are_youMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_are_youMouseClicked
         // TODO add your handling code here:
         this.dispose();
-        AuthorLogin i = new AuthorLogin();
+        AdminLogin i = new AdminLogin();
         i.setVisible(true);
     }//GEN-LAST:event_are_youMouseClicked
 
     private void registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerMouseClicked
         // TODO add your handling code here:
         this.dispose();
-        AdminRegister i = new AdminRegister();
+        AuthorRegister i = new AuthorRegister();
         i.setVisible(true);
     }//GEN-LAST:event_registerMouseClicked
 
@@ -344,7 +346,7 @@ public final class AdminLogin extends javax.swing.JFrame {
                       Connection con = DriverManager.getConnection(url,user,passw);
                       
                       
-                      String query1="Select  email, password from `cms`.`admin` where email=? and password=?";
+                      String query1="Select  email, password from `cms`.`author` where email=? and password=?";
                       PreparedStatement st = con.prepareStatement(query1); 
 
                       st.setString(1, emailAddress);
@@ -361,7 +363,7 @@ public final class AdminLogin extends javax.swing.JFrame {
                           AdminDashboard i = new AdminDashboard();
                           i.setVisible(true);
                       }else{
-                          JOptionPane.showMessageDialog(this, "Admin not found!");
+                          JOptionPane.showMessageDialog(this, "Author not found!");
                       }
                       
 
@@ -390,14 +392,18 @@ public final class AdminLogin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuthorLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuthorLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuthorLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuthorLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -406,7 +412,7 @@ public final class AdminLogin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminLogin().setVisible(true);
+                new AuthorLogin().setVisible(true);
             }
         });
     }
