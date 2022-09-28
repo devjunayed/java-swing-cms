@@ -7,7 +7,7 @@ package admin;
 
 
 import author.AuthorLogin;
-import cms.AdminDashboard;
+import dashboard.AdminDashboard;
 import homepage.HomePage;
 import java.awt.Image;
 import java.awt.Toolkit;
