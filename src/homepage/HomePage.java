@@ -6,7 +6,6 @@ package homepage;
 
 import author.AuthorLogin;
 import admin.AdminLogin;
-import admin.AdminLogin;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;

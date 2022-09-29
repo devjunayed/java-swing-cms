@@ -74,8 +74,6 @@ public final class AdminLogin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         are_you = new javax.swing.JLabel();
         copyright = new javax.swing.JLabel();
-        register = new javax.swing.JLabel();
-        or_text = new javax.swing.JLabel();
         close = new javax.swing.JLabel();
         back = new javax.swing.JLabel();
         inputs = new javax.swing.JPanel();
@@ -84,6 +82,7 @@ public final class AdminLogin extends javax.swing.JFrame {
         email = new javax.swing.JTextField();
         login = new javax.swing.JButton();
         password = new javax.swing.JPasswordField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -119,18 +118,6 @@ public final class AdminLogin extends javax.swing.JFrame {
 
         copyright.setText("All rights reserved @TeamNewbie 2022 (Sonargaon University)");
 
-        register.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        register.setForeground(new java.awt.Color(51, 0, 204));
-        register.setText("Not registered, Register Now");
-        register.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        register.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                registerMouseClicked(evt);
-            }
-        });
-
-        or_text.setText("OR,");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -141,12 +128,6 @@ public final class AdminLogin extends javax.swing.JFrame {
                         .addGap(152, 152, 152)
                         .addComponent(are_you))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(199, 199, 199)
-                        .addComponent(or_text))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(register))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addComponent(copyright)))
                 .addContainerGap(285, Short.MAX_VALUE))
@@ -154,11 +135,7 @@ public final class AdminLogin extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addComponent(register)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(or_text)
-                .addGap(2, 2, 2)
+                .addContainerGap(75, Short.MAX_VALUE)
                 .addComponent(are_you)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(copyright))
@@ -191,7 +168,6 @@ public final class AdminLogin extends javax.swing.JFrame {
         email.setToolTipText("Enter your username");
         email.setAutoscrolls(false);
         email.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        email.setOpaque(false);
         email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailActionPerformed(evt);
@@ -244,6 +220,11 @@ public final class AdminLogin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(102, 102, 255));
+        jLabel3.setText("Forgotten password?");
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
         MainPanel.setLayout(MainPanelLayout);
         MainPanelLayout.setHorizontalGroup(
@@ -262,8 +243,14 @@ public final class AdminLogin extends javax.swing.JFrame {
                     .addGroup(MainPanelLayout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addComponent(BackgroundImage, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(inputs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(MainPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(inputs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(MainPanelLayout.createSequentialGroup()
+                                .addGap(146, 146, 146)
+                                .addComponent(jLabel3)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(MainPanelLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -277,14 +264,17 @@ public final class AdminLogin extends javax.swing.JFrame {
                     .addComponent(back)
                     .addComponent(close))
                 .addGap(23, 23, 23)
-                .addComponent(HeadingText, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                .addComponent(HeadingText, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BackgroundImage, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(MainPanelLayout.createSequentialGroup()
+                        .addComponent(inputs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(330, Short.MAX_VALUE))
+                .addContainerGap(332, Short.MAX_VALUE))
         );
 
         close.getAccessibleContext().setAccessibleName("closeBtn");
@@ -314,13 +304,6 @@ public final class AdminLogin extends javax.swing.JFrame {
         AuthorLogin i = new AuthorLogin();
         i.setVisible(true);
     }//GEN-LAST:event_are_youMouseClicked
-
-    private void registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerMouseClicked
-        // TODO add your handling code here:
-        this.dispose();
-        AdminRegister i = new AdminRegister();
-        i.setVisible(true);
-    }//GEN-LAST:event_registerMouseClicked
 
     private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
         // TODO add your handling code here:
@@ -428,10 +411,9 @@ public final class AdminLogin extends javax.swing.JFrame {
     private javax.swing.JPanel inputs;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton login;
-    private javax.swing.JLabel or_text;
     private javax.swing.JPasswordField password;
-    private javax.swing.JLabel register;
     // End of variables declaration//GEN-END:variables
 }
