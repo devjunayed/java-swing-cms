@@ -5,8 +5,8 @@
 package homepage;
 
 import author.AuthorLogin;
-import cms.AdminLogin;
-import cms.AdminLogin;
+import admin.AdminLogin;
+import admin.AdminLogin;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
@@ -22,7 +22,7 @@ public final class HomePage extends javax.swing.JFrame {
      */
     public HomePage() {
         initComponents();
-        ImageIcon image = new javax.swing.ImageIcon(getClass().getResource("/cms/images/cms.png"));
+        ImageIcon image = new javax.swing.ImageIcon(getClass().getResource("/images/cms.png"));
         
         Image img1 = image.getImage();
         Image img2 = img1.getScaledInstance(500, 350, 40);
@@ -32,7 +32,7 @@ public final class HomePage extends javax.swing.JFrame {
          
          
          
-         ImageIcon closeImg = new javax.swing.ImageIcon(getClass().getResource("/cms/images/close.png"));
+         ImageIcon closeImg = new javax.swing.ImageIcon(getClass().getResource("/images/close.png"));
         Image cli1 = closeImg.getImage();
         Image cli2 = cli1.getScaledInstance(25, 25, 40);
         ImageIcon closeImage = new javax.swing.ImageIcon(cli2);

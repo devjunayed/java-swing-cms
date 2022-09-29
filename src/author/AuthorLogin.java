@@ -5,7 +5,7 @@
 package author;
 
 import dashboard.AdminDashboard;
-import cms.AdminLogin;
+import admin.AdminLogin;
 import homepage.HomePage;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -28,7 +28,7 @@ public final class AuthorLogin extends javax.swing.JFrame {
      */
     public AuthorLogin() {
         initComponents();
-        ImageIcon image = new javax.swing.ImageIcon(getClass().getResource("/cms/images/author_login.png"));
+        ImageIcon image = new javax.swing.ImageIcon(getClass().getResource("/images/author_login.png"));
         
         Image img1 = image.getImage();
         Image img2 = img1.getScaledInstance(500, 350, 40);
@@ -38,7 +38,7 @@ public final class AuthorLogin extends javax.swing.JFrame {
          
          
          
-        ImageIcon closeImg = new javax.swing.ImageIcon(getClass().getResource("/cms/images/close.png"));
+        ImageIcon closeImg = new javax.swing.ImageIcon(getClass().getResource("/images/close.png"));
         Image cli1 = closeImg.getImage();
         Image cli2 = cli1.getScaledInstance(25, 25, 40);
         ImageIcon closeImage = new javax.swing.ImageIcon(cli2);
@@ -46,7 +46,7 @@ public final class AuthorLogin extends javax.swing.JFrame {
          close.setIcon(closeImage); 
          
          
-        ImageIcon backImg = new javax.swing.ImageIcon(getClass().getResource("/cms/images/back.png"));
+        ImageIcon backImg = new javax.swing.ImageIcon(getClass().getResource("/images/back.png"));
         Image bki1 = backImg.getImage();
         Image bki2 = bki1.getScaledInstance(25, 25, 0);
         ImageIcon backimg = new javax.swing.ImageIcon(bki2);
