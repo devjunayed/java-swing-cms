@@ -75,10 +75,10 @@ public final class AuthorRegister extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         confirmpassword = new javax.swing.JPasswordField();
         password = new javax.swing.JPasswordField();
-        password1 = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
-        confirmpassword1 = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
+        question = new javax.swing.JComboBox<>();
+        answer = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -226,20 +226,34 @@ public final class AuthorRegister extends javax.swing.JFrame {
 
         password.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        password1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Enter Security Question");
 
-        confirmpassword1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        confirmpassword1.addActionListener(new java.awt.event.ActionListener() {
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setText("Enter Security Answer");
+
+        question.setEditable(true);
+        question.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        question.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "What is your first pet name?", "What is your childhood nickname?", "Who is your Favourite person?" }));
+        question.setFocusable(false);
+        question.setOpaque(false);
+        question.setPreferredSize(new java.awt.Dimension(5, 15));
+        question.setVerifyInputWhenFocusTarget(false);
+        question.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmpassword1ActionPerformed(evt);
+                questionActionPerformed(evt);
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setText("Enter Security Answer");
+        answer.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        answer.setToolTipText("Enter your username");
+        answer.setAutoscrolls(false);
+        answer.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        answer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                answerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
         MainPanel.setLayout(MainPanelLayout);
@@ -255,34 +269,39 @@ public final class AuthorRegister extends javax.swing.JFrame {
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(MainPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, MainPanelLayout.createSequentialGroup()
+                                .addComponent(Register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(MainPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(189, 189, 189)
-                                .addComponent(jLabel4)
-                                .addGap(104, 104, 104))
-                            .addGroup(MainPanelLayout.createSequentialGroup()
-                                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(password1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5)
-                                    .addComponent(Register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(question, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
-                                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(confirmpassword1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(answer, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(MainPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(112, 112, 112)
+                                .addComponent(jLabel6)
+                                .addGap(104, 104, 104))
                             .addGroup(MainPanelLayout.createSequentialGroup()
                                 .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(confirmpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(MainPanelLayout.createSequentialGroup()
-                                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(MainPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(181, 181, 181)
-                                .addComponent(jLabel3)
-                                .addGap(166, 166, 166)))
+                                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
+                                            .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18))
+                                        .addGroup(MainPanelLayout.createSequentialGroup()
+                                            .addComponent(jLabel2)
+                                            .addGap(203, 203, 203)))
+                                    .addGroup(MainPanelLayout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(191, 191, 191)))
+                                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BackgroundImage, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(73, 73, 73))
@@ -304,9 +323,11 @@ public final class AuthorRegister extends javax.swing.JFrame {
                     .addGroup(MainPanelLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(close)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BackgroundImage, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MainPanelLayout.createSequentialGroup()
+                        .addComponent(BackgroundImage, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 81, Short.MAX_VALUE))
                     .addGroup(MainPanelLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -328,15 +349,15 @@ public final class AuthorRegister extends javax.swing.JFrame {
                         .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(jLabel6))
-                        .addGap(18, 18, 18)
-                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(password1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(confirmpassword1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addComponent(Register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(answer, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(question, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addComponent(Register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(323, Short.MAX_VALUE))
+                .addContainerGap(300, Short.MAX_VALUE))
         );
 
         close.getAccessibleContext().setAccessibleName("closeBtn");
@@ -387,6 +408,8 @@ public final class AuthorRegister extends javax.swing.JFrame {
 
         String userName = username.getText();
         String emailAddress = email.getText();
+        String securityQuestion = question.getSelectedItem().toString();
+        String securityAnswer = answer.getText();
         String passWord = new String(password.getPassword());
         String confirmPassWord = new String(confirmpassword.getPassword());
 
@@ -394,7 +417,7 @@ public final class AuthorRegister extends javax.swing.JFrame {
 
             Class.forName("org.mariadb.jdbc.Driver");
             Connection con = DriverManager.getConnection(url, user, passw);
-            String insertingToDB = "INSERT INTO `cms`.`author` (`fullname`, `email`, `password`) VALUES(?, ?, ?)";
+            String insertingToDB = "INSERT INTO `cms`.`author` (`username`, `email`, `question`, `answer`, `password`) VALUES(?, ?, ?, ?, ?)";
             String checkingDB = "Select * from `cms`.`author` where email=?";
 
             PreparedStatement checkStatement = con.prepareStatement(checkingDB);
@@ -416,6 +439,10 @@ public final class AuthorRegister extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Pleass enter valid email");
             } else if (!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[g]{1}+[m]{1}+[a]{1}+[i]{1}+[l]{1}+[.]{1}+[c]{1}+[o]{1}+[m]{1}+$", emailAddress))) {
                 JOptionPane.showMessageDialog(this, "Pleass enter valid email");
+            } else if ("".equals(securityQuestion)) {
+                JOptionPane.showMessageDialog(this, "Please choose your question!");
+            } else if ("".equals(securityAnswer)) {
+                JOptionPane.showMessageDialog(this, "Please enter your answer");
             } else if ("".equals(passWord)) {
                 JOptionPane.showMessageDialog(this, "Please set a password");
             } else if ("".equals(confirmPassWord)) {
@@ -427,7 +454,10 @@ public final class AuthorRegister extends javax.swing.JFrame {
 
                     st.setString(1, userName);
                     st.setString(2, emailAddress);
-                    st.setString(3, passWord);
+                    st.setString(3, securityQuestion);
+                    st.setString(4, securityAnswer);
+                    st.setString(5, passWord);
+                    
 
                     st.executeUpdate(); // record added. 
                     con.close();
@@ -452,9 +482,13 @@ public final class AuthorRegister extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_emailActionPerformed
 
-    private void confirmpassword1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmpassword1ActionPerformed
+    private void questionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_questionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_confirmpassword1ActionPerformed
+    }//GEN-LAST:event_questionActionPerformed
+
+    private void answerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_answerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_answerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -511,11 +545,11 @@ public final class AuthorRegister extends javax.swing.JFrame {
     private javax.swing.JLabel HeadingText;
     private javax.swing.JPanel MainPanel;
     private javax.swing.JButton Register;
+    private javax.swing.JTextField answer;
     private javax.swing.JLabel are_you;
     private javax.swing.JLabel back;
     private javax.swing.JLabel close;
     private javax.swing.JPasswordField confirmpassword;
-    private javax.swing.JPasswordField confirmpassword1;
     private javax.swing.JLabel copyright;
     private javax.swing.JTextField email;
     private javax.swing.JLabel jLabel1;
@@ -527,7 +561,7 @@ public final class AuthorRegister extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel or_text;
     private javax.swing.JPasswordField password;
-    private javax.swing.JPasswordField password1;
+    private javax.swing.JComboBox<String> question;
     private javax.swing.JLabel register;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables

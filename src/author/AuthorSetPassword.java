@@ -21,13 +21,17 @@ import java.sql.*;
  *
  * @author Junayed
  */
-public final class AuthorLogin extends javax.swing.JFrame {
+public final class AuthorSetPassword extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminRegister
      */
-    public AuthorLogin() {
+    
+ 
+    public AuthorSetPassword() {
         initComponents();
+        
+       
         ImageIcon image = new javax.swing.ImageIcon(getClass().getResource("/images/author_login.png"));
         
         Image img1 = image.getImage();
@@ -55,8 +59,9 @@ public final class AuthorLogin extends javax.swing.JFrame {
     }
         
         
-    
-
+  
+    AuthorRecovery ar = new AuthorRecovery();
+    String emailAddress = ar.emailAddress;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,19 +75,16 @@ public final class AuthorLogin extends javax.swing.JFrame {
         HeadingText = new javax.swing.JLabel();
         BackgroundImage = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        are_you = new javax.swing.JLabel();
+        back_to_login = new javax.swing.JLabel();
         copyright = new javax.swing.JLabel();
-        register = new javax.swing.JLabel();
-        or_text = new javax.swing.JLabel();
         close = new javax.swing.JLabel();
         back = new javax.swing.JLabel();
         inputs = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        email = new javax.swing.JTextField();
-        login = new javax.swing.JButton();
+        password_txt = new javax.swing.JLabel();
+        confirm_passw_txt = new javax.swing.JLabel();
+        reset = new javax.swing.JButton();
+        confirm_password = new javax.swing.JPasswordField();
         password = new javax.swing.JPasswordField();
-        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -97,7 +99,7 @@ public final class AuthorLogin extends javax.swing.JFrame {
 
         HeadingText.setFont(new java.awt.Font("Arial Narrow", 1, 24)); // NOI18N
         HeadingText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        HeadingText.setText("Hello author, happy to see you");
+        HeadingText.setText("Hello author, Set your password!");
         HeadingText.setAlignmentY(0.0F);
         HeadingText.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
@@ -106,58 +108,37 @@ public final class AuthorLogin extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        are_you.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        are_you.setForeground(new java.awt.Color(102, 102, 255));
-        are_you.setText("Are you not author?");
-        are_you.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        are_you.addMouseListener(new java.awt.event.MouseAdapter() {
+        back_to_login.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        back_to_login.setForeground(new java.awt.Color(102, 102, 255));
+        back_to_login.setText("Back to login");
+        back_to_login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        back_to_login.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                are_youMouseClicked(evt);
+                back_to_loginMouseClicked(evt);
             }
         });
 
         copyright.setText("All rights reserved @TeamNewbie 2022 (Sonargaon University)");
 
-        register.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        register.setForeground(new java.awt.Color(51, 0, 204));
-        register.setText("Not registered, Register Now");
-        register.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        register.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                registerMouseClicked(evt);
-            }
-        });
-
-        or_text.setText("OR,");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(186, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(are_you))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(155, 155, 155)
-                        .addComponent(or_text))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(register))
-                    .addComponent(copyright))
-                .addGap(143, 143, 143))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(copyright)
+                        .addGap(143, 143, 143))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(back_to_login)
+                        .addGap(266, 266, 266))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addComponent(register)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(or_text)
-                .addGap(2, 2, 2)
-                .addComponent(are_you)
+                .addContainerGap(77, Short.MAX_VALUE)
+                .addComponent(back_to_login)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(copyright))
         );
@@ -179,35 +160,27 @@ public final class AuthorLogin extends javax.swing.JFrame {
 
         inputs.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Email address: ");
+        password_txt.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        password_txt.setText("Password");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setText("Password:");
+        confirm_passw_txt.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        confirm_passw_txt.setText("Confirm Password");
 
-        email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        email.setToolTipText("Enter your username");
-        email.setAutoscrolls(false);
-        email.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        email.addActionListener(new java.awt.event.ActionListener() {
+        reset.setBackground(new java.awt.Color(51, 51, 255));
+        reset.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        reset.setForeground(new java.awt.Color(255, 255, 255));
+        reset.setText("Reset");
+        reset.setActionCommand("submit");
+        reset.setBorder(new javax.swing.border.MatteBorder(null));
+        reset.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        reset.setPreferredSize(new java.awt.Dimension(90, 30));
+        reset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailActionPerformed(evt);
+                resetActionPerformed(evt);
             }
         });
 
-        login.setBackground(new java.awt.Color(51, 51, 255));
-        login.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        login.setForeground(new java.awt.Color(255, 255, 255));
-        login.setText("LOG IN");
-        login.setActionCommand("submit");
-        login.setBorder(new javax.swing.border.MatteBorder(null));
-        login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        login.setPreferredSize(new java.awt.Dimension(90, 30));
-        login.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginActionPerformed(evt);
-            }
-        });
+        confirm_password.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         password.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -217,39 +190,29 @@ public final class AuthorLogin extends javax.swing.JFrame {
             inputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(inputsLayout.createSequentialGroup()
                 .addGap(133, 133, 133)
-                .addGroup(inputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(password)
-                    .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                .addGroup(inputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(confirm_password, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(reset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(password_txt)
+                    .addComponent(confirm_passw_txt))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         inputsLayout.setVerticalGroup(
             inputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(inputsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(password_txt)
                 .addGap(18, 18, 18)
-                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(confirm_passw_txt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(confirm_password, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(reset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(102, 102, 255));
-        jLabel3.setText("Forgotten password?");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
         MainPanel.setLayout(MainPanelLayout);
@@ -269,14 +232,8 @@ public final class AuthorLogin extends javax.swing.JFrame {
                     .addGroup(MainPanelLayout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addComponent(BackgroundImage, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(MainPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(inputs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(MainPanelLayout.createSequentialGroup()
-                                .addGap(144, 144, 144)
-                                .addComponent(jLabel3)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(inputs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(MainPanelLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -291,17 +248,14 @@ public final class AuthorLogin extends javax.swing.JFrame {
                     .addComponent(back)
                     .addComponent(close))
                 .addGap(23, 23, 23)
-                .addComponent(HeadingText, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                .addComponent(HeadingText, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BackgroundImage, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(MainPanelLayout.createSequentialGroup()
-                        .addComponent(inputs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(inputs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(332, Short.MAX_VALUE))
+                .addContainerGap(329, Short.MAX_VALUE))
         );
 
         close.getAccessibleContext().setAccessibleName("closeBtn");
@@ -325,82 +279,62 @@ public final class AuthorLogin extends javax.swing.JFrame {
         i.setVisible(true);
     }//GEN-LAST:event_backMouseClicked
 
-    private void are_youMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_are_youMouseClicked
+    private void back_to_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_to_loginMouseClicked
         // TODO add your handling code here:
         this.dispose();
-        AdminLogin i = new AdminLogin();
+        AuthorLogin i = new AuthorLogin();
         i.setVisible(true);
-    }//GEN-LAST:event_are_youMouseClicked
+    }//GEN-LAST:event_back_to_loginMouseClicked
 
-    private void registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerMouseClicked
-        // TODO add your handling code here:
-        this.dispose();
-        AuthorRegister i = new AuthorRegister();
-        i.setVisible(true);
-    }//GEN-LAST:event_registerMouseClicked
-
-    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emailActionPerformed
-
-    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
+    
+    private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
         // TODO add your handling code here:
         
             String url = "jdbc:mariadb://127.0.0.1:3306/cms";
             String user = "root";
             String passw = "";
             
-            String emailAddress = email.getText();
-            String passWord = new String(password.getPassword());
+           
+            String newPassword = new String(password.getPassword());
+            String confirmPassword = new String( confirm_password.getPassword());
         
         
         try{
-            if(!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[g]{1}+[m]{1}+[a]{1}+[i]{1}+[l]{1}+[.]{1}+[c]{1}+[o]{1}+[m]{1}+$", emailAddress))){
-                 JOptionPane.showMessageDialog(this, "Pleass enter valid email");
-            }else if("".equals(emailAddress)){
-                JOptionPane.showMessageDialog(this, "Please enter email");
-            }else if("".equals(passWord)){
-                JOptionPane.showMessageDialog(this, "Please enter password");
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+            
+            String updatingDB = "update `cms`.`author` set password=? where email=? ";
+           
+            
+            if("".equals(newPassword)){
+                JOptionPane.showMessageDialog(this, "Please enter new password!");
+            }else if("".equals(confirmPassword)){
+                JOptionPane.showMessageDialog(this, "Please confirm new password!");
             }else{
-                       Class.forName("org.mariadb.jdbc.Driver");
-                      Connection con = DriverManager.getConnection(url,user,passw);
-                      
-                      
-                      String query1="Select  email, password from `cms`.`author` where email=? and password=?";
-                      PreparedStatement st = con.prepareStatement(query1); 
+                  if(newPassword.equals(confirmPassword)){
+                       
+                    PreparedStatement st = con.prepareStatement(updatingDB);
 
-                      st.setString(1, emailAddress);
-                      st.setString(2, passWord);
-                
-                      ResultSet result = st.executeQuery(); // record added. 
-                      con.close(); 
-                      if(result.next()){
-                          
-                          JOptionPane.showMessageDialog(this, "Login successfully");
-                          
-                            //If new Admin login successfully redirecting to the Admin Dashboard
-                          this.dispose();
-                          AdminDashboard i = new AdminDashboard();
-                          i.setVisible(true);
-                      }else{
-                          JOptionPane.showMessageDialog(this, "Author not found!");
-                      }
-                      
+                    st.setString(1, newPassword);
+                    st.setString(2, emailAddress);
+                    
 
-                
-               
+                    st.executeUpdate(); // record added. 
+                    con.close();
+                    JOptionPane.showMessageDialog(this, "Password reset successfully" + emailAddress);
+
+                    //Closing this window and setting new one
+                    this.dispose();
+                    AuthorLogin i = new AuthorLogin();
+                    i.setVisible(true);
+                  }else{
+                       JOptionPane.showMessageDialog(this, "Password doesn't matched!");
+                  }
             }
         }catch(Exception e){
-            
+             JOptionPane.showMessageDialog(this, e);
         }
-    }//GEN-LAST:event_loginActionPerformed
-
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        // TODO add your handling code here:
-        this.dispose();
-        AuthorRecovery i = new AuthorRecovery();
-        i.setVisible(true);
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_resetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -419,14 +353,22 @@ public final class AuthorLogin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AuthorLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuthorSetPassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AuthorLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuthorSetPassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AuthorLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuthorSetPassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AuthorLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuthorSetPassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -439,7 +381,7 @@ public final class AuthorLogin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AuthorLogin().setVisible(true);
+                new AuthorSetPassword().setVisible(true);
             }
         });
     }
@@ -448,19 +390,16 @@ public final class AuthorLogin extends javax.swing.JFrame {
     private javax.swing.JLabel BackgroundImage;
     private javax.swing.JLabel HeadingText;
     private javax.swing.JPanel MainPanel;
-    private javax.swing.JLabel are_you;
     private javax.swing.JLabel back;
+    private javax.swing.JLabel back_to_login;
     private javax.swing.JLabel close;
+    private javax.swing.JLabel confirm_passw_txt;
+    private javax.swing.JPasswordField confirm_password;
     private javax.swing.JLabel copyright;
-    private javax.swing.JTextField email;
     private javax.swing.JPanel inputs;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton login;
-    private javax.swing.JLabel or_text;
     private javax.swing.JPasswordField password;
-    private javax.swing.JLabel register;
+    private javax.swing.JLabel password_txt;
+    public javax.swing.JButton reset;
     // End of variables declaration//GEN-END:variables
 }
