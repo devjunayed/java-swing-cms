@@ -22,7 +22,7 @@ public final class AuthorRecovery extends javax.swing.JFrame {
     /**
      * Creates new form AdminRegister
      */
-        String emailAddress;
+       static String emailAddress;
     
     
     public AuthorRecovery() {
@@ -318,7 +318,7 @@ public final class AuthorRecovery extends javax.swing.JFrame {
 //        String emailAddress = email.getText();
         String securityQuestion = question.getSelectedItem().toString();
         String securityAnswer = answer.getText();
-        this.emailAddress = email.getText();
+       emailAddress = email.getText();
         
         
         

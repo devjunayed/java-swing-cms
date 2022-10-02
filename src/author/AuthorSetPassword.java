@@ -61,7 +61,7 @@ public final class AuthorSetPassword extends javax.swing.JFrame {
         
   
     AuthorRecovery ar = new AuthorRecovery();
-    String emailAddress = ar.emailAddress;
+    String email= ar.emailAddress;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -316,12 +316,12 @@ public final class AuthorSetPassword extends javax.swing.JFrame {
                     PreparedStatement st = con.prepareStatement(updatingDB);
 
                     st.setString(1, newPassword);
-                    st.setString(2, emailAddress);
+                    st.setString(2, email);
                     
 
                     st.executeUpdate(); // record added. 
                     con.close();
-                    JOptionPane.showMessageDialog(this, "Password reset successfully" + emailAddress);
+                    JOptionPane.showMessageDialog(this, "Password reset successfully" + email);
 
                     //Closing this window and setting new one
                     this.dispose();
