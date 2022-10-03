@@ -23,6 +23,7 @@ public final class AuthorRecovery extends javax.swing.JFrame {
      * Creates new form AdminRegister
      */
        static String emailAddress;
+       static String securityQuestion;
     
     
     public AuthorRecovery() {
@@ -188,8 +189,7 @@ public final class AuthorRecovery extends javax.swing.JFrame {
 
         question.setEditable(true);
         question.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        question.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "What is your first pet name?", "What is your childhood nickname?", "Who is your Favoirite person?" }));
-        question.setFocusable(false);
+        question.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "What is your nickname?", "Who is your favourite person?", "What is your pet name?", "What is your school name?", " " }));
         question.setOpaque(false);
         question.setPreferredSize(new java.awt.Dimension(5, 20));
         question.setVerifyInputWhenFocusTarget(false);
@@ -314,13 +314,10 @@ public final class AuthorRecovery extends javax.swing.JFrame {
         String user = "root";
         String passw = "";
 
-     
-//        String emailAddress = email.getText();
-        String securityQuestion = question.getSelectedItem().toString();
-        String securityAnswer = answer.getText();
-       emailAddress = email.getText();
-        
-        
+    
+         securityQuestion =  question.getSelectedItem().toString();
+         String securityAnswer = answer.getText();
+        emailAddress = email.getText();
         
 
         try {
@@ -338,13 +335,16 @@ public final class AuthorRecovery extends javax.swing.JFrame {
             checkStatement.setString(2, securityQuestion);
             checkStatement.setString(3, securityAnswer);
             
+         
             ResultSet result = checkStatement.executeQuery(); // record added
   
-
+               
+            
             if (result.next()) {
-               this.dispose();
-               AuthorSetPassword i = new AuthorSetPassword();
-               i.setVisible(true);               
+                
+                this.dispose();  
+                AuthorSetPassword i = new AuthorSetPassword();   
+                i.setVisible(true);               
             }else{
 
                 if ("".equals(emailAddress)) {
@@ -354,7 +354,7 @@ public final class AuthorRecovery extends javax.swing.JFrame {
                 }else if("".equals(securityAnswer)){
                     JOptionPane.showMessageDialog(this, "Please your answer");
                 }else{
-                    
+                    JOptionPane.showMessageDialog(this, "Please enter valid details!");
                 }
             }
 
@@ -369,6 +369,7 @@ public final class AuthorRecovery extends javax.swing.JFrame {
 
     private void questionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_questionActionPerformed
         // TODO add your handling code here:
+//        securityQuestion =  question.getSelectedItem().toString();
     }//GEN-LAST:event_questionActionPerformed
 
     private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed

@@ -234,7 +234,7 @@ public final class AuthorRegister extends javax.swing.JFrame {
 
         question.setEditable(true);
         question.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        question.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "What is your first pet name?", "What is your childhood nickname?", "Who is your Favourite person?" }));
+        question.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "What is your nickname?", "Who is your favourite person?", "What is your pet name?", "What is your school name?", " " }));
         question.setFocusable(false);
         question.setOpaque(false);
         question.setPreferredSize(new java.awt.Dimension(5, 15));

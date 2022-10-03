@@ -321,7 +321,7 @@ public final class AuthorSetPassword extends javax.swing.JFrame {
 
                     st.executeUpdate(); // record added. 
                     con.close();
-                    JOptionPane.showMessageDialog(this, "Password reset successfully" + email);
+                    JOptionPane.showMessageDialog(this, "Password reset successfully");
 
                     //Closing this window and setting new one
                     this.dispose();
