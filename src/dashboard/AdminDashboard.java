@@ -4,6 +4,9 @@
  */
 package dashboard;
 
+import java.awt.Color;
+import java.awt.Container;
+
 /**
  *
  * @author Junayed
@@ -15,6 +18,8 @@ public class AdminDashboard extends javax.swing.JFrame {
      */
     public AdminDashboard() {
         initComponents();
+        Container c = getContentPane(); 
+        c.setBackground(new Color(234,237,242));
     }
 
     /**
@@ -26,24 +31,291 @@ public class AdminDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        rSPanelImage1 = new rojerusan.RSPanelImage();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        rSPanelImage2 = new rojerusan.RSPanelImage();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        rSPanelImage4 = new rojerusan.RSPanelImage();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        rSPanelImage3 = new rojerusan.RSPanelImage();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        rSPanelImage5 = new rojerusan.RSPanelImage();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        rSPanelImage6 = new rojerusan.RSPanelImage();
+        jLabel8 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        rSPanelImage7 = new rojerusan.RSPanelImage();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        rSPanelImage8 = new rojerusan.RSPanelImage();
+        jLabel10 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(1100, 700));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1100, Short.MAX_VALUE)
+        jPanel1.setBackground(new java.awt.Color(33, 152, 207));
+
+        jButton1.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(33, 152, 207));
+        jButton1.setText("Logout");
+        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 2, true));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(761, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(24, 24, 24))
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 920, 80));
+
+        rSPanelImage1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/dashboard/user.png"))); // NOI18N
+        rSPanelImage1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(rSPanelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, 140));
+
+        jPanel2.setBackground(new java.awt.Color(33, 152, 207));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 42)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Admin Portal");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 300, -1));
+
+        jLabel2.setFont(new java.awt.Font("Serif", 0, 58)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Welcome");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, 100));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Historic", 0, 42)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("to");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 50, -1));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 340, 460));
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        rSPanelImage2.setImagen(new javax.swing.ImageIcon(getClass().getResource("/dashboard/file.png"))); // NOI18N
+        rSPanelImage2.setInheritsPopupMenu(true);
+
+        javax.swing.GroupLayout rSPanelImage2Layout = new javax.swing.GroupLayout(rSPanelImage2);
+        rSPanelImage2.setLayout(rSPanelImage2Layout);
+        rSPanelImage2Layout.setHorizontalGroup(
+            rSPanelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
+        );
+        rSPanelImage2Layout.setVerticalGroup(
+            rSPanelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
+        );
+
+        jPanel3.add(rSPanelImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(33, 152, 207));
+        jLabel4.setText("Search Record");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        rSPanelImage4.setImagen(new javax.swing.ImageIcon(getClass().getResource("/dashboard/open-book-top-view.png"))); // NOI18N
+        rSPanelImage4.setInheritsPopupMenu(true);
+
+        javax.swing.GroupLayout rSPanelImage4Layout = new javax.swing.GroupLayout(rSPanelImage4);
+        rSPanelImage4.setLayout(rSPanelImage4Layout);
+        rSPanelImage4Layout.setHorizontalGroup(
+            rSPanelImage4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
+        );
+        rSPanelImage4Layout.setVerticalGroup(
+            rSPanelImage4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
+        );
+
+        jPanel5.add(rSPanelImage4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(33, 152, 207));
+        jLabel6.setText("View Record");
+        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 180, 220, 220));
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 410, 220, 220));
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        rSPanelImage3.setImagen(new javax.swing.ImageIcon(getClass().getResource("/dashboard/payment-method (1).png"))); // NOI18N
+        rSPanelImage3.setInheritsPopupMenu(true);
+
+        javax.swing.GroupLayout rSPanelImage3Layout = new javax.swing.GroupLayout(rSPanelImage3);
+        rSPanelImage3.setLayout(rSPanelImage3Layout);
+        rSPanelImage3Layout.setHorizontalGroup(
+            rSPanelImage3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
+        );
+        rSPanelImage3Layout.setVerticalGroup(
+            rSPanelImage3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(rSPanelImage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(33, 152, 207));
+        jLabel5.setText("Add Payment");
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, 220, 220));
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        rSPanelImage5.setImagen(new javax.swing.ImageIcon(getClass().getResource("/dashboard/open-book-top-view.png"))); // NOI18N
+        rSPanelImage5.setInheritsPopupMenu(true);
+
+        javax.swing.GroupLayout rSPanelImage5Layout = new javax.swing.GroupLayout(rSPanelImage5);
+        rSPanelImage5.setLayout(rSPanelImage5Layout);
+        rSPanelImage5Layout.setHorizontalGroup(
+            rSPanelImage5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
+        );
+        rSPanelImage5Layout.setVerticalGroup(
+            rSPanelImage5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
+        );
+
+        jPanel6.add(rSPanelImage5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(33, 152, 207));
+        jLabel7.setText("View Record");
+        jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        rSPanelImage6.setImagen(new javax.swing.ImageIcon(getClass().getResource("/dashboard/open-book-top-view.png"))); // NOI18N
+        rSPanelImage6.setInheritsPopupMenu(true);
+
+        javax.swing.GroupLayout rSPanelImage6Layout = new javax.swing.GroupLayout(rSPanelImage6);
+        rSPanelImage6.setLayout(rSPanelImage6Layout);
+        rSPanelImage6Layout.setHorizontalGroup(
+            rSPanelImage6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
+        );
+        rSPanelImage6Layout.setVerticalGroup(
+            rSPanelImage6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
+        );
+
+        jPanel7.add(rSPanelImage6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(33, 152, 207));
+        jLabel8.setText("View Record");
+        jPanel7.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+
+        jPanel6.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 180, 220, 220));
+
+        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 160, 220, 220));
+
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        rSPanelImage7.setImagen(new javax.swing.ImageIcon(getClass().getResource("/dashboard/multiple-users-silhouette.png"))); // NOI18N
+        rSPanelImage7.setInheritsPopupMenu(true);
+
+        javax.swing.GroupLayout rSPanelImage7Layout = new javax.swing.GroupLayout(rSPanelImage7);
+        rSPanelImage7.setLayout(rSPanelImage7Layout);
+        rSPanelImage7Layout.setHorizontalGroup(
+            rSPanelImage7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
+        );
+        rSPanelImage7Layout.setVerticalGroup(
+            rSPanelImage7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
+        );
+
+        jPanel8.add(rSPanelImage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(33, 152, 207));
+        jLabel9.setText("View Member");
+        jPanel8.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        rSPanelImage8.setImagen(new javax.swing.ImageIcon(getClass().getResource("/dashboard/open-book-top-view.png"))); // NOI18N
+        rSPanelImage8.setInheritsPopupMenu(true);
+
+        javax.swing.GroupLayout rSPanelImage8Layout = new javax.swing.GroupLayout(rSPanelImage8);
+        rSPanelImage8.setLayout(rSPanelImage8Layout);
+        rSPanelImage8Layout.setHorizontalGroup(
+            rSPanelImage8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
+        );
+        rSPanelImage8Layout.setVerticalGroup(
+            rSPanelImage8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
+        );
+
+        jPanel9.add(rSPanelImage8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(33, 152, 207));
+        jLabel10.setText("View Record");
+        jPanel9.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+
+        jPanel8.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 180, 220, 220));
+
+        getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, 220, 220));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -82,5 +354,33 @@ public class AdminDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private rojerusan.RSPanelImage rSPanelImage1;
+    private rojerusan.RSPanelImage rSPanelImage2;
+    private rojerusan.RSPanelImage rSPanelImage3;
+    private rojerusan.RSPanelImage rSPanelImage4;
+    private rojerusan.RSPanelImage rSPanelImage5;
+    private rojerusan.RSPanelImage rSPanelImage6;
+    private rojerusan.RSPanelImage rSPanelImage7;
+    private rojerusan.RSPanelImage rSPanelImage8;
     // End of variables declaration//GEN-END:variables
 }
