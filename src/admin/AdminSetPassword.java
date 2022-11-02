@@ -87,6 +87,7 @@ public final class AdminSetPassword extends javax.swing.JFrame {
         password_txt1 = new javax.swing.JLabel();
         password = new javax.swing.JPasswordField();
         username = new javax.swing.JTextField();
+        chbox = new javax.swing.JCheckBox();
         reset = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -140,7 +141,7 @@ public final class AdminSetPassword extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+                .addContainerGap(80, Short.MAX_VALUE)
                 .addComponent(back_to_login)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(copyright))
@@ -227,6 +228,13 @@ public final class AdminSetPassword extends javax.swing.JFrame {
                 .addComponent(confirm_password, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        chbox.setText("Show Password");
+        chbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chboxActionPerformed(evt);
+            }
+        });
+
         reset.setBackground(new java.awt.Color(51, 51, 255));
         reset.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         reset.setForeground(new java.awt.Color(255, 255, 255));
@@ -251,27 +259,27 @@ public final class AdminSetPassword extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(close)
                 .addGap(219, 219, 219))
-            .addGroup(MainPanelLayout.createSequentialGroup()
-                .addComponent(HeadingText, javax.swing.GroupLayout.PREFERRED_SIZE, 1001, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(178, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
-                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(59, 59, 59)
+                .addComponent(BackgroundImage, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MainPanelLayout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(BackgroundImage, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(inputs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(MainPanelLayout.createSequentialGroup()
+                        .addGap(138, 138, 138)
                         .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(MainPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(inputs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(MainPanelLayout.createSequentialGroup()
-                                .addGap(139, 139, 139)
-                                .addComponent(reset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(MainPanelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(138, 138, 138)))
+                            .addComponent(reset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chbox))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(188, 188, 188))
+            .addGroup(MainPanelLayout.createSequentialGroup()
+                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(HeadingText, javax.swing.GroupLayout.PREFERRED_SIZE, 1001, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(MainPanelLayout.createSequentialGroup()
+                        .addGap(180, 180, 180)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         MainPanelLayout.setVerticalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,17 +289,19 @@ public final class AdminSetPassword extends javax.swing.JFrame {
                     .addComponent(back)
                     .addComponent(close))
                 .addGap(23, 23, 23)
-                .addComponent(HeadingText, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                .addComponent(HeadingText, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BackgroundImage, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(MainPanelLayout.createSequentialGroup()
                         .addComponent(inputs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(reset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(22, 22, 22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(chbox)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(reset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(329, Short.MAX_VALUE))
+                .addContainerGap(302, Short.MAX_VALUE))
         );
 
         close.getAccessibleContext().setAccessibleName("closeBtn");
@@ -397,6 +407,17 @@ public final class AdminSetPassword extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameActionPerformed
 
+    private void chboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chboxActionPerformed
+        // TODO add your handling code here:
+        if(chbox.isSelected()){
+            password.setEchoChar((char)0);
+            confirm_password.setEchoChar((char)0);
+        }else{
+            password.setEchoChar('*');
+            confirm_password.setEchoChar('*');
+        }
+    }//GEN-LAST:event_chboxActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -469,6 +490,7 @@ public final class AdminSetPassword extends javax.swing.JFrame {
     private javax.swing.JPanel MainPanel;
     private javax.swing.JLabel back;
     private javax.swing.JLabel back_to_login;
+    private javax.swing.JCheckBox chbox;
     private javax.swing.JLabel close;
     private javax.swing.JLabel confirm_passw_txt;
     private javax.swing.JPasswordField confirm_password;

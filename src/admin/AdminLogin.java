@@ -83,6 +83,7 @@ public final class AdminLogin extends javax.swing.JFrame {
         email = new javax.swing.JTextField();
         login = new javax.swing.JButton();
         password = new javax.swing.JPasswordField();
+        chbox = new javax.swing.JCheckBox();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -191,6 +192,13 @@ public final class AdminLogin extends javax.swing.JFrame {
 
         password.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
+        chbox.setText("Show Password");
+        chbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chboxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout inputsLayout = new javax.swing.GroupLayout(inputs);
         inputs.setLayout(inputsLayout);
         inputsLayout.setHorizontalGroup(
@@ -198,12 +206,14 @@ public final class AdminLogin extends javax.swing.JFrame {
             .addGroup(inputsLayout.createSequentialGroup()
                 .addGap(133, 133, 133)
                 .addGroup(inputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(password)
-                    .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                    .addGroup(inputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(chbox)
+                        .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel2)))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
         inputsLayout.setVerticalGroup(
             inputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,9 +226,10 @@ public final class AdminLogin extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(chbox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -270,7 +281,7 @@ public final class AdminLogin extends javax.swing.JFrame {
                     .addComponent(back)
                     .addComponent(close))
                 .addGap(23, 23, 23)
-                .addComponent(HeadingText, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                .addComponent(HeadingText, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BackgroundImage, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -280,7 +291,7 @@ public final class AdminLogin extends javax.swing.JFrame {
                         .addComponent(jLabel3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(332, Short.MAX_VALUE))
+                .addContainerGap(330, Short.MAX_VALUE))
         );
 
         close.getAccessibleContext().setAccessibleName("closeBtn");
@@ -374,6 +385,17 @@ public final class AdminLogin extends javax.swing.JFrame {
         i.setVisible(true);
     }//GEN-LAST:event_jLabel3MouseClicked
 
+    private void chboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chboxActionPerformed
+        // TODO add your handling code here:
+        if(chbox.isSelected()){
+            password.setEchoChar((char)0);
+
+        }else{
+            password.setEchoChar('*');
+
+        }
+    }//GEN-LAST:event_chboxActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -418,6 +440,7 @@ public final class AdminLogin extends javax.swing.JFrame {
     private javax.swing.JPanel MainPanel;
     private javax.swing.JLabel are_you;
     private javax.swing.JLabel back;
+    private javax.swing.JCheckBox chbox;
     private javax.swing.JLabel close;
     private javax.swing.JLabel copyright;
     private javax.swing.JTextField email;

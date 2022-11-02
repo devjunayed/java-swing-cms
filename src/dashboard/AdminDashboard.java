@@ -33,31 +33,23 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        rSPanelImage1 = new rojerusan.RSPanelImage();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        rSPanelImage2 = new rojerusan.RSPanelImage();
         jLabel4 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        rSPanelImage4 = new rojerusan.RSPanelImage();
         jLabel6 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        rSPanelImage3 = new rojerusan.RSPanelImage();
         jLabel5 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        rSPanelImage5 = new rojerusan.RSPanelImage();
         jLabel7 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        rSPanelImage6 = new rojerusan.RSPanelImage();
         jLabel8 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
-        rSPanelImage7 = new rojerusan.RSPanelImage();
         jLabel9 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
-        rSPanelImage8 = new rojerusan.RSPanelImage();
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -96,10 +88,6 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 920, 80));
 
-        rSPanelImage1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/dashboard/user.png"))); // NOI18N
-        rSPanelImage1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(rSPanelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, 140));
-
         jPanel2.setBackground(new java.awt.Color(33, 152, 207));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -124,22 +112,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        rSPanelImage2.setImagen(new javax.swing.ImageIcon(getClass().getResource("/dashboard/file.png"))); // NOI18N
-        rSPanelImage2.setInheritsPopupMenu(true);
-
-        javax.swing.GroupLayout rSPanelImage2Layout = new javax.swing.GroupLayout(rSPanelImage2);
-        rSPanelImage2.setLayout(rSPanelImage2Layout);
-        rSPanelImage2Layout.setHorizontalGroup(
-            rSPanelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-        );
-        rSPanelImage2Layout.setVerticalGroup(
-            rSPanelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-        );
-
-        jPanel3.add(rSPanelImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
-
         jLabel4.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(33, 152, 207));
         jLabel4.setText("Search Record");
@@ -148,22 +120,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        rSPanelImage4.setImagen(new javax.swing.ImageIcon(getClass().getResource("/dashboard/open-book-top-view.png"))); // NOI18N
-        rSPanelImage4.setInheritsPopupMenu(true);
-
-        javax.swing.GroupLayout rSPanelImage4Layout = new javax.swing.GroupLayout(rSPanelImage4);
-        rSPanelImage4.setLayout(rSPanelImage4Layout);
-        rSPanelImage4Layout.setHorizontalGroup(
-            rSPanelImage4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-        );
-        rSPanelImage4Layout.setVerticalGroup(
-            rSPanelImage4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-        );
-
-        jPanel5.add(rSPanelImage4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(33, 152, 207));
@@ -178,22 +134,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        rSPanelImage3.setImagen(new javax.swing.ImageIcon(getClass().getResource("/dashboard/payment-method (1).png"))); // NOI18N
-        rSPanelImage3.setInheritsPopupMenu(true);
-
-        javax.swing.GroupLayout rSPanelImage3Layout = new javax.swing.GroupLayout(rSPanelImage3);
-        rSPanelImage3.setLayout(rSPanelImage3Layout);
-        rSPanelImage3Layout.setHorizontalGroup(
-            rSPanelImage3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-        );
-        rSPanelImage3Layout.setVerticalGroup(
-            rSPanelImage3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-        );
-
-        jPanel4.add(rSPanelImage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
-
         jLabel5.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(33, 152, 207));
         jLabel5.setText("Add Payment");
@@ -205,22 +145,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        rSPanelImage5.setImagen(new javax.swing.ImageIcon(getClass().getResource("/dashboard/open-book-top-view.png"))); // NOI18N
-        rSPanelImage5.setInheritsPopupMenu(true);
-
-        javax.swing.GroupLayout rSPanelImage5Layout = new javax.swing.GroupLayout(rSPanelImage5);
-        rSPanelImage5.setLayout(rSPanelImage5Layout);
-        rSPanelImage5Layout.setHorizontalGroup(
-            rSPanelImage5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-        );
-        rSPanelImage5Layout.setVerticalGroup(
-            rSPanelImage5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-        );
-
-        jPanel6.add(rSPanelImage5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
-
         jLabel7.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(33, 152, 207));
         jLabel7.setText("View Record");
@@ -229,22 +153,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        rSPanelImage6.setImagen(new javax.swing.ImageIcon(getClass().getResource("/dashboard/open-book-top-view.png"))); // NOI18N
-        rSPanelImage6.setInheritsPopupMenu(true);
-
-        javax.swing.GroupLayout rSPanelImage6Layout = new javax.swing.GroupLayout(rSPanelImage6);
-        rSPanelImage6.setLayout(rSPanelImage6Layout);
-        rSPanelImage6Layout.setHorizontalGroup(
-            rSPanelImage6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-        );
-        rSPanelImage6Layout.setVerticalGroup(
-            rSPanelImage6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-        );
-
-        jPanel7.add(rSPanelImage6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(33, 152, 207));
@@ -259,22 +167,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        rSPanelImage7.setImagen(new javax.swing.ImageIcon(getClass().getResource("/dashboard/multiple-users-silhouette.png"))); // NOI18N
-        rSPanelImage7.setInheritsPopupMenu(true);
-
-        javax.swing.GroupLayout rSPanelImage7Layout = new javax.swing.GroupLayout(rSPanelImage7);
-        rSPanelImage7.setLayout(rSPanelImage7Layout);
-        rSPanelImage7Layout.setHorizontalGroup(
-            rSPanelImage7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-        );
-        rSPanelImage7Layout.setVerticalGroup(
-            rSPanelImage7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-        );
-
-        jPanel8.add(rSPanelImage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
-
         jLabel9.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(33, 152, 207));
         jLabel9.setText("View Member");
@@ -283,22 +175,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        rSPanelImage8.setImagen(new javax.swing.ImageIcon(getClass().getResource("/dashboard/open-book-top-view.png"))); // NOI18N
-        rSPanelImage8.setInheritsPopupMenu(true);
-
-        javax.swing.GroupLayout rSPanelImage8Layout = new javax.swing.GroupLayout(rSPanelImage8);
-        rSPanelImage8.setLayout(rSPanelImage8Layout);
-        rSPanelImage8Layout.setHorizontalGroup(
-            rSPanelImage8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-        );
-        rSPanelImage8Layout.setVerticalGroup(
-            rSPanelImage8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-        );
-
-        jPanel9.add(rSPanelImage8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(33, 152, 207));
@@ -374,13 +250,5 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private rojerusan.RSPanelImage rSPanelImage1;
-    private rojerusan.RSPanelImage rSPanelImage2;
-    private rojerusan.RSPanelImage rSPanelImage3;
-    private rojerusan.RSPanelImage rSPanelImage4;
-    private rojerusan.RSPanelImage rSPanelImage5;
-    private rojerusan.RSPanelImage rSPanelImage6;
-    private rojerusan.RSPanelImage rSPanelImage7;
-    private rojerusan.RSPanelImage rSPanelImage8;
     // End of variables declaration//GEN-END:variables
 }

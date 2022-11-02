@@ -85,6 +85,7 @@ public final class AuthorSetPassword extends javax.swing.JFrame {
         reset = new javax.swing.JButton();
         confirm_password = new javax.swing.JPasswordField();
         password = new javax.swing.JPasswordField();
+        chbox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -184,6 +185,13 @@ public final class AuthorSetPassword extends javax.swing.JFrame {
 
         password.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
+        chbox.setText("Show Password");
+        chbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chboxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout inputsLayout = new javax.swing.GroupLayout(inputs);
         inputs.setLayout(inputsLayout);
         inputsLayout.setHorizontalGroup(
@@ -191,11 +199,12 @@ public final class AuthorSetPassword extends javax.swing.JFrame {
             .addGroup(inputsLayout.createSequentialGroup()
                 .addGap(133, 133, 133)
                 .addGroup(inputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(confirm_passw_txt)
+                    .addComponent(chbox)
+                    .addComponent(reset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(confirm_password, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(reset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(password_txt)
-                    .addComponent(confirm_passw_txt))
+                    .addComponent(password_txt))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         inputsLayout.setVerticalGroup(
@@ -209,9 +218,11 @@ public final class AuthorSetPassword extends javax.swing.JFrame {
                 .addComponent(confirm_passw_txt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(confirm_password, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(chbox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(reset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
 
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
@@ -336,6 +347,17 @@ public final class AuthorSetPassword extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_resetActionPerformed
 
+    private void chboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chboxActionPerformed
+        // TODO add your handling code here:
+        if(chbox.isSelected()){
+            password.setEchoChar((char)0);
+            confirm_password.setEchoChar((char)0);
+        }else{
+            password.setEchoChar('*');
+            confirm_password.setEchoChar('*');
+        }
+    }//GEN-LAST:event_chboxActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -392,6 +414,7 @@ public final class AuthorSetPassword extends javax.swing.JFrame {
     private javax.swing.JPanel MainPanel;
     private javax.swing.JLabel back;
     private javax.swing.JLabel back_to_login;
+    private javax.swing.JCheckBox chbox;
     private javax.swing.JLabel close;
     private javax.swing.JLabel confirm_passw_txt;
     private javax.swing.JPasswordField confirm_password;
