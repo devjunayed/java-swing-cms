@@ -207,12 +207,11 @@ public final class AdminLogin extends javax.swing.JFrame {
                 .addGap(133, 133, 133)
                 .addGroup(inputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                    .addGroup(inputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(chbox)
-                        .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel2)))
+                    .addComponent(chbox)
+                    .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
                 .addContainerGap(143, Short.MAX_VALUE))
         );
         inputsLayout.setVerticalGroup(

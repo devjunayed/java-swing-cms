@@ -239,13 +239,11 @@
                       <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="password" pref="249" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="chbox" min="-2" max="-2" attributes="0"/>
-                              <Component id="login" min="-2" max="-2" attributes="0"/>
-                              <Component id="email" pref="249" max="32767" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="chbox" min="-2" max="-2" attributes="0"/>
+                          <Component id="login" min="-2" max="-2" attributes="0"/>
+                          <Component id="email" pref="249" max="32767" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="143" max="32767" attributes="0"/>
                   </Group>
