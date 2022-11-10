@@ -65,10 +65,17 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         new_authors = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
+        addab_settings = new javax.swing.JPanel();
+        settings_text = new javax.swing.JLabel();
 
         PopUp.setBackground(new java.awt.Color(0, 0, 0));
 
         Settings.setText("Settings");
+        Settings.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SettingsMouseClicked(evt);
+            }
+        });
         Settings.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SettingsActionPerformed(evt);
@@ -378,7 +385,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addGroup(all_contentLayout.createSequentialGroup()
                 .addGap(232, 232, 232)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(301, Short.MAX_VALUE))
+                .addContainerGap(297, Short.MAX_VALUE))
         );
 
         Menu.addTab("tab2", all_content);
@@ -402,7 +409,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addGroup(add_contentLayout.createSequentialGroup()
                 .addGap(224, 224, 224)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(309, Short.MAX_VALUE))
+                .addContainerGap(305, Short.MAX_VALUE))
         );
 
         Menu.addTab("tab3", add_content);
@@ -426,7 +433,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addGroup(preveiw_contentLayout.createSequentialGroup()
                 .addGap(224, 224, 224)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(309, Short.MAX_VALUE))
+                .addContainerGap(305, Short.MAX_VALUE))
         );
 
         Menu.addTab("tab4", preveiw_content);
@@ -450,7 +457,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addGroup(commentsLayout.createSequentialGroup()
                 .addGap(224, 224, 224)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(309, Short.MAX_VALUE))
+                .addContainerGap(305, Short.MAX_VALUE))
         );
 
         Menu.addTab("tab5", comments);
@@ -474,7 +481,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addGroup(authorsLayout.createSequentialGroup()
                 .addGap(224, 224, 224)
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(309, Short.MAX_VALUE))
+                .addContainerGap(305, Short.MAX_VALUE))
         );
 
         Menu.addTab("tab6", authors);
@@ -498,10 +505,31 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addGroup(new_authorsLayout.createSequentialGroup()
                 .addGap(224, 224, 224)
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(309, Short.MAX_VALUE))
+                .addContainerGap(305, Short.MAX_VALUE))
         );
 
         Menu.addTab("tab7", new_authors);
+
+        settings_text.setText("Settings");
+
+        javax.swing.GroupLayout addab_settingsLayout = new javax.swing.GroupLayout(addab_settings);
+        addab_settings.setLayout(addab_settingsLayout);
+        addab_settingsLayout.setHorizontalGroup(
+            addab_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addab_settingsLayout.createSequentialGroup()
+                .addGap(384, 384, 384)
+                .addComponent(settings_text)
+                .addContainerGap(383, Short.MAX_VALUE))
+        );
+        addab_settingsLayout.setVerticalGroup(
+            addab_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addab_settingsLayout.createSequentialGroup()
+                .addGap(278, 278, 278)
+                .addComponent(settings_text)
+                .addContainerGap(343, Short.MAX_VALUE))
+        );
+
+        Menu.addTab("tab8", addab_settings);
 
         getContentPane().add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 820, 670));
 
@@ -548,6 +576,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     private void SettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SettingsActionPerformed
         // TODO add your handling code here:
+        Menu.setSelectedIndex(7);
     }//GEN-LAST:event_SettingsActionPerformed
 
     private void lm_allContentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_allContentMouseClicked
@@ -564,6 +593,12 @@ public class AdminDashboard extends javax.swing.JFrame {
     private void dab_textMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dab_textMouseClicked
         // TODO add your handling code here:
         Menu.setSelectedIndex(0);
+        lm_allContent.setBackground(new Color(204,204,204));
+        lm_addContent.setBackground(new Color(204,204,204));
+        lm_previewContent.setBackground(new Color(204,204,204));
+        lm_comments.setBackground(new Color(204,204,204));
+        lm_authors.setBackground(new Color(204,204,204));
+        lm_newAuthors.setBackground(new Color(204,204,204));
         
     }//GEN-LAST:event_dab_textMouseClicked
 
@@ -645,6 +680,11 @@ public class AdminDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lm_addContentMouseMoved
 
+    private void SettingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SettingsMouseClicked
+        // TODO add your handling code here:
+        Menu.setSelectedIndex(7);
+    }//GEN-LAST:event_SettingsMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -686,6 +726,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JPopupMenu PopUp;
     private javax.swing.JMenuItem Settings;
     private javax.swing.JPanel add_content;
+    private javax.swing.JPanel addab_settings;
     private javax.swing.JLabel admin_logo;
     private javax.swing.JPanel all_content;
     private javax.swing.JPanel authors;
@@ -716,5 +757,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel lm_previewContent;
     private javax.swing.JPanel new_authors;
     private javax.swing.JPanel preveiw_content;
+    private javax.swing.JLabel settings_text;
     // End of variables declaration//GEN-END:variables
 }
