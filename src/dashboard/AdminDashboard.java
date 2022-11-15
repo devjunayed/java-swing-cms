@@ -7,6 +7,16 @@ package dashboard;
 import homepage.HomePage;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.regex.Pattern;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import admin.AdminLogin;
+import static admin.AdminLogin.passEmailAddress;
 
 /**
  *
@@ -17,8 +27,35 @@ public class AdminDashboard extends javax.swing.JFrame {
     /**
      * Creates new form AdminDashboard
      */
+    AdminLogin ar1 = new AdminLogin();
+    String email = ar1.passEmailAddress;
+    String username;
+    String filename;
+
     public AdminDashboard() {
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String query1 = "Select username from `cms`.`admin` where email=?";
+            PreparedStatement st = con.prepareStatement(query1);
+
+            st.setString(1, passEmailAddress);
+
+            ResultSet result = st.executeQuery(); // record added. 
+
+            while (result.next()) {
+                username = result.getString("username");
+            }
+        } catch (Exception e) {
+
+        }
         initComponents();
+
     }
 
     /**
@@ -37,6 +74,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         admin_logo = new javax.swing.JLabel();
         dab_text = new javax.swing.JLabel();
+        log_user = new javax.swing.JLabel();
         left_menu = new javax.swing.JPanel();
         lm_allContent = new javax.swing.JPanel();
         lm_ac_text = new javax.swing.JLabel();
@@ -56,7 +94,15 @@ public class AdminDashboard extends javax.swing.JFrame {
         all_content = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         add_content = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        add_title = new javax.swing.JLabel();
+        add_title_input = new javax.swing.JTextField();
+        add_description = new javax.swing.JLabel();
+        add_image = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        add_description_input = new javax.swing.JTextArea();
+        add_content_submit = new javax.swing.JButton();
+        attach_image = new javax.swing.JButton();
+        path = new javax.swing.JLabel();
         preveiw_content = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         comments = new javax.swing.JPanel();
@@ -105,7 +151,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel1.setText("Hello, Admin");
+        jLabel1.setText("Hello,");
 
         admin_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/avatar.png"))); // NOI18N
         admin_logo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -135,6 +181,11 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
 
+        log_user.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
+        log_user.setForeground(new java.awt.Color(255, 255, 255));
+        log_user.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        log_user.setText(username);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -142,9 +193,11 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(dab_text)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 704, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 692, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
+                .addComponent(log_user, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(admin_logo)
                 .addGap(40, 40, 40))
         );
@@ -159,7 +212,8 @@ public class AdminDashboard extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(dab_text))
+                            .addComponent(dab_text)
+                            .addComponent(log_user, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -392,24 +446,92 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         add_content.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel9.setText("Add Content");
+        add_title.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
+        add_title.setText("Add Title");
+
+        add_title_input.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        add_title_input.setToolTipText("Enter your title");
+        add_title_input.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        add_description.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
+        add_description.setText("Add Description");
+
+        add_image.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
+        add_image.setText("Add Image");
+
+        add_description_input.setColumns(20);
+        add_description_input.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        add_description_input.setLineWrap(true);
+        add_description_input.setRows(5);
+        add_description_input.setToolTipText("Enter your description");
+        add_description_input.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jScrollPane1.setViewportView(add_description_input);
+
+        add_content_submit.setBackground(new java.awt.Color(204, 204, 204));
+        add_content_submit.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
+        add_content_submit.setText("SUBMIT");
+        add_content_submit.setToolTipText("Submit now");
+        add_content_submit.setAlignmentY(0.0F);
+        add_content_submit.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        add_content_submit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add_content_submit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_content_submitActionPerformed(evt);
+            }
+        });
+
+        attach_image.setBackground(new java.awt.Color(255, 255, 255));
+        attach_image.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        attach_image.setForeground(new java.awt.Color(204, 204, 204));
+        attach_image.setText("+");
+        attach_image.setAlignmentY(0.0F);
+        attach_image.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        attach_image.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        attach_image.setIconTextGap(0);
+        attach_image.setInheritsPopupMenu(true);
+        attach_image.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                attach_imageActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout add_contentLayout = new javax.swing.GroupLayout(add_content);
         add_content.setLayout(add_contentLayout);
         add_contentLayout.setHorizontalGroup(
             add_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, add_contentLayout.createSequentialGroup()
-                .addContainerGap(295, Short.MAX_VALUE)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(240, 240, 240))
+            .addGroup(add_contentLayout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addGroup(add_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(attach_image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
+                    .addComponent(add_image, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(add_description, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(add_title, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(add_title_input)
+                    .addComponent(path, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(add_content_submit, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(215, Short.MAX_VALUE))
         );
         add_contentLayout.setVerticalGroup(
             add_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(add_contentLayout.createSequentialGroup()
-                .addGap(224, 224, 224)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(305, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
+                .addComponent(add_title, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(add_title_input, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(add_description, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(add_image, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(attach_image, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(path)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(add_content_submit, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         Menu.addTab("tab3", add_content);
@@ -537,32 +659,32 @@ public class AdminDashboard extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void showPopUp(MouseEvent e){
-        PopUp.show(this, 890,90);
+    private void showPopUp(MouseEvent e) {
+        PopUp.show(this, 890, 90);
     }
 //    
     private void admin_logoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_admin_logoMouseClicked
         // TODO add your handling code here:
-     
+
     }//GEN-LAST:event_admin_logoMouseClicked
 
     private void admin_logoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_admin_logoMouseEntered
         // TODO add your handling code here:
-        if(evt.isPopupTrigger()){
+        if (evt.isPopupTrigger()) {
             showPopUp(evt);
         }
     }//GEN-LAST:event_admin_logoMouseEntered
 
     private void admin_logoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_admin_logoMousePressed
         // TODO add your handling code here:
-         if(evt.isPopupTrigger()){
+        if (evt.isPopupTrigger()) {
             showPopUp(evt);
         }
     }//GEN-LAST:event_admin_logoMousePressed
 
     private void admin_logoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_admin_logoMouseReleased
         // TODO add your handling code here:
-         if(evt.isPopupTrigger()){
+        if (evt.isPopupTrigger()) {
             showPopUp(evt);
         }
     }//GEN-LAST:event_admin_logoMouseReleased
@@ -583,93 +705,93 @@ public class AdminDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         Menu.setSelectedIndex(1);
         lm_allContent.setBackground(Color.white);
-        lm_addContent.setBackground(new Color(204,204,204));
-        lm_previewContent.setBackground(new Color(204,204,204));
-        lm_comments.setBackground(new Color(204,204,204));
-        lm_authors.setBackground(new Color(204,204,204));
-        lm_newAuthors.setBackground(new Color(204,204,204));
+        lm_addContent.setBackground(new Color(204, 204, 204));
+        lm_previewContent.setBackground(new Color(204, 204, 204));
+        lm_comments.setBackground(new Color(204, 204, 204));
+        lm_authors.setBackground(new Color(204, 204, 204));
+        lm_newAuthors.setBackground(new Color(204, 204, 204));
     }//GEN-LAST:event_lm_allContentMouseClicked
 
     private void dab_textMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dab_textMouseClicked
         // TODO add your handling code here:
         Menu.setSelectedIndex(0);
-        lm_allContent.setBackground(new Color(204,204,204));
-        lm_addContent.setBackground(new Color(204,204,204));
-        lm_previewContent.setBackground(new Color(204,204,204));
-        lm_comments.setBackground(new Color(204,204,204));
-        lm_authors.setBackground(new Color(204,204,204));
-        lm_newAuthors.setBackground(new Color(204,204,204));
-        
+        lm_allContent.setBackground(new Color(204, 204, 204));
+        lm_addContent.setBackground(new Color(204, 204, 204));
+        lm_previewContent.setBackground(new Color(204, 204, 204));
+        lm_comments.setBackground(new Color(204, 204, 204));
+        lm_authors.setBackground(new Color(204, 204, 204));
+        lm_newAuthors.setBackground(new Color(204, 204, 204));
+
     }//GEN-LAST:event_dab_textMouseClicked
 
     private void lm_addContentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_addContentMouseClicked
         // TODO add your handling code here:
         Menu.setSelectedIndex(2);
-        lm_allContent.setBackground(new Color(204,204,204));
+        lm_allContent.setBackground(new Color(204, 204, 204));
         lm_addContent.setBackground(Color.white);
-        lm_previewContent.setBackground(new Color(204,204,204));
-        lm_comments.setBackground(new Color(204,204,204));
-        lm_authors.setBackground(new Color(204,204,204));
-        lm_newAuthors.setBackground(new Color(204,204,204));
+        lm_previewContent.setBackground(new Color(204, 204, 204));
+        lm_comments.setBackground(new Color(204, 204, 204));
+        lm_authors.setBackground(new Color(204, 204, 204));
+        lm_newAuthors.setBackground(new Color(204, 204, 204));
     }//GEN-LAST:event_lm_addContentMouseClicked
 
     private void lm_previewContentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_previewContentMouseClicked
         // TODO add your handling code here:
         Menu.setSelectedIndex(3);
-        lm_allContent.setBackground(new Color(204,204,204));
-        lm_addContent.setBackground(new Color(204,204,204));
+        lm_allContent.setBackground(new Color(204, 204, 204));
+        lm_addContent.setBackground(new Color(204, 204, 204));
         lm_previewContent.setBackground(Color.white);
-        lm_comments.setBackground(new Color(204,204,204));
-        lm_authors.setBackground(new Color(204,204,204));
-        lm_newAuthors.setBackground(new Color(204,204,204));
+        lm_comments.setBackground(new Color(204, 204, 204));
+        lm_authors.setBackground(new Color(204, 204, 204));
+        lm_newAuthors.setBackground(new Color(204, 204, 204));
     }//GEN-LAST:event_lm_previewContentMouseClicked
 
     private void lm_commentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_commentsMouseClicked
         // TODO add your handling code here:
         Menu.setSelectedIndex(4);
-        lm_allContent.setBackground(new Color(204,204,204));
-        lm_addContent.setBackground(new Color(204,204,204));
-        lm_previewContent.setBackground(new Color(204,204,204));
+        lm_allContent.setBackground(new Color(204, 204, 204));
+        lm_addContent.setBackground(new Color(204, 204, 204));
+        lm_previewContent.setBackground(new Color(204, 204, 204));
         lm_comments.setBackground(Color.white);
-        lm_authors.setBackground(new Color(204,204,204));
-        lm_newAuthors.setBackground(new Color(204,204,204));
+        lm_authors.setBackground(new Color(204, 204, 204));
+        lm_newAuthors.setBackground(new Color(204, 204, 204));
     }//GEN-LAST:event_lm_commentsMouseClicked
 
     private void lm_authorsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_authorsMouseClicked
         // TODO add your handling code here:
         Menu.setSelectedIndex(5);
-        lm_allContent.setBackground(new Color(204,204,204));
-        lm_addContent.setBackground(new Color(204,204,204));
-        lm_previewContent.setBackground(new Color(204,204,204));
-        lm_comments.setBackground(new Color(204,204,204));
+        lm_allContent.setBackground(new Color(204, 204, 204));
+        lm_addContent.setBackground(new Color(204, 204, 204));
+        lm_previewContent.setBackground(new Color(204, 204, 204));
+        lm_comments.setBackground(new Color(204, 204, 204));
         lm_authors.setBackground(Color.white);
-        lm_newAuthors.setBackground(new Color(204,204,204));
+        lm_newAuthors.setBackground(new Color(204, 204, 204));
     }//GEN-LAST:event_lm_authorsMouseClicked
 
     private void lm_newAuthorsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_newAuthorsMouseClicked
         // TODO add your handling code here:
         Menu.setSelectedIndex(6);
-        lm_allContent.setBackground(new Color(204,204,204));
-        lm_addContent.setBackground(new Color(204,204,204));
-        lm_previewContent.setBackground(new Color(204,204,204));
-        lm_comments.setBackground(new Color(204,204,204));
-        lm_authors.setBackground(new Color(204,204,204));
+        lm_allContent.setBackground(new Color(204, 204, 204));
+        lm_addContent.setBackground(new Color(204, 204, 204));
+        lm_previewContent.setBackground(new Color(204, 204, 204));
+        lm_comments.setBackground(new Color(204, 204, 204));
+        lm_authors.setBackground(new Color(204, 204, 204));
         lm_newAuthors.setBackground(Color.white);
     }//GEN-LAST:event_lm_newAuthorsMouseClicked
 
     private void lm_allContentMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_allContentMouseEntered
         // TODO add your handling code here:
-       
+
     }//GEN-LAST:event_lm_allContentMouseEntered
 
     private void lm_allContentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_allContentMouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lm_allContentMouseExited
 
     private void lm_addContentMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_addContentMouseEntered
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lm_addContentMouseEntered
 
     private void lm_addContentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_addContentMouseExited
@@ -685,6 +807,64 @@ public class AdminDashboard extends javax.swing.JFrame {
         Menu.setSelectedIndex(7);
     }//GEN-LAST:event_SettingsMouseClicked
 
+
+    private void add_content_submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_content_submitActionPerformed
+        // TODO add your handling code here:
+
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+
+        String addTitle = add_title_input.getText();
+        String addDesc = add_description_input.getText();
+        String image = path.getText();
+
+//pushing content
+        try {
+//            Class.forName("org.mariadb.jdbc.Driver");
+//            Connection con = DriverManager.getConnection(url, user, passw);
+//
+//            String query1 = "Select username from `cms`.`admin` where email=?";
+//            PreparedStatement st = con.prepareStatement(query1);
+//
+//            st.setString(1, passEmailAddress);
+//
+//            ResultSet result = st.executeQuery(); // record added. 
+//
+//            while (result.next()) {
+//                username = result.getString("username");
+//            }
+
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+            String insertingToDB = "INSERT INTO `cms`.`content` (`title`, `description`, `author`, `image`) VALUES(?, ?, ?, ?)";
+
+            PreparedStatement st1 = con.prepareStatement(insertingToDB);
+
+            st1.setString(1, addTitle);
+            st1.setString(2, addDesc);
+            st1.setString(3, username);
+            st1.setString(4, image);
+
+            st1.executeUpdate(); // record added. 
+            con.close();
+            JOptionPane.showMessageDialog(this, "Data stored successfully");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_add_content_submitActionPerformed
+
+    private void attach_imageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attach_imageActionPerformed
+        // TODO add your handling code here:
+        JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f = chooser.getSelectedFile();
+        filename = f.getAbsolutePath();
+        path.setText(filename);
+
+    }//GEN-LAST:event_attach_imageActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -699,16 +879,24 @@ public class AdminDashboard extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminDashboard.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminDashboard.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminDashboard.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminDashboard.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -726,9 +914,16 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JPopupMenu PopUp;
     private javax.swing.JMenuItem Settings;
     private javax.swing.JPanel add_content;
+    private javax.swing.JButton add_content_submit;
+    private javax.swing.JLabel add_description;
+    private javax.swing.JTextArea add_description_input;
+    private javax.swing.JLabel add_image;
+    private javax.swing.JLabel add_title;
+    private javax.swing.JTextField add_title_input;
     private javax.swing.JPanel addab_settings;
     private javax.swing.JLabel admin_logo;
     private javax.swing.JPanel all_content;
+    private javax.swing.JButton attach_image;
     private javax.swing.JPanel authors;
     private javax.swing.JPanel comments;
     private javax.swing.JLabel dab_text;
@@ -740,8 +935,8 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel left_menu;
     private javax.swing.JLabel lm_a_text;
     private javax.swing.JLabel lm_ac_text;
@@ -755,7 +950,9 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel lm_newAuthors;
     private javax.swing.JLabel lm_pc_text;
     private javax.swing.JPanel lm_previewContent;
+    public javax.swing.JLabel log_user;
     private javax.swing.JPanel new_authors;
+    private javax.swing.JLabel path;
     private javax.swing.JPanel preveiw_content;
     private javax.swing.JLabel settings_text;
     // End of variables declaration//GEN-END:variables

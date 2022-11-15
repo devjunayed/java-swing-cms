@@ -29,6 +29,10 @@ public final class AdminLogin extends javax.swing.JFrame {
     /**
      * Creates new form AdminRegister
      */
+    
+   public static String passEmailAddress;
+     
+     
     public AdminLogin() {
         initComponents();
         ImageIcon image = new javax.swing.ImageIcon(getClass().getResource("/images/admin_login.png"));
@@ -332,14 +336,15 @@ public final class AdminLogin extends javax.swing.JFrame {
             String user = "root";
             String passw = "";
             
-            String emailAddress = email.getText();
+           passEmailAddress = email.getText();
+
             String passWord = new String(password.getPassword());
         
         
         try{
-            if(!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[g]{1}+[m]{1}+[a]{1}+[i]{1}+[l]{1}+[.]{1}+[c]{1}+[o]{1}+[m]{1}+$", emailAddress))){
+            if(!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[g]{1}+[m]{1}+[a]{1}+[i]{1}+[l]{1}+[.]{1}+[c]{1}+[o]{1}+[m]{1}+$", passEmailAddress))){
                  JOptionPane.showMessageDialog(this, "Pleass enter valid email");
-            }else if("".equals(emailAddress)){
+            }else if("".equals(passEmailAddress)){
                 JOptionPane.showMessageDialog(this, "Please enter email");
             }else if("".equals(passWord)){
                 JOptionPane.showMessageDialog(this, "Please enter password");
@@ -351,11 +356,11 @@ public final class AdminLogin extends javax.swing.JFrame {
                       String query1="Select  email, password from `cms`.`admin` where email=? and password=?";
                       PreparedStatement st = con.prepareStatement(query1); 
 
-                      st.setString(1, emailAddress);
+                      st.setString(1, passEmailAddress);
                       st.setString(2, passWord);
                 
                       ResultSet result = st.executeQuery(); // record added. 
-                      con.close(); 
+//                      con.close(); 
                       if(result.next()){
                           
                           JOptionPane.showMessageDialog(this, "Login successfully");
