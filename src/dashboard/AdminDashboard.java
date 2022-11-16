@@ -17,6 +17,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import admin.AdminLogin;
 import static admin.AdminLogin.passEmailAddress;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -92,7 +94,13 @@ public class AdminDashboard extends javax.swing.JFrame {
         dashboard = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         all_content = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
+        all_cont_title = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        all_cont_desc = new javax.swing.JTextArea();
+        all_cont_update = new javax.swing.JButton();
+        all_cont_delete = new javax.swing.JButton();
         add_content = new javax.swing.JPanel();
         add_title = new javax.swing.JLabel();
         add_title_input = new javax.swing.JTextField();
@@ -108,11 +116,17 @@ public class AdminDashboard extends javax.swing.JFrame {
         comments = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         authors = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
+        all_author_delete = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        all_author_table = new javax.swing.JTable();
         new_authors = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         addab_settings = new javax.swing.JPanel();
         settings_text = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         PopUp.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -239,6 +253,12 @@ public class AdminDashboard extends javax.swing.JFrame {
         lm_ac_text.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
         lm_ac_text.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lm_ac_text.setText("All Content");
+        lm_ac_text.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lm_ac_text.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lm_ac_textMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout lm_allContentLayout = new javax.swing.GroupLayout(lm_allContent);
         lm_allContent.setLayout(lm_allContentLayout);
@@ -248,7 +268,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         );
         lm_allContentLayout.setVerticalGroup(
             lm_allContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lm_ac_text, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+            .addComponent(lm_ac_text, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
         );
 
         lm_addContent.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -316,6 +336,11 @@ public class AdminDashboard extends javax.swing.JFrame {
         lm_a_text.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
         lm_a_text.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lm_a_text.setText("Authors");
+        lm_a_text.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lm_a_textMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout lm_authorsLayout = new javax.swing.GroupLayout(lm_authors);
         lm_authors.setLayout(lm_authorsLayout);
@@ -421,25 +446,118 @@ public class AdminDashboard extends javax.swing.JFrame {
         Menu.addTab("tab1", dashboard);
 
         all_content.setBackground(new java.awt.Color(255, 255, 255));
+        all_content.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                all_contentMouseClicked(evt);
+            }
+        });
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel8.setText("All Content");
+        table.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        table.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "SL", "Title", "Author", "Comments", "Description"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table.setIntercellSpacing(new java.awt.Dimension(3, 3));
+        table.setRowHeight(25);
+        table.setShowGrid(true);
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(table);
+        if (table.getColumnModel().getColumnCount() > 0) {
+            table.getColumnModel().getColumn(0).setResizable(false);
+            table.getColumnModel().getColumn(0).setPreferredWidth(60);
+            table.getColumnModel().getColumn(1).setResizable(false);
+            table.getColumnModel().getColumn(1).setPreferredWidth(300);
+            table.getColumnModel().getColumn(2).setResizable(false);
+            table.getColumnModel().getColumn(2).setPreferredWidth(300);
+            table.getColumnModel().getColumn(3).setResizable(false);
+            table.getColumnModel().getColumn(3).setPreferredWidth(300);
+            table.getColumnModel().getColumn(4).setResizable(false);
+            table.getColumnModel().getColumn(4).setPreferredWidth(0);
+            table.getColumnModel().getColumn(4).setHeaderValue("Description");
+        }
+
+        all_cont_title.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        all_cont_desc.setColumns(20);
+        all_cont_desc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        all_cont_desc.setLineWrap(true);
+        all_cont_desc.setRows(5);
+        jScrollPane3.setViewportView(all_cont_desc);
+
+        all_cont_update.setBackground(new java.awt.Color(102, 204, 0));
+        all_cont_update.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
+        all_cont_update.setForeground(new java.awt.Color(255, 255, 255));
+        all_cont_update.setText("Update");
+        all_cont_update.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        all_cont_update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        all_cont_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                all_cont_updateActionPerformed(evt);
+            }
+        });
+
+        all_cont_delete.setBackground(new java.awt.Color(255, 0, 0));
+        all_cont_delete.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
+        all_cont_delete.setForeground(new java.awt.Color(255, 255, 255));
+        all_cont_delete.setText("Delete");
+        all_cont_delete.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        all_cont_delete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        all_cont_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                all_cont_deleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout all_contentLayout = new javax.swing.GroupLayout(all_content);
         all_content.setLayout(all_contentLayout);
         all_contentLayout.setHorizontalGroup(
             all_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, all_contentLayout.createSequentialGroup()
-                .addContainerGap(314, Short.MAX_VALUE)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(221, 221, 221))
+            .addGroup(all_contentLayout.createSequentialGroup()
+                .addGroup(all_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(all_contentLayout.createSequentialGroup()
+                        .addGap(198, 198, 198)
+                        .addComponent(all_cont_update, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(135, 135, 135)
+                        .addComponent(all_cont_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(all_contentLayout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(all_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE)
+                            .addComponent(all_cont_title)
+                            .addComponent(jScrollPane3))))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         all_contentLayout.setVerticalGroup(
             all_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(all_contentLayout.createSequentialGroup()
-                .addGap(232, 232, 232)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(297, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(all_cont_title, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(all_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(all_cont_update, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(all_cont_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         Menu.addTab("tab2", all_content);
@@ -585,25 +703,83 @@ public class AdminDashboard extends javax.swing.JFrame {
         Menu.addTab("tab5", comments);
 
         authors.setBackground(new java.awt.Color(255, 255, 255));
+        authors.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                authorsMouseClicked(evt);
+            }
+        });
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel16.setText("Authors");
+        all_author_delete.setBackground(new java.awt.Color(255, 0, 0));
+        all_author_delete.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
+        all_author_delete.setForeground(new java.awt.Color(255, 255, 255));
+        all_author_delete.setText("Delete");
+        all_author_delete.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        all_author_delete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        all_author_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                all_author_deleteActionPerformed(evt);
+            }
+        });
+
+        all_author_table.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        all_author_table.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        all_author_table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "SL", "Author Name", "Total Content", "Comments"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        all_author_table.setIntercellSpacing(new java.awt.Dimension(3, 3));
+        all_author_table.setRowHeight(25);
+        all_author_table.setShowGrid(true);
+        all_author_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                all_author_tableMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(all_author_table);
+        if (all_author_table.getColumnModel().getColumnCount() > 0) {
+            all_author_table.getColumnModel().getColumn(0).setResizable(false);
+            all_author_table.getColumnModel().getColumn(0).setPreferredWidth(60);
+            all_author_table.getColumnModel().getColumn(1).setResizable(false);
+            all_author_table.getColumnModel().getColumn(1).setPreferredWidth(300);
+            all_author_table.getColumnModel().getColumn(2).setResizable(false);
+            all_author_table.getColumnModel().getColumn(2).setPreferredWidth(300);
+            all_author_table.getColumnModel().getColumn(3).setResizable(false);
+            all_author_table.getColumnModel().getColumn(3).setPreferredWidth(300);
+        }
 
         javax.swing.GroupLayout authorsLayout = new javax.swing.GroupLayout(authors);
         authors.setLayout(authorsLayout);
         authorsLayout.setHorizontalGroup(
             authorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(authorsLayout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(76, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, authorsLayout.createSequentialGroup()
-                .addContainerGap(295, Short.MAX_VALUE)
-                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(240, 240, 240))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(all_author_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(324, 324, 324))
         );
         authorsLayout.setVerticalGroup(
             authorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(authorsLayout.createSequentialGroup()
-                .addGap(224, 224, 224)
-                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(305, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(all_author_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         Menu.addTab("tab6", authors);
@@ -652,6 +828,52 @@ public class AdminDashboard extends javax.swing.JFrame {
         );
 
         Menu.addTab("tab8", addab_settings);
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+
+        jPanel3.setBackground(new java.awt.Color(153, 255, 153));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 11, Short.MAX_VALUE)
+        );
+
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Author");
+
+        jLabel3.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("0");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 815, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        Menu.addTab("tab9", jPanel2);
 
         getContentPane().add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 820, 670));
 
@@ -703,13 +925,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     private void lm_allContentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_allContentMouseClicked
         // TODO add your handling code here:
-        Menu.setSelectedIndex(1);
-        lm_allContent.setBackground(Color.white);
-        lm_addContent.setBackground(new Color(204, 204, 204));
-        lm_previewContent.setBackground(new Color(204, 204, 204));
-        lm_comments.setBackground(new Color(204, 204, 204));
-        lm_authors.setBackground(new Color(204, 204, 204));
-        lm_newAuthors.setBackground(new Color(204, 204, 204));
+
     }//GEN-LAST:event_lm_allContentMouseClicked
 
     private void dab_textMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dab_textMouseClicked
@@ -759,13 +975,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     private void lm_authorsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_authorsMouseClicked
         // TODO add your handling code here:
-        Menu.setSelectedIndex(5);
-        lm_allContent.setBackground(new Color(204, 204, 204));
-        lm_addContent.setBackground(new Color(204, 204, 204));
-        lm_previewContent.setBackground(new Color(204, 204, 204));
-        lm_comments.setBackground(new Color(204, 204, 204));
-        lm_authors.setBackground(Color.white);
-        lm_newAuthors.setBackground(new Color(204, 204, 204));
+
     }//GEN-LAST:event_lm_authorsMouseClicked
 
     private void lm_newAuthorsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_newAuthorsMouseClicked
@@ -821,35 +1031,28 @@ public class AdminDashboard extends javax.swing.JFrame {
 
 //pushing content
         try {
-//            Class.forName("org.mariadb.jdbc.Driver");
-//            Connection con = DriverManager.getConnection(url, user, passw);
-//
-//            String query1 = "Select username from `cms`.`admin` where email=?";
-//            PreparedStatement st = con.prepareStatement(query1);
-//
-//            st.setString(1, passEmailAddress);
-//
-//            ResultSet result = st.executeQuery(); // record added. 
-//
-//            while (result.next()) {
-//                username = result.getString("username");
-//            }
 
-            Class.forName("org.mariadb.jdbc.Driver");
-            Connection con = DriverManager.getConnection(url, user, passw);
-            String insertingToDB = "INSERT INTO `cms`.`content` (`title`, `description`, `author`, `image`) VALUES(?, ?, ?, ?)";
+            if ("".equals(addTitle)) {
+                JOptionPane.showMessageDialog(this, "Please add your title");
+            } else if ("".equals(addDesc)) {
+                JOptionPane.showMessageDialog(this, "Please add description");
+            } else {
 
-            PreparedStatement st1 = con.prepareStatement(insertingToDB);
+                Class.forName("org.mariadb.jdbc.Driver");
+                Connection con = DriverManager.getConnection(url, user, passw);
+                String insertingToDB = "INSERT INTO `cms`.`content` (`title`, `description`, `author`, `image`) VALUES(?, ?, ?, ?)";
 
-            st1.setString(1, addTitle);
-            st1.setString(2, addDesc);
-            st1.setString(3, username);
-            st1.setString(4, image);
+                PreparedStatement st1 = con.prepareStatement(insertingToDB);
 
-            st1.executeUpdate(); // record added. 
-            con.close();
-            JOptionPane.showMessageDialog(this, "Data stored successfully");
+                st1.setString(1, addTitle);
+                st1.setString(2, addDesc);
+                st1.setString(3, username);
+                st1.setString(4, image);
 
+                st1.executeUpdate(); // record added. 
+                con.close();
+                JOptionPane.showMessageDialog(this, "Data stored successfully");
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
         }
@@ -864,6 +1067,274 @@ public class AdminDashboard extends javax.swing.JFrame {
         path.setText(filename);
 
     }//GEN-LAST:event_attach_imageActionPerformed
+
+    private void all_contentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_all_contentMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_all_contentMouseClicked
+
+    public int click = 0;
+
+    //A functio for loalding content
+    public void loadContent() {
+
+        int count = 0;
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+
+        try {
+
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String query1 = "Select * from `cms`.`content` where author=?";
+            PreparedStatement st = con.prepareStatement(query1);
+
+            st.setString(1, username);
+
+            ResultSet result = st.executeQuery();
+            while (result.next()) {
+
+                DefaultTableModel tb = (DefaultTableModel) table.getModel();
+
+                tb.setRowCount(0);
+
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+
+        try {
+
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String query1 = "Select * from `cms`.`content` where author=?";
+            PreparedStatement st = con.prepareStatement(query1);
+
+            st.setString(1, username);
+
+            ResultSet result = st.executeQuery();
+            while (result.next()) {
+                count++;
+
+                String title = result.getString("title");
+                String desc = result.getString("description");
+                String comm = String.valueOf(result.getInt("comments"));
+
+                String tbData[] = {Integer.toString(count), title, username, comm, desc};
+                DefaultTableModel tb = (DefaultTableModel) table.getModel();
+                tb.addRow(tbData);
+
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+
+    }
+    private void lm_ac_textMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_ac_textMouseClicked
+        // TODO add your handling code here:
+        click++;
+        Menu.setSelectedIndex(1);
+        lm_allContent.setBackground(Color.white);
+        lm_addContent.setBackground(new Color(204, 204, 204));
+        lm_previewContent.setBackground(new Color(204, 204, 204));
+        lm_comments.setBackground(new Color(204, 204, 204));
+        lm_authors.setBackground(new Color(204, 204, 204));
+        lm_newAuthors.setBackground(new Color(204, 204, 204));
+
+        loadContent();
+    }//GEN-LAST:event_lm_ac_textMouseClicked
+
+    private void all_cont_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_all_cont_deleteActionPerformed
+        // TODO add your handling code here:
+
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+
+        String newTitle = all_cont_title.getText();
+        String newDesc = all_cont_desc.getText();
+
+        int index = table.getSelectedRow();
+        TableModel model = table.getModel();
+        String oldTitle = model.getValueAt(index, 1).toString();
+
+//pushing content
+        try {
+
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+            String updateQuery = "DELETE FROM `content` WHERE `content`.`title` = ?";
+
+            PreparedStatement st1 = con.prepareStatement(updateQuery);
+            st1.setString(1, oldTitle);
+
+            st1.executeUpdate(); // record added. 
+            con.close();
+            JOptionPane.showMessageDialog(this, "Data Deleted successfully");
+            loadContent();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_all_cont_deleteActionPerformed
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        // TODO add your handling code here:
+        int index = table.getSelectedRow();
+        TableModel model = table.getModel();
+
+        String title = model.getValueAt(index, 1).toString();
+        String desc = model.getValueAt(index, 4).toString();
+        all_cont_title.setText(title);
+        all_cont_desc.setText(desc);
+
+    }//GEN-LAST:event_tableMouseClicked
+
+    private void all_cont_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_all_cont_updateActionPerformed
+        // TODO add your handling code here:
+
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+
+        String newTitle = all_cont_title.getText();
+        String newDesc = all_cont_desc.getText();
+
+        int index = table.getSelectedRow();
+        TableModel model = table.getModel();
+        String oldTitle = model.getValueAt(index, 1).toString();
+
+//pushing content
+        try {
+
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+            String updateQuery = "UPDATE `content` SET `title` = ?, `description` = ?  WHERE `content`.`title` = ?";
+
+            PreparedStatement st1 = con.prepareStatement(updateQuery);
+
+            st1.setString(1, newTitle);
+            st1.setString(2, newDesc);
+            st1.setString(3, oldTitle);
+
+            st1.executeUpdate(); // record added. 
+            con.close();
+            JOptionPane.showMessageDialog(this, "Data Updated successfully");
+            loadContent();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_all_cont_updateActionPerformed
+
+    public void loadAuthors() {
+
+        int count = 0;
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+        
+        
+          try {
+
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String query1 = "Select * from `cms`.`author`";
+            PreparedStatement st = con.prepareStatement(query1);
+
+            ResultSet result = st.executeQuery();
+            while (result.next()) {
+
+                DefaultTableModel tb = (DefaultTableModel) all_author_table.getModel();
+
+                tb.setRowCount(0);
+
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+
+
+        try {
+
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String query1 = "Select * from `cms`.`author`";
+            PreparedStatement st = con.prepareStatement(query1);
+
+//            st.setString(1, username);
+            ResultSet result = st.executeQuery();
+            while (result.next()) {
+                count++;
+
+                String author = result.getString("username");
+
+                String tbData[] = {Integer.toString(count), author};
+                DefaultTableModel tb = (DefaultTableModel) all_author_table.getModel();
+                tb.addRow(tbData);
+
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+
+    }
+    private void all_author_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_all_author_deleteActionPerformed
+        // TODO add your handling code here:
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+
+        int index = all_author_table.getSelectedRow();
+        TableModel model = all_author_table.getModel();
+        String username = model.getValueAt(index, 1).toString();
+
+//deleting author
+        try {
+
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+            String updateQuery = "DELETE FROM `author` WHERE `author`.`username` = ?";
+
+            PreparedStatement st1 = con.prepareStatement(updateQuery);
+            st1.setString(1, username);
+
+            st1.executeUpdate(); // record added. 
+            con.close();
+            JOptionPane.showMessageDialog(this, "Author Deleted successfully");
+            loadAuthors();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_all_author_deleteActionPerformed
+
+    private void all_author_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_all_author_tableMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_all_author_tableMouseClicked
+
+    private void authorsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_authorsMouseClicked
+        // TODO add your handling code here:
+        loadAuthors();
+    }//GEN-LAST:event_authorsMouseClicked
+
+    private void lm_a_textMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_a_textMouseClicked
+        // TODO add your handling code here:
+        Menu.setSelectedIndex(5);
+        lm_allContent.setBackground(new Color(204, 204, 204));
+        lm_addContent.setBackground(new Color(204, 204, 204));
+        lm_previewContent.setBackground(new Color(204, 204, 204));
+        lm_comments.setBackground(new Color(204, 204, 204));
+        lm_authors.setBackground(Color.white);
+        lm_newAuthors.setBackground(new Color(204, 204, 204));
+
+        loadAuthors();
+    }//GEN-LAST:event_lm_a_textMouseClicked
 
     /**
      * @param args the command line arguments
@@ -922,6 +1393,12 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField add_title_input;
     private javax.swing.JPanel addab_settings;
     private javax.swing.JLabel admin_logo;
+    private javax.swing.JButton all_author_delete;
+    private javax.swing.JTable all_author_table;
+    private javax.swing.JButton all_cont_delete;
+    private javax.swing.JTextArea all_cont_desc;
+    private javax.swing.JTextField all_cont_title;
+    private javax.swing.JButton all_cont_update;
     private javax.swing.JPanel all_content;
     private javax.swing.JButton attach_image;
     private javax.swing.JPanel authors;
@@ -931,12 +1408,17 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JPanel left_menu;
     private javax.swing.JLabel lm_a_text;
     private javax.swing.JLabel lm_ac_text;
@@ -955,5 +1437,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel path;
     private javax.swing.JPanel preveiw_content;
     private javax.swing.JLabel settings_text;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }
