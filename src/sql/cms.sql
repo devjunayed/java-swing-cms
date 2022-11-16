@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2022 at 07:21 PM
+-- Generation Time: Nov 16, 2022 at 01:55 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -56,19 +56,6 @@ CREATE TABLE `author` (
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `author`
---
-
-INSERT INTO `author` (`id`, `username`, `email`, `question`, `answer`, `password`) VALUES
-(5, 'author0', 'author0@gmail.com', '', '', 'junayed'),
-(6, 'junayed', 'junayed@gmail.com', 'What is your childhood nickname?', 'china', 'junayed'),
-(7, 'asdfasd', 'asdfsd@gmail.com', 'What is your first pet name?', 'kitty', 'junayed'),
-(8, 'sabbir', 'sabbir@gmail.com', 'What is your first pet name?', 'kitty', 'fahim'),
-(9, 'shanto', 'shanto@gmail.com', 'Who is your Favourite person?', 'simanto', 'shanto'),
-(10, 'fahim', 'fahim0@gmail.com', 'Who is your Favourite person?', 'noman', 'fahim'),
-(11, 'fahim1', 'fahim1@gmail.com', 'What is your pet name?', 'kutta', '12345');
-
 -- --------------------------------------------------------
 
 --
@@ -80,20 +67,9 @@ CREATE TABLE `content` (
   `title` varchar(250) NOT NULL,
   `description` varchar(500) NOT NULL,
   `author` varchar(100) NOT NULL,
-  `image` varchar(255) NOT NULL
+  `image` varchar(255) NOT NULL,
+  `comments` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `content`
---
-
-INSERT INTO `content` (`id`, `title`, `description`, `author`, `image`) VALUES
-(1, 'afasd', 'sadfsad', 'admin', ''),
-(2, 'jjjljaljdsf', 'aljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljkdslfaljk', 'admin', ''),
-(3, 'adfas', 'asdfas', 'admin', ''),
-(4, 'afads', 'asdfs', 'admin', ''),
-(5, 'adfasdf', 'asdfasd', 'admin', 'C:\\Users\\Junayed\\Pictures\\arnold-francisca-f77Bh3inUpE-unsplash.jpg'),
-(6, 'adfasdf', 'asdfasd', 'admin', 'C:\\Users\\Junayed\\Pictures\\arnold-francisca-f77Bh3inUpE-unsplash.jpg');
 
 --
 -- Indexes for dumped tables
@@ -131,13 +107,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `author`
 --
 ALTER TABLE `author`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `content`
 --
 ALTER TABLE `content`
-  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
