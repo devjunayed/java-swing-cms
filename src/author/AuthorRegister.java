@@ -422,7 +422,7 @@ public final class AuthorRegister extends javax.swing.JFrame {
 
             Class.forName("org.mariadb.jdbc.Driver");
             Connection con = DriverManager.getConnection(url, user, passw);
-            String insertingToDB = "INSERT INTO `cms`.`author` (`username`, `email`, `question`, `answer`, `password`) VALUES(?, ?, ?, ?, ?)";
+            String insertingToDB = "INSERT INTO `cms`.`pr_authors` (`username`, `email`, `question`, `answer`, `password`) VALUES(?, ?, ?, ?, ?)";
             String checkingDB = "Select * from `cms`.`author` where email=?";
 
             PreparedStatement checkStatement = con.prepareStatement(checkingDB);
