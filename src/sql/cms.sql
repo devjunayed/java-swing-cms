@@ -1,31 +1,11 @@
--- phpMyAdmin SQL Dump
--- version 5.1.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Nov 20, 2022 at 03:21 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.7
+CREATE DATABASE cms;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
---
--- Database: `cms`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin`
---
 
 CREATE TABLE `admin` (
   `id` int(100) NOT NULL,
@@ -56,16 +36,6 @@ CREATE TABLE `author` (
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `author`
---
-
-INSERT INTO `author` (`id`, `username`, `email`, `question`, `answer`, `password`) VALUES
-(14, 'junayed', 'junayed@gmail.com', 'What is your nickname?', 'junayed', 'junayed'),
-(15, 'fahim', 'fahim@gmail.com', 'What is your school name?', 'fahim', 'fahim'),
-(16, 'sabbir', 'sabbir@gmail.com', 'What is your pet name?', 'lulu', 'sabbir'),
-(17, 'nur hasnat', 'nurhasnat@gmail.com', 'Who is your favourite person?', 'nurhasnat', 'nurhasnat');
-
 -- --------------------------------------------------------
 
 --
@@ -87,9 +57,12 @@ CREATE TABLE `content` (
 --
 
 INSERT INTO `content` (`id`, `title`, `description`, `author`, `image`, `like`, `dislike`) VALUES
-(29, 'adfasd', 'kedare toi', 'admin', '', 0, 0),
-(30, 'dsfasdfsdf', 'adfasadsfasdf', 'admin', '', 0, 0),
-(31, 'How to make pasta', 'a;lkjdfl asdjlfksdj lfkasjdlfkasdj flkasdjflkasd jflksadj flasdjfasld; fjhndlkfh asdkljfhasdn sdljkfajsd lkfkjfka sdhlkaflksdhowheopiwehopcvahsboipufovhbsak;jlfn asldkjfhsbkjcv ihfb sanl;vbsdkjlv asiyvbnas ohnflkjasd mfhoiuasidbn cvosa dghoweqho[fui asbnoivuwbe[oiucvgbzxcjklvsado[jkvhboi[vhbsad0f9ywegh9SD;iocvouiasdchbasoidfhbasodihoiasdbopasdhcv]0s0 ioho;fhasdofnas[odif[hq-\n99fh\\ywqpifghasdo\'ifihaoghasdo\'ifhasodifyha]0s\'ftgasoidbvio[vhq=9we7]0fg[iasdyva-d\\', 'admin', '', 0, 0);
+(1, 'How to make pasta', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\r\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\r\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\r\noptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\r\nobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam\r\nnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,\r\ntenetur error, harum nesciunt ipsum debiti', 'admin', '', 0, 0),
+(2, 'How to make misile', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\r\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\r\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\r\noptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\r\nobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam\r\nnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,\r\ntenetur error, harum nesciunt ipsum debiti', 'admin', '', 0, 0),
+(3, 'How to make bomb', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\r\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\r\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\r\noptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\r\nobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam\r\nnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,\r\ntenetur error, harum nesciunt ipsum debiti', 'admin', '', 0, 0),
+(4, 'How to make girlfriend', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\r\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\r\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\r\noptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\r\nobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam\r\nnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,\r\ntenetur error, harum nesciunt ipsum debiti', 'admin', '', 0, 0),
+(5, 'How to make mobile', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\r\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\r\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\r\noptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\r\nobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam\r\nnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,\r\ntenetur error, harum nesciunt ipsum debiti', 'admin', '', 0, 0),
+(6, 'How to make laptop', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\r\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\r\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\r\noptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\r\nobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam\r\nnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,\r\ntenetur error, harum nesciunt ipsum debiti', 'admin', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -106,6 +79,22 @@ CREATE TABLE `pr_authors` (
   `password` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `pr_authors`
+--
+
+INSERT INTO `pr_authors` (`id`, `username`, `question`, `answer`, `email`, `password`) VALUES
+(0, 'fahim', 'fahim', 'fahim', 'fahim@gmail.com', 'fahim'),
+(0, 'Junayed', 'junayed', 'junayed', 'junayed@gmail.com', 'junayed'),
+(0, 'sabbir', 'sabbir', 'sabbir', 'sabbir@gmail.com', 'sabbir'),
+(0, 'nur', 'nur', 'nur', 'nur@gmail.com', 'nur'),
+(0, 'karim', 'karim', 'karim', 'Karim@gmail.com', 'karim'),
+(0, 'rokeya', 'rokeya', 'rokeya', 'rokeya@gmail.com', 'rokeya'),
+(0, 'jabbar', 'jabbar', 'jabbar', 'jabbar@gmail.com', 'jabbar'),
+(0, 'sumi', 'sumi', 'sumi', 'sumi@gmail.com', 'sumi'),
+(0, 'pintu', 'pintu', 'pintu', 'pintu@gmail.com', 'pintu'),
+(0, 'montu', 'montu', 'montu', 'montu@gmail.com', 'montu');
+
 -- --------------------------------------------------------
 
 --
@@ -113,12 +102,26 @@ CREATE TABLE `pr_authors` (
 --
 
 CREATE TABLE `pr_content` (
-  `id` int(100) NOT NULL,
+  `id` int(250) NOT NULL,
   `title` varchar(250) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  `author` varchar(255) NOT NULL,
-  `img` varchar(250) NOT NULL
+  `description` varchar(500) NOT NULL,
+  `author` varchar(100) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `like` int(255) NOT NULL,
+  `dislike` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pr_content`
+--
+
+INSERT INTO `pr_content` (`id`, `title`, `description`, `author`, `image`, `like`, `dislike`) VALUES
+(1, 'How to make pasta', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\noptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\nobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam\nnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,\ntenetur error, harum nesciunt ipsum debitis quas', 'admin', '', 0, 0),
+(2, 'How to make misile', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\noptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\nobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam\nnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,\ntenetur error, harum nesciunt ipsum debitis quas', 'admin', '', 0, 0),
+(3, 'How to make bomb', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\noptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\nobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam\nnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,\ntenetur error, harum nesciunt ipsum debitis quas', 'admin', '', 0, 0),
+(4, 'How to make girlfriend', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\noptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\nobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam\nnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,\ntenetur error, harum nesciunt ipsum debitis quas', 'admin', '', 0, 0),
+(5, 'How to make mobile', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\noptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\nobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam\nnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,\ntenetur error, harum nesciunt ipsum debitis quas', 'admin', '', 0, 0),
+(6, 'How to make laptop', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\noptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\nobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam\nnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,\ntenetur error, harum nesciunt ipsum debitis quas', 'admin', '', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -156,13 +159,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `author`
 --
 ALTER TABLE `author`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `content`
 --
 ALTER TABLE `content`
-  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

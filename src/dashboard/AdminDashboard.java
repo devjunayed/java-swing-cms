@@ -82,8 +82,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         lm_ac_text = new javax.swing.JLabel();
         lm_addContent = new javax.swing.JPanel();
         lm_adc_text = new javax.swing.JLabel();
-        lm_reputation = new javax.swing.JPanel();
-        lm_reputation_text = new javax.swing.JLabel();
         lm_authors = new javax.swing.JPanel();
         lm_a_text = new javax.swing.JLabel();
         lm_previewContent = new javax.swing.JPanel();
@@ -113,8 +111,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         path = new javax.swing.JLabel();
         preveiw_content = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        reputation = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
         authors = new javax.swing.JPanel();
         all_author_delete = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -126,10 +122,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         add_new_disapprove = new javax.swing.JButton();
         addab_settings = new javax.swing.JPanel();
         settings_text = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
 
         PopUp.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -267,7 +259,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         lm_allContent.setLayout(lm_allContentLayout);
         lm_allContentLayout.setHorizontalGroup(
             lm_allContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lm_ac_text, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(lm_allContentLayout.createSequentialGroup()
+                .addComponent(lm_ac_text, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         lm_allContentLayout.setVerticalGroup(
             lm_allContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,33 +294,13 @@ public class AdminDashboard extends javax.swing.JFrame {
         lm_addContent.setLayout(lm_addContentLayout);
         lm_addContentLayout.setHorizontalGroup(
             lm_addContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lm_adc_text, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(lm_addContentLayout.createSequentialGroup()
+                .addComponent(lm_adc_text, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         lm_addContentLayout.setVerticalGroup(
             lm_addContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lm_adc_text, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
-        );
-
-        lm_reputation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lm_reputation.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lm_reputationMouseClicked(evt);
-            }
-        });
-
-        lm_reputation_text.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
-        lm_reputation_text.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lm_reputation_text.setText("Reputation");
-
-        javax.swing.GroupLayout lm_reputationLayout = new javax.swing.GroupLayout(lm_reputation);
-        lm_reputation.setLayout(lm_reputationLayout);
-        lm_reputationLayout.setHorizontalGroup(
-            lm_reputationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lm_reputation_text, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        lm_reputationLayout.setVerticalGroup(
-            lm_reputationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lm_reputation_text, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
         );
 
         lm_authors.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -349,7 +323,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         lm_authors.setLayout(lm_authorsLayout);
         lm_authorsLayout.setHorizontalGroup(
             lm_authorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lm_a_text, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(lm_authorsLayout.createSequentialGroup()
+                .addComponent(lm_a_text, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         lm_authorsLayout.setVerticalGroup(
             lm_authorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -371,7 +347,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         lm_previewContent.setLayout(lm_previewContentLayout);
         lm_previewContentLayout.setHorizontalGroup(
             lm_previewContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lm_pc_text, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(lm_previewContentLayout.createSequentialGroup()
+                .addComponent(lm_pc_text, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         lm_previewContentLayout.setVerticalGroup(
             lm_previewContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -412,15 +390,12 @@ public class AdminDashboard extends javax.swing.JFrame {
         left_menuLayout.setHorizontalGroup(
             left_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(left_menuLayout.createSequentialGroup()
-                .addComponent(lm_newAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(left_menuLayout.createSequentialGroup()
-                .addGroup(left_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lm_authors, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lm_reputation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lm_previewContent, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lm_addContent, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lm_allContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(left_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lm_previewContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lm_addContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lm_allContent, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lm_newAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lm_authors, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         left_menuLayout.setVerticalGroup(
@@ -432,12 +407,10 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lm_previewContent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lm_reputation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lm_authors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lm_newAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 296, Short.MAX_VALUE))
+                .addGap(0, 361, Short.MAX_VALUE))
         );
 
         getContentPane().add(left_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 65, 190, 682));
@@ -479,7 +452,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
         table.setIntercellSpacing(new java.awt.Dimension(3, 3));
-        table.setRowHeight(25);
+        table.setRowHeight(30);
         table.setShowGrid(true);
         table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -499,7 +472,6 @@ public class AdminDashboard extends javax.swing.JFrame {
             table.getColumnModel().getColumn(4).setResizable(false);
             table.getColumnModel().getColumn(4).setPreferredWidth(150);
             table.getColumnModel().getColumn(5).setResizable(false);
-            table.getColumnModel().getColumn(5).setPreferredWidth(0);
         }
 
         all_cont_title.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -687,30 +659,6 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         Menu.addTab("tab4", preveiw_content);
 
-        reputation.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel15.setText("Comments");
-
-        javax.swing.GroupLayout reputationLayout = new javax.swing.GroupLayout(reputation);
-        reputation.setLayout(reputationLayout);
-        reputationLayout.setHorizontalGroup(
-            reputationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reputationLayout.createSequentialGroup()
-                .addContainerGap(295, Short.MAX_VALUE)
-                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(240, 240, 240))
-        );
-        reputationLayout.setVerticalGroup(
-            reputationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(reputationLayout.createSequentialGroup()
-                .addGap(224, 224, 224)
-                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(305, Short.MAX_VALUE))
-        );
-
-        Menu.addTab("tab5", reputation);
-
         authors.setBackground(new java.awt.Color(255, 255, 255));
         authors.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -749,7 +697,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
         all_author_table.setIntercellSpacing(new java.awt.Dimension(3, 3));
-        all_author_table.setRowHeight(25);
+        all_author_table.setRowHeight(30);
         all_author_table.setShowGrid(true);
         all_author_table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -822,8 +770,10 @@ public class AdminDashboard extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        newAuthorTable.setRowHeight(20);
-        newAuthorTable.setRowMargin(5);
+        newAuthorTable.setAlignmentX(0.0F);
+        newAuthorTable.setAlignmentY(0.0F);
+        newAuthorTable.setRowHeight(30);
+        newAuthorTable.setRowMargin(0);
         newAuthorTable.setShowGrid(true);
         newAuthorTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -915,52 +865,6 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         Menu.addTab("tab8", addab_settings);
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
-
-        jPanel3.setBackground(new java.awt.Color(153, 255, 153));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 11, Short.MAX_VALUE)
-        );
-
-        jLabel2.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Author");
-
-        jLabel3.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("0");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 815, Short.MAX_VALUE)
-            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        Menu.addTab("tab9", jPanel2);
-
         getContentPane().add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 820, 670));
 
         pack();
@@ -1020,7 +924,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         lm_allContent.setBackground(new Color(204, 204, 204));
         lm_addContent.setBackground(new Color(204, 204, 204));
         lm_previewContent.setBackground(new Color(204, 204, 204));
-        lm_reputation.setBackground(new Color(204, 204, 204));
+     
         lm_authors.setBackground(new Color(204, 204, 204));
         lm_newAuthors.setBackground(new Color(204, 204, 204));
 
@@ -1032,7 +936,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         lm_allContent.setBackground(new Color(204, 204, 204));
         lm_addContent.setBackground(Color.white);
         lm_previewContent.setBackground(new Color(204, 204, 204));
-        lm_reputation.setBackground(new Color(204, 204, 204));
         lm_authors.setBackground(new Color(204, 204, 204));
         lm_newAuthors.setBackground(new Color(204, 204, 204));
     }//GEN-LAST:event_lm_addContentMouseClicked
@@ -1043,24 +946,13 @@ public class AdminDashboard extends javax.swing.JFrame {
         lm_allContent.setBackground(new Color(204, 204, 204));
         lm_addContent.setBackground(new Color(204, 204, 204));
         lm_previewContent.setBackground(Color.white);
-        lm_reputation.setBackground(new Color(204, 204, 204));
         lm_authors.setBackground(new Color(204, 204, 204));
         lm_newAuthors.setBackground(new Color(204, 204, 204));
     }//GEN-LAST:event_lm_previewContentMouseClicked
 
-    private void lm_reputationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_reputationMouseClicked
-        // TODO add your handling code here:
-        Menu.setSelectedIndex(4);
-        lm_allContent.setBackground(new Color(204, 204, 204));
-        lm_addContent.setBackground(new Color(204, 204, 204));
-        lm_previewContent.setBackground(new Color(204, 204, 204));
-        lm_reputation.setBackground(Color.white);
-        lm_authors.setBackground(new Color(204, 204, 204));
-        lm_newAuthors.setBackground(new Color(204, 204, 204));
-    }//GEN-LAST:event_lm_reputationMouseClicked
-
     private void lm_authorsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_authorsMouseClicked
         // TODO add your handling code here:
+        loadAuthors();
 
     }//GEN-LAST:event_lm_authorsMouseClicked
 
@@ -1204,7 +1096,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 String like = String.valueOf(result.getInt("like"));
                 String dislike = String.valueOf(result.getInt("dislike"));
 
-                String tbData[] = {Integer.toString(count), title, username, like, dislike};
+                String tbData[] = {Integer.toString(count), title, username, like, dislike, desc};
                 DefaultTableModel tb = (DefaultTableModel) table.getModel();
                 tb.addRow(tbData);
 
@@ -1222,7 +1114,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         lm_allContent.setBackground(Color.white);
         lm_addContent.setBackground(new Color(204, 204, 204));
         lm_previewContent.setBackground(new Color(204, 204, 204));
-        lm_reputation.setBackground(new Color(204, 204, 204));
         lm_authors.setBackground(new Color(204, 204, 204));
         lm_newAuthors.setBackground(new Color(204, 204, 204));
 
@@ -1268,7 +1159,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         TableModel model = table.getModel();
 
         String title = model.getValueAt(index, 1).toString();
-        String desc = model.getValueAt(index, 4).toString();
+        String desc = model.getValueAt(index, 5).toString();
         all_cont_title.setText(title);
         all_cont_desc.setText(desc);
 
@@ -1405,11 +1296,10 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     private void lm_a_textMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_a_textMouseClicked
         // TODO add your handling code here:
-        Menu.setSelectedIndex(5);
+        Menu.setSelectedIndex(4);
         lm_allContent.setBackground(new Color(204, 204, 204));
         lm_addContent.setBackground(new Color(204, 204, 204));
         lm_previewContent.setBackground(new Color(204, 204, 204));
-        lm_reputation.setBackground(new Color(204, 204, 204));
         lm_authors.setBackground(Color.white);
         lm_newAuthors.setBackground(new Color(204, 204, 204));
 
@@ -1470,9 +1360,11 @@ public class AdminDashboard extends javax.swing.JFrame {
                 con.close();
 
                 JOptionPane.showMessageDialog(this, "Approved successfully");
+                 newAuthorTable.revalidate();
             }
 
-            loadNewAuthor();
+           
+             loadNewAuthor();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
         }
@@ -1490,24 +1382,23 @@ public class AdminDashboard extends javax.swing.JFrame {
         int index = newAuthorTable.getSelectedRow();
         TableModel model = newAuthorTable.getModel();
         String na_email = model.getValueAt(index, 2).toString();
-        
-        
-        try{
-             Class.forName("org.mariadb.jdbc.Driver");
-        Connection con = DriverManager.getConnection(url, user, passw);
-        String approveQuery3 = "DELETE FROM `pr_authors` WHERE `pr_authors`.`email` = ?";
 
-        PreparedStatement st3 = con.prepareStatement(approveQuery3);
-        st3.setString(1, na_email);
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+            String approveQuery3 = "DELETE FROM `pr_authors` WHERE `pr_authors`.`email` = ?";
 
-        st3.executeUpdate(); // record added. 
-        con.close();
-        JOptionPane.showMessageDialog(this, "Author Request Denied");
-        }catch(Exception e){
+            PreparedStatement st3 = con.prepareStatement(approveQuery3);
+            st3.setString(1, na_email);
+
+            st3.executeUpdate(); // record added. 
+              loadNewAuthor();
+            JOptionPane.showMessageDialog(this, "Author Request Denied");
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
         }
-        
-       
+
+      
     }//GEN-LAST:event_add_new_disapproveActionPerformed
 
     private void newAuthorTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newAuthorTableMouseClicked
@@ -1572,11 +1463,11 @@ public class AdminDashboard extends javax.swing.JFrame {
     }
     private void lm_na_textMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_na_textMouseClicked
         // TODO add your handling code here:
-        Menu.setSelectedIndex(6);
+        Menu.setSelectedIndex(5);
+        new_authors.setBackground(new Color(204, 204, 204));
         lm_allContent.setBackground(new Color(204, 204, 204));
         lm_addContent.setBackground(new Color(204, 204, 204));
         lm_previewContent.setBackground(new Color(204, 204, 204));
-        lm_reputation.setBackground(new Color(204, 204, 204));
         lm_authors.setBackground(new Color(204, 204, 204));
         lm_newAuthors.setBackground(Color.white);
 
@@ -1656,12 +1547,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel header_panel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1678,14 +1564,11 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel lm_newAuthors;
     private javax.swing.JLabel lm_pc_text;
     private javax.swing.JPanel lm_previewContent;
-    private javax.swing.JPanel lm_reputation;
-    private javax.swing.JLabel lm_reputation_text;
     public javax.swing.JLabel log_user;
     private javax.swing.JTable newAuthorTable;
     private javax.swing.JPanel new_authors;
     private javax.swing.JLabel path;
     private javax.swing.JPanel preveiw_content;
-    private javax.swing.JPanel reputation;
     private javax.swing.JLabel settings_text;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
