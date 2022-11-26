@@ -924,7 +924,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         lm_allContent.setBackground(new Color(204, 204, 204));
         lm_addContent.setBackground(new Color(204, 204, 204));
         lm_previewContent.setBackground(new Color(204, 204, 204));
-     
+
         lm_authors.setBackground(new Color(204, 204, 204));
         lm_newAuthors.setBackground(new Color(204, 204, 204));
 
@@ -1147,6 +1147,10 @@ public class AdminDashboard extends javax.swing.JFrame {
             st1.executeUpdate(); // record added. 
             con.close();
             JOptionPane.showMessageDialog(this, "Data Deleted successfully");
+                 DefaultTableModel tb = (DefaultTableModel) table.getModel();
+
+                tb.setRowCount(0);
+              
             loadContent();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
@@ -1279,6 +1283,10 @@ public class AdminDashboard extends javax.swing.JFrame {
             st1.executeUpdate(); // record added. 
             con.close();
             JOptionPane.showMessageDialog(this, "Author Deleted successfully");
+            DefaultTableModel tb = (DefaultTableModel) all_author_table.getModel();
+
+            tb.setRowCount(0);
+
             loadAuthors();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
@@ -1360,11 +1368,12 @@ public class AdminDashboard extends javax.swing.JFrame {
                 con.close();
 
                 JOptionPane.showMessageDialog(this, "Approved successfully");
-                 newAuthorTable.revalidate();
+                DefaultTableModel tb = (DefaultTableModel) newAuthorTable.getModel();
+
+                tb.setRowCount(0);
+                loadNewAuthor();
             }
 
-           
-             loadNewAuthor();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
         }
@@ -1392,13 +1401,16 @@ public class AdminDashboard extends javax.swing.JFrame {
             st3.setString(1, na_email);
 
             st3.executeUpdate(); // record added. 
-              loadNewAuthor();
+            DefaultTableModel tb = (DefaultTableModel) newAuthorTable.getModel();
+
+            tb.setRowCount(0);
+            loadNewAuthor();
             JOptionPane.showMessageDialog(this, "Author Request Denied");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
         }
 
-      
+
     }//GEN-LAST:event_add_new_disapproveActionPerformed
 
     private void newAuthorTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newAuthorTableMouseClicked
