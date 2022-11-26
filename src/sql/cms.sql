@@ -1,33 +1,23 @@
 CREATE DATABASE cms;
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
 
 
 
-
-CREATE TABLE `admin` (
+CREATE TABLE `cms`.`admin` (
   `id` int(100) NOT NULL,
   `username` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `admin`
---
 
-INSERT INTO `admin` (`id`, `username`, `email`, `password`) VALUES
+
+INSERT INTO `cms`.`admin` (`id`, `username`, `email`, `password`) VALUES
 (1, 'admin', 'admin@gmail.com', 'admin');
 
--- --------------------------------------------------------
 
---
--- Table structure for table `author`
---
 
-CREATE TABLE `author` (
+CREATE TABLE `cms`.`author` (
   `id` int(100) NOT NULL,
   `username` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -36,13 +26,9 @@ CREATE TABLE `author` (
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
 
---
--- Table structure for table `content`
---
 
-CREATE TABLE `content` (
+CREATE TABLE `cms`.`content` (
   `id` int(250) NOT NULL,
   `title` varchar(250) NOT NULL,
   `description` varchar(500) NOT NULL,
@@ -52,11 +38,10 @@ CREATE TABLE `content` (
   `dislike` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `content`
---
 
-INSERT INTO `content` (`id`, `title`, `description`, `author`, `image`, `like`, `dislike`) VALUES
+
+
+INSERT INTO `cms`.`content` (`id`, `title`, `description`, `author`, `image`, `like`, `dislike`) VALUES
 (1, 'How to make pasta', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\r\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\r\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\r\noptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\r\nobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam\r\nnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,\r\ntenetur error, harum nesciunt ipsum debiti', 'admin', '', 0, 0),
 (2, 'How to make misile', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\r\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\r\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\r\noptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\r\nobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam\r\nnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,\r\ntenetur error, harum nesciunt ipsum debiti', 'admin', '', 0, 0),
 (3, 'How to make bomb', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\r\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\r\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\r\noptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\r\nobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam\r\nnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,\r\ntenetur error, harum nesciunt ipsum debiti', 'admin', '', 0, 0),
@@ -64,13 +49,9 @@ INSERT INTO `content` (`id`, `title`, `description`, `author`, `image`, `like`, 
 (5, 'How to make mobile', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\r\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\r\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\r\noptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\r\nobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam\r\nnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,\r\ntenetur error, harum nesciunt ipsum debiti', 'admin', '', 0, 0),
 (6, 'How to make laptop', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\r\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\r\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\r\noptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\r\nobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam\r\nnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,\r\ntenetur error, harum nesciunt ipsum debiti', 'admin', '', 0, 0);
 
--- --------------------------------------------------------
 
---
--- Table structure for table `pr_authors`
---
 
-CREATE TABLE `pr_authors` (
+CREATE TABLE `cms`.`pr_authors` (
   `id` int(250) NOT NULL,
   `username` varchar(250) NOT NULL,
   `question` varchar(255) NOT NULL,
@@ -79,11 +60,9 @@ CREATE TABLE `pr_authors` (
   `password` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `pr_authors`
---
 
-INSERT INTO `pr_authors` (`id`, `username`, `question`, `answer`, `email`, `password`) VALUES
+
+INSERT INTO `cms`.`pr_authors` (`id`, `username`, `question`, `answer`, `email`, `password`) VALUES
 (0, 'fahim', 'fahim', 'fahim', 'fahim@gmail.com', 'fahim'),
 (0, 'Junayed', 'junayed', 'junayed', 'junayed@gmail.com', 'junayed'),
 (0, 'sabbir', 'sabbir', 'sabbir', 'sabbir@gmail.com', 'sabbir'),
@@ -95,13 +74,9 @@ INSERT INTO `pr_authors` (`id`, `username`, `question`, `answer`, `email`, `pass
 (0, 'pintu', 'pintu', 'pintu', 'pintu@gmail.com', 'pintu'),
 (0, 'montu', 'montu', 'montu', 'montu@gmail.com', 'montu');
 
--- --------------------------------------------------------
 
---
--- Table structure for table `pr_content`
---
 
-CREATE TABLE `pr_content` (
+CREATE TABLE `cms`.`pr_content` (
   `id` int(250) NOT NULL,
   `title` varchar(250) NOT NULL,
   `description` varchar(500) NOT NULL,
@@ -111,11 +86,9 @@ CREATE TABLE `pr_content` (
   `dislike` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `pr_content`
---
 
-INSERT INTO `pr_content` (`id`, `title`, `description`, `author`, `image`, `like`, `dislike`) VALUES
+
+INSERT INTO `cms`.`pr_content` (`id`, `title`, `description`, `author`, `image`, `like`, `dislike`) VALUES
 (1, 'How to make pasta', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\noptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\nobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam\nnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,\ntenetur error, harum nesciunt ipsum debitis quas', 'admin', '', 0, 0),
 (2, 'How to make misile', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\noptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\nobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam\nnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,\ntenetur error, harum nesciunt ipsum debitis quas', 'admin', '', 0, 0),
 (3, 'How to make bomb', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\noptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\nobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam\nnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,\ntenetur error, harum nesciunt ipsum debitis quas', 'admin', '', 0, 0),
@@ -123,51 +96,27 @@ INSERT INTO `pr_content` (`id`, `title`, `description`, `author`, `image`, `like
 (5, 'How to make mobile', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\noptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\nobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam\nnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,\ntenetur error, harum nesciunt ipsum debitis quas', 'admin', '', 0, 0),
 (6, 'How to make laptop', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\noptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\nobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam\nnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,\ntenetur error, harum nesciunt ipsum debitis quas', 'admin', '', 0, 0);
 
---
--- Indexes for dumped tables
---
 
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
+ALTER TABLE `cms`.`admin`
   ADD PRIMARY KEY (`id`);
 
---
--- Indexes for table `author`
---
-ALTER TABLE `author`
+
+ALTER TABLE `cms`.`author`
   ADD PRIMARY KEY (`id`);
 
---
--- Indexes for table `content`
---
-ALTER TABLE `content`
+
+ALTER TABLE `cms`.`content`
   ADD PRIMARY KEY (`id`);
 
---
--- AUTO_INCREMENT for dumped tables
---
 
---
--- AUTO_INCREMENT for table `admin`
---
-ALTER TABLE `admin`
+ALTER TABLE `cms`.`admin`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
---
--- AUTO_INCREMENT for table `author`
---
-ALTER TABLE `author`
+
+ALTER TABLE `cms`.`author`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
---
--- AUTO_INCREMENT for table `content`
---
-ALTER TABLE `content`
+
+ALTER TABLE `cms`.`content`
   MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
