@@ -417,6 +417,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         getContentPane().add(left_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 65, 190, 682));
 
         Menu.setBackground(new java.awt.Color(255, 255, 255));
+        Menu.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
 
         dashboard.setBackground(new java.awt.Color(255, 255, 255));
         dashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -473,7 +474,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             table.getColumnModel().getColumn(4).setResizable(false);
             table.getColumnModel().getColumn(4).setPreferredWidth(150);
             table.getColumnModel().getColumn(5).setResizable(false);
-            table.getColumnModel().getColumn(5).setPreferredWidth(0);
+            table.getColumnModel().getColumn(5).setPreferredWidth(200);
         }
 
         all_cont_title.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -522,16 +523,16 @@ public class AdminDashboard extends javax.swing.JFrame {
                     .addGroup(all_contentLayout.createSequentialGroup()
                         .addGap(66, 66, 66)
                         .addGroup(all_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE)
                             .addComponent(all_cont_title)
-                            .addComponent(jScrollPane3))))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2))))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
         all_contentLayout.setVerticalGroup(
             all_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(all_contentLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(all_cont_title, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -540,7 +541,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addGroup(all_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(all_cont_update, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(all_cont_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         Menu.addTab("tab2", all_content);
@@ -632,7 +633,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addComponent(path)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(add_content_submit, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         Menu.addTab("tab3", add_content);
@@ -656,7 +657,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addGroup(preveiw_contentLayout.createSequentialGroup()
                 .addGap(224, 224, 224)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(305, Short.MAX_VALUE))
+                .addContainerGap(319, Short.MAX_VALUE))
         );
 
         Menu.addTab("tab4", preveiw_content);
@@ -740,7 +741,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(all_author_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         Menu.addTab("tab6", authors);
@@ -843,7 +844,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(add_new_approve, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(add_new_disapprove, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout new_authorsLayout = new javax.swing.GroupLayout(new_authors);
@@ -853,7 +854,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addGroup(new_authorsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(617, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         new_authorsLayout.setVerticalGroup(
             new_authorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -880,12 +881,12 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addGroup(addab_settingsLayout.createSequentialGroup()
                 .addGap(278, 278, 278)
                 .addComponent(settings_text)
-                .addContainerGap(343, Short.MAX_VALUE))
+                .addContainerGap(359, Short.MAX_VALUE))
         );
 
         Menu.addTab("tab8", addab_settings);
 
-        getContentPane().add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 820, 670));
+        getContentPane().add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 820, 680));
 
         pack();
         setLocationRelativeTo(null);
