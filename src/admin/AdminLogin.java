@@ -31,6 +31,7 @@ public final class AdminLogin extends javax.swing.JFrame {
      */
     
    public static String passEmailAddress;
+   public static String passPassword;
      
      
     public AdminLogin() {
@@ -196,6 +197,7 @@ public final class AdminLogin extends javax.swing.JFrame {
 
         password.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
+        chbox.setBackground(new java.awt.Color(255, 255, 255));
         chbox.setText("Show Password");
         chbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -338,7 +340,7 @@ public final class AdminLogin extends javax.swing.JFrame {
             
            passEmailAddress = email.getText();
 
-            String passWord = new String(password.getPassword());
+             passPassword = new String(password.getPassword());
         
         
         try{
@@ -346,7 +348,7 @@ public final class AdminLogin extends javax.swing.JFrame {
                  JOptionPane.showMessageDialog(this, "Pleass enter valid email");
             }else if("".equals(passEmailAddress)){
                 JOptionPane.showMessageDialog(this, "Please enter email");
-            }else if("".equals(passWord)){
+            }else if("".equals(passPassword)){
                 JOptionPane.showMessageDialog(this, "Please enter password");
             }else{
                        Class.forName("org.mariadb.jdbc.Driver");
@@ -357,7 +359,7 @@ public final class AdminLogin extends javax.swing.JFrame {
                       PreparedStatement st = con.prepareStatement(query1); 
 
                       st.setString(1, passEmailAddress);
-                      st.setString(2, passWord);
+                      st.setString(2, passPassword);
                 
                       ResultSet result = st.executeQuery(); // record added. 
 //                      con.close(); 

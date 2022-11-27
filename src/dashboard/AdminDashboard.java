@@ -31,6 +31,7 @@ public class AdminDashboard extends javax.swing.JFrame {
      */
     AdminLogin ar1 = new AdminLogin();
     String email = ar1.passEmailAddress;
+    String password = ar1.passPassword;
     String username;
     String filename;
 
@@ -70,7 +71,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         PopUp = new javax.swing.JPopupMenu();
-        Settings = new javax.swing.JMenuItem();
+        updateProfile = new javax.swing.JMenuItem();
         Logout = new javax.swing.JMenuItem();
         header_panel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -121,23 +122,36 @@ public class AdminDashboard extends javax.swing.JFrame {
         add_new_disapprove = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         newAuthorTable = new javax.swing.JTable();
-        addab_settings = new javax.swing.JPanel();
-        settings_text = new javax.swing.JLabel();
+        update_profile = new javax.swing.JPanel();
+        update_profile_panel = new javax.swing.JPanel();
+        upadate_username_txt = new javax.swing.JLabel();
+        update_username_input = new javax.swing.JTextField();
+        update_email_txt = new javax.swing.JLabel();
+        update_email_input = new javax.swing.JTextField();
+        update_pass_txt = new javax.swing.JLabel();
+        update_pass_input = new javax.swing.JPasswordField();
+        show_pass = new javax.swing.JCheckBox();
+        update_profile_btn = new javax.swing.JButton();
+        tooltip = new javax.swing.JLabel();
+        username_important_text = new javax.swing.JLabel();
+        email_important_text = new javax.swing.JLabel();
+        password_important_text = new javax.swing.JLabel();
+        relogin = new javax.swing.JLabel();
 
         PopUp.setBackground(new java.awt.Color(0, 0, 0));
 
-        Settings.setText("Settings");
-        Settings.addMouseListener(new java.awt.event.MouseAdapter() {
+        updateProfile.setText("Update Profile");
+        updateProfile.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SettingsMouseClicked(evt);
+                updateProfileMouseClicked(evt);
             }
         });
-        Settings.addActionListener(new java.awt.event.ActionListener() {
+        updateProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SettingsActionPerformed(evt);
+                updateProfileActionPerformed(evt);
             }
         });
-        PopUp.add(Settings);
+        PopUp.add(updateProfile);
 
         Logout.setBackground(new java.awt.Color(0, 0, 0));
         Logout.setText("Log out");
@@ -152,7 +166,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 102));
         setMinimumSize(new java.awt.Dimension(1000, 700));
-        setPreferredSize(new java.awt.Dimension(1000, 700));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -203,11 +216,11 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addGroup(header_panelLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(dab_text)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 692, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 687, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(6, 6, 6)
-                .addComponent(log_user, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(log_user, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(admin_logo)
                 .addGap(40, 40, 40))
         );
@@ -221,9 +234,9 @@ public class AdminDashboard extends javax.swing.JFrame {
                     .addGroup(header_panelLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(header_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
                             .addComponent(dab_text)
-                            .addComponent(log_user, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(log_user, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -865,26 +878,146 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         Menu.addTab("tab7", new_authors);
 
-        settings_text.setText("Settings");
+        update_profile_panel.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout addab_settingsLayout = new javax.swing.GroupLayout(addab_settings);
-        addab_settings.setLayout(addab_settingsLayout);
-        addab_settingsLayout.setHorizontalGroup(
-            addab_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addab_settingsLayout.createSequentialGroup()
-                .addGap(384, 384, 384)
-                .addComponent(settings_text)
-                .addContainerGap(383, Short.MAX_VALUE))
+        upadate_username_txt.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        upadate_username_txt.setText("Update Your Username: ");
+
+        update_username_input.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        update_username_input.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        update_username_input.setToolTipText("");
+        update_username_input.setActionCommand("<Not Set>");
+        update_username_input.setAlignmentX(0.0F);
+        update_username_input.setAlignmentY(0.0F);
+        update_username_input.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        update_username_input.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        update_username_input.setPreferredSize(null);
+
+        update_email_txt.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        update_email_txt.setText("Update Your Email: ");
+
+        update_email_input.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        update_email_input.setActionCommand("<Not Set>");
+        update_email_input.setAlignmentX(0.0F);
+        update_email_input.setAlignmentY(0.0F);
+        update_email_input.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        update_email_input.setMargin(new java.awt.Insets(4, 4, 4, 4));
+        update_email_input.setPreferredSize(null);
+
+        update_pass_txt.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        update_pass_txt.setText("Update Your Password: ");
+
+        update_pass_input.setActionCommand("<Not Set>");
+        update_pass_input.setAlignmentX(0.0F);
+        update_pass_input.setAlignmentY(0.0F);
+        update_pass_input.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        update_pass_input.setMargin(new java.awt.Insets(4, 4, 4, 4));
+        update_pass_input.setPreferredSize(null);
+
+        show_pass.setBackground(new java.awt.Color(255, 255, 255));
+        show_pass.setText("Show Password");
+        show_pass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                show_passActionPerformed(evt);
+            }
+        });
+
+        update_profile_btn.setBackground(new java.awt.Color(255, 255, 255));
+        update_profile_btn.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        update_profile_btn.setText("Update");
+        update_profile_btn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        update_profile_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        update_profile_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                update_profile_btnActionPerformed(evt);
+            }
+        });
+
+        tooltip.setForeground(new java.awt.Color(153, 204, 0));
+
+        username_important_text.setForeground(new java.awt.Color(255, 51, 51));
+
+        email_important_text.setForeground(new java.awt.Color(255, 51, 51));
+
+        password_important_text.setForeground(new java.awt.Color(255, 51, 51));
+
+        relogin.setFont(new java.awt.Font("Tempus Sans ITC", 0, 24)); // NOI18N
+        relogin.setForeground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout update_profile_panelLayout = new javax.swing.GroupLayout(update_profile_panel);
+        update_profile_panel.setLayout(update_profile_panelLayout);
+        update_profile_panelLayout.setHorizontalGroup(
+            update_profile_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(update_profile_panelLayout.createSequentialGroup()
+                .addGap(163, 163, 163)
+                .addGroup(update_profile_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(update_profile_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(show_pass)
+                    .addGroup(update_profile_panelLayout.createSequentialGroup()
+                        .addGroup(update_profile_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(update_pass_input, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(update_pass_txt)
+                            .addComponent(update_email_txt)
+                            .addComponent(update_email_input, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(upadate_username_txt)
+                            .addComponent(update_username_input, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32)
+                        .addGroup(update_profile_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(username_important_text, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(email_important_text, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(password_important_text, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(tooltip, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(relogin, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
-        addab_settingsLayout.setVerticalGroup(
-            addab_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addab_settingsLayout.createSequentialGroup()
-                .addGap(278, 278, 278)
-                .addComponent(settings_text)
-                .addContainerGap(359, Short.MAX_VALUE))
+        update_profile_panelLayout.setVerticalGroup(
+            update_profile_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(update_profile_panelLayout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(relogin)
+                .addGap(38, 38, 38)
+                .addComponent(upadate_username_txt)
+                .addGap(18, 18, 18)
+                .addGroup(update_profile_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(update_username_input, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(username_important_text, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(update_email_txt)
+                .addGap(18, 18, 18)
+                .addGroup(update_profile_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(update_email_input, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(email_important_text, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(update_pass_txt)
+                .addGap(18, 18, 18)
+                .addGroup(update_profile_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(update_pass_input, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(password_important_text, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(show_pass)
+                .addGap(18, 18, 18)
+                .addComponent(update_profile_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(tooltip)
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
-        Menu.addTab("tab8", addab_settings);
+        javax.swing.GroupLayout update_profileLayout = new javax.swing.GroupLayout(update_profile);
+        update_profile.setLayout(update_profileLayout);
+        update_profileLayout.setHorizontalGroup(
+            update_profileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(update_profileLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(update_profile_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        update_profileLayout.setVerticalGroup(
+            update_profileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(update_profileLayout.createSequentialGroup()
+                .addComponent(update_profile_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        Menu.addTab("tab8", update_profile);
 
         getContentPane().add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 820, 680));
 
@@ -929,10 +1062,20 @@ public class AdminDashboard extends javax.swing.JFrame {
         i.setVisible(true);
     }//GEN-LAST:event_LogoutActionPerformed
 
-    private void SettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SettingsActionPerformed
+    private void updateProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateProfileActionPerformed
         // TODO add your handling code here:
-        Menu.setSelectedIndex(7);
-    }//GEN-LAST:event_SettingsActionPerformed
+        Menu.setSelectedIndex(6);
+        lm_allContent.setBackground(new Color(204, 204, 204));
+        lm_addContent.setBackground(new Color(204, 204, 204));
+        lm_previewContent.setBackground(new Color(204, 204, 204));
+        lm_authors.setBackground(new Color(204, 204, 204));
+        lm_newAuthors.setBackground(new Color(204, 204, 204));
+
+        update_username_input.setText(username);
+        update_email_input.setText(email);
+        update_pass_input.setText(password);
+
+    }//GEN-LAST:event_updateProfileActionPerformed
 
     private void lm_allContentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_allContentMouseClicked
         // TODO add your handling code here:
@@ -1005,10 +1148,10 @@ public class AdminDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lm_addContentMouseMoved
 
-    private void SettingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SettingsMouseClicked
+    private void updateProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateProfileMouseClicked
         // TODO add your handling code here:
         Menu.setSelectedIndex(7);
-    }//GEN-LAST:event_SettingsMouseClicked
+    }//GEN-LAST:event_updateProfileMouseClicked
 
 
     private void add_content_submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_content_submitActionPerformed
@@ -1168,10 +1311,10 @@ public class AdminDashboard extends javax.swing.JFrame {
             st1.executeUpdate(); // record added. 
             con.close();
             JOptionPane.showMessageDialog(this, "Data Deleted successfully");
-                 DefaultTableModel tb = (DefaultTableModel) table.getModel();
+            DefaultTableModel tb = (DefaultTableModel) table.getModel();
 
-                tb.setRowCount(0);
-              
+            tb.setRowCount(0);
+
             loadContent();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
@@ -1507,6 +1650,86 @@ public class AdminDashboard extends javax.swing.JFrame {
         loadNewAuthor();
     }//GEN-LAST:event_lm_na_textMouseClicked
 
+    private void show_passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_show_passActionPerformed
+        // TODO add your handling code here:
+        if (show_pass.isSelected()) {
+            update_pass_input.setEchoChar((char) 0);
+
+        } else {
+            update_pass_input.setEchoChar('*');
+
+        }
+    }//GEN-LAST:event_show_passActionPerformed
+
+    private void update_profile_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_profile_btnActionPerformed
+        // TODO add your handling code here:
+
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+
+        String newUsername = update_username_input.getText();
+        String newEmail = update_email_input.getText();
+        String newPass = new String(update_pass_input.getPassword());
+
+        if ("".equals(newUsername)) {
+            username_important_text.setText("Can't be empty!");
+            username_important_text.setForeground(Color.RED);
+            tooltip.setText("");
+        } else if (!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[g]{1}+[m]{1}+[a]{1}+[i]{1}+[l]{1}+[.]{1}+[c]{1}+[o]{1}+[m]{1}+$", newEmail))) {
+            email_important_text.setText("Not a valid email!");
+            email_important_text.setForeground(Color.RED);
+            tooltip.setText("");
+        } else if ("".equals(newEmail)) {
+            email_important_text.setText("Can't be empty!");
+            email_important_text.setForeground(Color.RED);
+            tooltip.setText("");
+        } else if ("".equals(newPass)) {
+            password_important_text.setText("Can't be empty!");
+            password_important_text.setForeground(Color.RED);
+            tooltip.setText("");
+        } else {
+            email_important_text.setText("✔");
+            email_important_text.setForeground(Color.GREEN);
+            password_important_text.setText("✔");
+            password_important_text.setForeground(Color.GREEN);
+            username_important_text.setText("✔");
+            username_important_text.setForeground(Color.GREEN);
+
+            try {
+                Class.forName("org.mariadb.jdbc.Driver");
+                Connection con = DriverManager.getConnection(url, user, passw);
+                String updateAdmin1 = "UPDATE `cms`.`admin` SET username=? WHERE email=?";
+                String updateAdmin2 = "UPDATE `cms`.`admin` SET email=? WHERE email=?";
+                String updateAdmin3 = "UPDATE `cms`.`admin` SET password=? WHERE email=?";
+
+                PreparedStatement st1 = con.prepareStatement(updateAdmin1);
+                PreparedStatement st2 = con.prepareStatement(updateAdmin2);
+                PreparedStatement st3 = con.prepareStatement(updateAdmin3);
+                st1.setString(1, newUsername);
+                st1.setString(2, email);
+                st1.executeUpdate();
+
+                st2.setString(1, newEmail);
+                st2.setString(2, email);
+                st2.executeUpdate();
+
+                st3.setString(1, newPass);
+                st3.setString(2, email);
+                st3.executeUpdate();
+
+                tooltip.setText("All Changes Saved Successfully!");
+                relogin.setText("🚫"+"Please Re-login to see the effect");
+
+            } catch (Exception e) {
+                tooltip.setText(e.toString());
+            }
+        }
+
+       
+      
+    }//GEN-LAST:event_update_profile_btnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1554,7 +1777,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JMenuItem Logout;
     private javax.swing.JTabbedPane Menu;
     private javax.swing.JPopupMenu PopUp;
-    private javax.swing.JMenuItem Settings;
     private javax.swing.JPanel add_content;
     private javax.swing.JButton add_content_submit;
     private javax.swing.JLabel add_description;
@@ -1564,7 +1786,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton add_new_disapprove;
     private javax.swing.JLabel add_title;
     private javax.swing.JTextField add_title_input;
-    private javax.swing.JPanel addab_settings;
     private javax.swing.JLabel admin_logo;
     private javax.swing.JButton all_author_delete;
     private javax.swing.JTable all_author_table;
@@ -1577,6 +1798,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel authors;
     private javax.swing.JLabel dab_text;
     private javax.swing.JPanel dashboard;
+    private javax.swing.JLabel email_important_text;
     private javax.swing.JPanel header_panel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1601,9 +1823,23 @@ public class AdminDashboard extends javax.swing.JFrame {
     public javax.swing.JLabel log_user;
     private javax.swing.JTable newAuthorTable;
     private javax.swing.JPanel new_authors;
+    private javax.swing.JLabel password_important_text;
     private javax.swing.JLabel path;
     private javax.swing.JPanel preveiw_content;
-    private javax.swing.JLabel settings_text;
+    private javax.swing.JLabel relogin;
+    private javax.swing.JCheckBox show_pass;
     private javax.swing.JTable table;
+    private javax.swing.JLabel tooltip;
+    private javax.swing.JLabel upadate_username_txt;
+    private javax.swing.JMenuItem updateProfile;
+    private javax.swing.JTextField update_email_input;
+    private javax.swing.JLabel update_email_txt;
+    private javax.swing.JPasswordField update_pass_input;
+    private javax.swing.JLabel update_pass_txt;
+    private javax.swing.JPanel update_profile;
+    private javax.swing.JButton update_profile_btn;
+    private javax.swing.JPanel update_profile_panel;
+    private javax.swing.JTextField update_username_input;
+    private javax.swing.JLabel username_important_text;
     // End of variables declaration//GEN-END:variables
 }
