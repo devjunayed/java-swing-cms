@@ -166,6 +166,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 102));
         setMinimumSize(new java.awt.Dimension(1000, 700));
+        setPreferredSize(new java.awt.Dimension(1000, 700));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -233,10 +234,11 @@ public class AdminDashboard extends javax.swing.JFrame {
                         .addComponent(admin_logo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(header_panelLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addGroup(header_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dab_text)
+                        .addGroup(header_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(log_user, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
+                            .addGroup(header_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(dab_text)
+                                .addComponent(jLabel1)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -431,6 +433,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         Menu.setBackground(new java.awt.Color(255, 255, 255));
         Menu.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
+        Menu.setPreferredSize(new java.awt.Dimension(898, 700));
 
         dashboard.setBackground(new java.awt.Color(255, 255, 255));
         dashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
