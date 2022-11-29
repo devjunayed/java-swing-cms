@@ -94,19 +94,19 @@ public class AdminDashboard extends javax.swing.JFrame {
         author_count = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        author_counter = new javax.swing.JLabel();
         new_author_count = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        new_author_counter = new javax.swing.JLabel();
         content_count = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        content_counter = new javax.swing.JLabel();
         new_content_count = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        new_content_counter = new javax.swing.JLabel();
         all_content = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
@@ -126,7 +126,13 @@ public class AdminDashboard extends javax.swing.JFrame {
         attach_image = new javax.swing.JButton();
         path = new javax.swing.JLabel();
         preveiw_content = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        pr_content_table = new javax.swing.JTable();
+        pr_content_title = new javax.swing.JTextField();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        pr_content_description = new javax.swing.JTextArea();
+        pr_content_approve = new javax.swing.JButton();
+        pr_content_disapprove = new javax.swing.JButton();
         authors = new javax.swing.JPanel();
         all_author_delete = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -473,10 +479,10 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Author");
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("0");
+        author_counter.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        author_counter.setForeground(new java.awt.Color(255, 255, 255));
+        author_counter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        author_counter.setText("0");
 
         javax.swing.GroupLayout author_countLayout = new javax.swing.GroupLayout(author_count);
         author_count.setLayout(author_countLayout);
@@ -485,7 +491,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(author_countLayout.createSequentialGroup()
                 .addGap(54, 54, 54)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(author_counter, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(64, Short.MAX_VALUE))
             .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -494,7 +500,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addGroup(author_countLayout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(author_counter, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -522,10 +528,10 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("New Author");
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("0");
+        new_author_counter.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        new_author_counter.setForeground(new java.awt.Color(255, 255, 255));
+        new_author_counter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        new_author_counter.setText("0");
 
         javax.swing.GroupLayout new_author_countLayout = new javax.swing.GroupLayout(new_author_count);
         new_author_count.setLayout(new_author_countLayout);
@@ -534,7 +540,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(new_author_countLayout.createSequentialGroup()
                 .addGap(54, 54, 54)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(new_author_counter, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(64, Short.MAX_VALUE))
             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -543,7 +549,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addGroup(new_author_countLayout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(new_author_counter, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -571,10 +577,10 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Content");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("0");
+        content_counter.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        content_counter.setForeground(new java.awt.Color(255, 255, 255));
+        content_counter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        content_counter.setText("0");
 
         javax.swing.GroupLayout content_countLayout = new javax.swing.GroupLayout(content_count);
         content_count.setLayout(content_countLayout);
@@ -583,7 +589,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(content_countLayout.createSequentialGroup()
                 .addGap(54, 54, 54)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(content_counter, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(64, Short.MAX_VALUE))
             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -592,7 +598,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addGroup(content_countLayout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(content_counter, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -620,10 +626,10 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("New Content");
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("0");
+        new_content_counter.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        new_content_counter.setForeground(new java.awt.Color(255, 255, 255));
+        new_content_counter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        new_content_counter.setText("0");
 
         javax.swing.GroupLayout new_content_countLayout = new javax.swing.GroupLayout(new_content_count);
         new_content_count.setLayout(new_content_countLayout);
@@ -632,7 +638,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(new_content_countLayout.createSequentialGroup()
                 .addGap(54, 54, 54)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(new_content_counter, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(64, Short.MAX_VALUE))
             .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -641,7 +647,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addGroup(new_content_countLayout.createSequentialGroup()
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(new_content_counter, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -694,8 +700,10 @@ public class AdminDashboard extends javax.swing.JFrame {
             table.getColumnModel().getColumn(2).setPreferredWidth(200);
             table.getColumnModel().getColumn(3).setResizable(false);
             table.getColumnModel().getColumn(3).setPreferredWidth(150);
+            table.getColumnModel().getColumn(3).setHeaderValue("Like");
             table.getColumnModel().getColumn(4).setResizable(false);
             table.getColumnModel().getColumn(4).setPreferredWidth(150);
+            table.getColumnModel().getColumn(4).setHeaderValue("Dislike");
             table.getColumnModel().getColumn(5).setResizable(false);
             table.getColumnModel().getColumn(5).setPreferredWidth(200);
         }
@@ -863,24 +871,109 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         preveiw_content.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel10.setText("Preview Content");
+        pr_content_table.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        pr_content_table.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pr_content_table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "SL", "Title", "Author", "Description"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        pr_content_table.setIntercellSpacing(new java.awt.Dimension(3, 3));
+        pr_content_table.setRowHeight(30);
+        pr_content_table.setShowGrid(true);
+        pr_content_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pr_content_tableMouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(pr_content_table);
+        if (pr_content_table.getColumnModel().getColumnCount() > 0) {
+            pr_content_table.getColumnModel().getColumn(0).setResizable(false);
+            pr_content_table.getColumnModel().getColumn(0).setPreferredWidth(60);
+            pr_content_table.getColumnModel().getColumn(1).setResizable(false);
+            pr_content_table.getColumnModel().getColumn(1).setPreferredWidth(300);
+            pr_content_table.getColumnModel().getColumn(2).setResizable(false);
+            pr_content_table.getColumnModel().getColumn(2).setPreferredWidth(200);
+            pr_content_table.getColumnModel().getColumn(3).setResizable(false);
+            pr_content_table.getColumnModel().getColumn(3).setPreferredWidth(200);
+        }
+
+        pr_content_title.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        pr_content_description.setColumns(20);
+        pr_content_description.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pr_content_description.setLineWrap(true);
+        pr_content_description.setRows(5);
+        jScrollPane7.setViewportView(pr_content_description);
+
+        pr_content_approve.setBackground(new java.awt.Color(102, 204, 0));
+        pr_content_approve.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
+        pr_content_approve.setForeground(new java.awt.Color(255, 255, 255));
+        pr_content_approve.setText("Approve");
+        pr_content_approve.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pr_content_approve.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pr_content_approve.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pr_content_approveActionPerformed(evt);
+            }
+        });
+
+        pr_content_disapprove.setBackground(new java.awt.Color(255, 0, 0));
+        pr_content_disapprove.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
+        pr_content_disapprove.setForeground(new java.awt.Color(255, 255, 255));
+        pr_content_disapprove.setText("Disapprove");
+        pr_content_disapprove.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pr_content_disapprove.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pr_content_disapprove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pr_content_disapproveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout preveiw_contentLayout = new javax.swing.GroupLayout(preveiw_content);
         preveiw_content.setLayout(preveiw_contentLayout);
         preveiw_contentLayout.setHorizontalGroup(
             preveiw_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, preveiw_contentLayout.createSequentialGroup()
-                .addContainerGap(295, Short.MAX_VALUE)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(240, 240, 240))
+            .addGroup(preveiw_contentLayout.createSequentialGroup()
+                .addGroup(preveiw_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(preveiw_contentLayout.createSequentialGroup()
+                        .addGap(198, 198, 198)
+                        .addComponent(pr_content_approve, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(135, 135, 135)
+                        .addComponent(pr_content_disapprove, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(preveiw_contentLayout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(preveiw_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pr_content_title)
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE)
+                            .addComponent(jScrollPane6))))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         preveiw_contentLayout.setVerticalGroup(
             preveiw_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(preveiw_contentLayout.createSequentialGroup()
-                .addGap(224, 224, 224)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(319, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pr_content_title, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(preveiw_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pr_content_approve, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pr_content_disapprove, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         Menu.addTab("tab4", preveiw_content);
@@ -1298,9 +1391,55 @@ public class AdminDashboard extends javax.swing.JFrame {
         lm_allContent.setBackground(new Color(204, 204, 204));
         lm_addContent.setBackground(new Color(204, 204, 204));
         lm_previewContent.setBackground(new Color(204, 204, 204));
-
         lm_authors.setBackground(new Color(204, 204, 204));
         lm_newAuthors.setBackground(new Color(204, 204, 204));
+
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+        
+        int authorCounter = 1;
+        int newAuthorCounter = 1;
+        int contentCounter = 1;
+        int newContentCounter = 1;
+          
+        
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String query1 = "Select * from `cms`.`author`";
+            String query2 = "Select * from `cms`.`pr_authors`";
+            String query3 = "Select * from `cms`.`content`";
+            String query4 = "Select * from `cms`.`pr_content`";
+
+            PreparedStatement st1 = con.prepareStatement(query1);
+            PreparedStatement st2 = con.prepareStatement(query2);
+            PreparedStatement st3 = con.prepareStatement(query3);
+            PreparedStatement st4 = con.prepareStatement(query4);
+            
+            ResultSet result1 = st1.executeQuery(); // record added. 
+            ResultSet result2 = st2.executeQuery();
+            ResultSet result3 = st3.executeQuery();
+            ResultSet result4 = st4.executeQuery();
+            
+            while (result1.next()) {
+                author_counter.setText(Integer.toString(authorCounter++));
+            }
+            
+            while(result2.next()){
+                new_author_counter.setText(Integer.toString(newAuthorCounter++));
+            }
+            while(result3.next()){
+                content_counter.setText(Integer.toString(contentCounter++));
+            }
+            while(result4.next()){
+                new_content_counter.setText(Integer.toString(newContentCounter++));
+            }
+        } catch (Exception e) {
+
+        }
+
 
     }//GEN-LAST:event_dab_textMouseClicked
 
@@ -1437,7 +1576,6 @@ public class AdminDashboard extends javax.swing.JFrame {
             PreparedStatement st = con.prepareStatement(query1);
 
 //            st.setString(1, username);
-
             ResultSet result = st.executeQuery();
             while (result.next()) {
 
@@ -1460,7 +1598,6 @@ public class AdminDashboard extends javax.swing.JFrame {
             PreparedStatement st = con.prepareStatement(query1);
 
 //            st.setString(1, username);
-
             ResultSet result = st.executeQuery();
             while (result.next()) {
                 count++;
@@ -1930,22 +2067,33 @@ public class AdminDashboard extends javax.swing.JFrame {
                 st3.setString(1, newPass);
                 st3.setString(2, email);
                 st3.executeUpdate();
-                
+
                 userNameUpdateSt.setString(1, newUsername);
                 userNameUpdateSt.setString(2, username);
                 userNameUpdateSt.executeUpdate();
 
                 tooltip.setText("All Changes Saved Successfully!");
-                relogin.setText("🚫"+"Please Re-login to see the effect");
+                relogin.setText("🚫" + "Please Re-login to see the effect");
 
             } catch (Exception e) {
                 tooltip.setText(e.toString());
             }
         }
 
-       
-      
+
     }//GEN-LAST:event_update_profile_btnActionPerformed
+
+    private void pr_content_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pr_content_tableMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pr_content_tableMouseClicked
+
+    private void pr_content_approveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pr_content_approveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pr_content_approveActionPerformed
+
+    private void pr_content_disapproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pr_content_disapproveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pr_content_disapproveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2013,22 +2161,19 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel all_content;
     private javax.swing.JButton attach_image;
     private javax.swing.JPanel author_count;
+    private javax.swing.JLabel author_counter;
     private javax.swing.JPanel authors;
     private javax.swing.JPanel content_count;
+    private javax.swing.JLabel content_counter;
     private javax.swing.JLabel dab_text;
     private javax.swing.JPanel dashboard;
     private javax.swing.JLabel email_important_text;
     private javax.swing.JPanel header_panel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -2039,6 +2184,8 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JPanel left_menu;
     private javax.swing.JLabel lm_a_text;
     private javax.swing.JLabel lm_ac_text;
@@ -2053,10 +2200,17 @@ public class AdminDashboard extends javax.swing.JFrame {
     public javax.swing.JLabel log_user;
     private javax.swing.JTable newAuthorTable;
     private javax.swing.JPanel new_author_count;
+    private javax.swing.JLabel new_author_counter;
     private javax.swing.JPanel new_authors;
     private javax.swing.JPanel new_content_count;
+    private javax.swing.JLabel new_content_counter;
     private javax.swing.JLabel password_important_text;
     private javax.swing.JLabel path;
+    private javax.swing.JButton pr_content_approve;
+    private javax.swing.JTextArea pr_content_description;
+    private javax.swing.JButton pr_content_disapprove;
+    private javax.swing.JTable pr_content_table;
+    private javax.swing.JTextField pr_content_title;
     private javax.swing.JPanel preveiw_content;
     private javax.swing.JLabel relogin;
     private javax.swing.JCheckBox show_pass;
