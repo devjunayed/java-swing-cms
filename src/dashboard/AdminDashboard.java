@@ -91,7 +91,22 @@ public class AdminDashboard extends javax.swing.JFrame {
         lm_na_text = new javax.swing.JLabel();
         Menu = new javax.swing.JTabbedPane();
         dashboard = new javax.swing.JPanel();
+        author_count = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        new_author_count = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        content_count = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        new_content_count = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         all_content = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
@@ -438,9 +453,201 @@ public class AdminDashboard extends javax.swing.JFrame {
         dashboard.setBackground(new java.awt.Color(255, 255, 255));
         dashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        author_count.setBackground(new java.awt.Color(0, 0, 0));
+
+        jPanel6.setBackground(new java.awt.Color(102, 204, 0));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 12, Short.MAX_VALUE)
+        );
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Author");
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("0");
+
+        javax.swing.GroupLayout author_countLayout = new javax.swing.GroupLayout(author_count);
+        author_count.setLayout(author_countLayout);
+        author_countLayout.setHorizontalGroup(
+            author_countLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(author_countLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
+            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        author_countLayout.setVerticalGroup(
+            author_countLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(author_countLayout.createSequentialGroup()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        dashboard.add(author_count, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 200, 140));
+
+        new_author_count.setBackground(new java.awt.Color(0, 0, 0));
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 102));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 12, Short.MAX_VALUE)
+        );
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("New Author");
+
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel7.setText("Dashboard");
-        dashboard.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 280, 110));
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("0");
+
+        javax.swing.GroupLayout new_author_countLayout = new javax.swing.GroupLayout(new_author_count);
+        new_author_count.setLayout(new_author_countLayout);
+        new_author_countLayout.setHorizontalGroup(
+            new_author_countLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(new_author_countLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
+            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        new_author_countLayout.setVerticalGroup(
+            new_author_countLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(new_author_countLayout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        dashboard.add(new_author_count, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, -1, -1));
+
+        content_count.setBackground(new java.awt.Color(0, 0, 0));
+
+        jPanel4.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 12, Short.MAX_VALUE)
+        );
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Content");
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("0");
+
+        javax.swing.GroupLayout content_countLayout = new javax.swing.GroupLayout(content_count);
+        content_count.setLayout(content_countLayout);
+        content_countLayout.setHorizontalGroup(
+            content_countLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(content_countLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
+            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        content_countLayout.setVerticalGroup(
+            content_countLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(content_countLayout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        dashboard.add(content_count, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 200, 140));
+
+        new_content_count.setBackground(new java.awt.Color(0, 0, 0));
+
+        jPanel7.setBackground(new java.awt.Color(255, 102, 102));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 12, Short.MAX_VALUE)
+        );
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("New Content");
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("0");
+
+        javax.swing.GroupLayout new_content_countLayout = new javax.swing.GroupLayout(new_content_count);
+        new_content_count.setLayout(new_content_countLayout);
+        new_content_countLayout.setHorizontalGroup(
+            new_content_countLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(new_content_countLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
+            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        new_content_countLayout.setVerticalGroup(
+            new_content_countLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(new_content_countLayout.createSequentialGroup()
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        dashboard.add(new_content_count, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, -1, -1));
 
         Menu.addTab("tab1", dashboard);
 
@@ -1226,10 +1433,10 @@ public class AdminDashboard extends javax.swing.JFrame {
             Class.forName("org.mariadb.jdbc.Driver");
             Connection con = DriverManager.getConnection(url, user, passw);
 
-            String query1 = "Select * from `cms`.`content` where author=?";
+            String query1 = "Select * from `cms`.`content`";
             PreparedStatement st = con.prepareStatement(query1);
 
-            st.setString(1, username);
+//            st.setString(1, username);
 
             ResultSet result = st.executeQuery();
             while (result.next()) {
@@ -1249,10 +1456,10 @@ public class AdminDashboard extends javax.swing.JFrame {
             Class.forName("org.mariadb.jdbc.Driver");
             Connection con = DriverManager.getConnection(url, user, passw);
 
-            String query1 = "Select * from `cms`.`content` where author=?";
+            String query1 = "Select * from `cms`.`content`";
             PreparedStatement st = con.prepareStatement(query1);
 
-            st.setString(1, username);
+//            st.setString(1, username);
 
             ResultSet result = st.executeQuery();
             while (result.next()) {
@@ -1262,8 +1469,9 @@ public class AdminDashboard extends javax.swing.JFrame {
                 String desc = result.getString("description");
                 String like = String.valueOf(result.getInt("like"));
                 String dislike = String.valueOf(result.getInt("dislike"));
+                String authors = result.getString("author");
 
-                String tbData[] = {Integer.toString(count), title, username, like, dislike, desc};
+                String tbData[] = {Integer.toString(count), title, authors, like, dislike, desc};
                 DefaultTableModel tb = (DefaultTableModel) table.getModel();
                 tb.addRow(tbData);
 
@@ -1705,10 +1913,12 @@ public class AdminDashboard extends javax.swing.JFrame {
                 String updateAdmin1 = "UPDATE `cms`.`admin` SET username=? WHERE email=?";
                 String updateAdmin2 = "UPDATE `cms`.`admin` SET email=? WHERE email=?";
                 String updateAdmin3 = "UPDATE `cms`.`admin` SET password=? WHERE email=?";
+                String userNameUpdate = "UPDATE `cms`.`content` SET author=? WHERE author=?";
 
                 PreparedStatement st1 = con.prepareStatement(updateAdmin1);
                 PreparedStatement st2 = con.prepareStatement(updateAdmin2);
                 PreparedStatement st3 = con.prepareStatement(updateAdmin3);
+                PreparedStatement userNameUpdateSt = con.prepareStatement(userNameUpdate);
                 st1.setString(1, newUsername);
                 st1.setString(2, email);
                 st1.executeUpdate();
@@ -1720,6 +1930,10 @@ public class AdminDashboard extends javax.swing.JFrame {
                 st3.setString(1, newPass);
                 st3.setString(2, email);
                 st3.executeUpdate();
+                
+                userNameUpdateSt.setString(1, newUsername);
+                userNameUpdateSt.setString(2, username);
+                userNameUpdateSt.executeUpdate();
 
                 tooltip.setText("All Changes Saved Successfully!");
                 relogin.setText("🚫"+"Please Re-login to see the effect");
@@ -1798,15 +2012,28 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton all_cont_update;
     private javax.swing.JPanel all_content;
     private javax.swing.JButton attach_image;
+    private javax.swing.JPanel author_count;
     private javax.swing.JPanel authors;
+    private javax.swing.JPanel content_count;
     private javax.swing.JLabel dab_text;
     private javax.swing.JPanel dashboard;
     private javax.swing.JLabel email_important_text;
     private javax.swing.JPanel header_panel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1825,7 +2052,9 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel lm_previewContent;
     public javax.swing.JLabel log_user;
     private javax.swing.JTable newAuthorTable;
+    private javax.swing.JPanel new_author_count;
     private javax.swing.JPanel new_authors;
+    private javax.swing.JPanel new_content_count;
     private javax.swing.JLabel password_important_text;
     private javax.swing.JLabel path;
     private javax.swing.JPanel preveiw_content;
