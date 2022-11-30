@@ -7,6 +7,7 @@ package author;
 
 import dashboard.AdminDashboard;
 import admin.AdminLogin;
+import dashboard.AuthorDashboard;
 import homepage.HomePage;
 import java.awt.Image;
 import java.sql.Connection;
@@ -386,7 +387,7 @@ public final class AuthorLogin extends javax.swing.JFrame {
                           
                             //If new Admin login successfully redirecting to the Admin Dashboard
                           this.dispose();
-                          AdminDashboard i = new AdminDashboard();
+                          AuthorDashboard i = new AuthorDashboard();
                           i.setVisible(true);
                       }else{
                           JOptionPane.showMessageDialog(this, "Author not found!");

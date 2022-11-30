@@ -4,6 +4,22 @@
  */
 package dashboard;
 
+import homepage.HomePage;
+import java.awt.Color;
+import java.awt.event.MouseEvent;
+import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.regex.Pattern;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import admin.AdminLogin;
+import static admin.AdminLogin.passEmailAddress;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 /**
  *
  * @author Junayed
@@ -11,10 +27,41 @@ package dashboard;
 public class AuthorDashboard extends javax.swing.JFrame {
 
     /**
-     * Creates new form AuthorDashboard
+     * Creates new form AdminDashboard
      */
+    AdminLogin ar1 = new AdminLogin();
+    String email = ar1.passEmailAddress;
+    String password = ar1.passPassword;
+    String username;
+    String filename;
+
     public AuthorDashboard() {
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+
+        //getting username from database
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String query1 = "Select username from `cms`.`admin` where email=?";
+            PreparedStatement st = con.prepareStatement(query1);
+
+            st.setString(1, passEmailAddress);
+
+            ResultSet result = st.executeQuery(); // record added. 
+
+            while (result.next()) {
+                //initializing user name to the instance variable
+                username = result.getString("username");
+            }
+        } catch (Exception e) {
+
+        }
+
         initComponents();
+
     }
 
     /**
@@ -26,22 +73,1642 @@ public class AuthorDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        PopUp = new javax.swing.JPopupMenu();
+        updateProfile = new javax.swing.JMenuItem();
+        Logout = new javax.swing.JMenuItem();
+        header_panel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        admin_logo = new javax.swing.JLabel();
+        dab_text = new javax.swing.JLabel();
+        log_user = new javax.swing.JLabel();
+        left_menu = new javax.swing.JPanel();
+        lm_allContent = new javax.swing.JPanel();
+        lm_ac_text = new javax.swing.JLabel();
+        lm_addContent = new javax.swing.JPanel();
+        lm_adc_text = new javax.swing.JLabel();
+        lm_authors = new javax.swing.JPanel();
+        lm_a_text = new javax.swing.JLabel();
+        Menu = new javax.swing.JTabbedPane();
+        dashboard = new javax.swing.JPanel();
+        author_count = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        author_counter = new javax.swing.JLabel();
+        new_author_count = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        new_author_counter = new javax.swing.JLabel();
+        content_count = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        content_counter = new javax.swing.JLabel();
+        new_content_count = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        new_content_counter = new javax.swing.JLabel();
+        all_content = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
+        all_cont_title = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        all_cont_desc = new javax.swing.JTextArea();
+        all_cont_update = new javax.swing.JButton();
+        all_cont_delete = new javax.swing.JButton();
+        add_content = new javax.swing.JPanel();
+        add_title = new javax.swing.JLabel();
+        add_title_input = new javax.swing.JTextField();
+        add_description = new javax.swing.JLabel();
+        add_image = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        add_description_input = new javax.swing.JTextArea();
+        add_content_submit = new javax.swing.JButton();
+        attach_image = new javax.swing.JButton();
+        path = new javax.swing.JLabel();
+        authors = new javax.swing.JPanel();
+        all_author_delete = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        all_author_table = new javax.swing.JTable();
+        update_profile = new javax.swing.JPanel();
+        update_profile_panel = new javax.swing.JPanel();
+        upadate_username_txt = new javax.swing.JLabel();
+        update_username_input = new javax.swing.JTextField();
+        update_email_txt = new javax.swing.JLabel();
+        update_email_input = new javax.swing.JTextField();
+        update_pass_txt = new javax.swing.JLabel();
+        update_pass_input = new javax.swing.JPasswordField();
+        show_pass = new javax.swing.JCheckBox();
+        update_profile_btn = new javax.swing.JButton();
+        tooltip = new javax.swing.JLabel();
+        username_important_text = new javax.swing.JLabel();
+        email_important_text = new javax.swing.JLabel();
+        password_important_text = new javax.swing.JLabel();
+        relogin = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        PopUp.setBackground(new java.awt.Color(0, 0, 0));
+
+        updateProfile.setText("Update Profile");
+        updateProfile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateProfileMouseClicked(evt);
+            }
+        });
+        updateProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateProfileActionPerformed(evt);
+            }
+        });
+        PopUp.add(updateProfile);
+
+        Logout.setBackground(new java.awt.Color(0, 0, 0));
+        Logout.setText("Log out");
+        Logout.setPreferredSize(new java.awt.Dimension(100, 17));
+        Logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogoutActionPerformed(evt);
+            }
+        });
+        PopUp.add(Logout);
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(102, 102, 102));
+        setMinimumSize(new java.awt.Dimension(1000, 700));
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        header_panel.setBackground(new java.awt.Color(0, 0, 0));
+
+        jLabel1.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel1.setText("Hello,");
+
+        admin_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/avatar.png"))); // NOI18N
+        admin_logo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        admin_logo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        admin_logo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                admin_logoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                admin_logoMouseEntered(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                admin_logoMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                admin_logoMouseReleased(evt);
+            }
+        });
+
+        dab_text.setFont(new java.awt.Font("Lucida Sans Typewriter", 0, 18)); // NOI18N
+        dab_text.setForeground(new java.awt.Color(204, 204, 204));
+        dab_text.setText("Dashboard");
+        dab_text.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        dab_text.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dab_textMouseClicked(evt);
+            }
+        });
+
+        log_user.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
+        log_user.setForeground(new java.awt.Color(255, 255, 255));
+        log_user.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        log_user.setText(username);
+
+        javax.swing.GroupLayout header_panelLayout = new javax.swing.GroupLayout(header_panel);
+        header_panel.setLayout(header_panelLayout);
+        header_panelLayout.setHorizontalGroup(
+            header_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(header_panelLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(dab_text)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 687, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(log_user, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(admin_logo)
+                .addGap(40, 40, 40))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        header_panelLayout.setVerticalGroup(
+            header_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, header_panelLayout.createSequentialGroup()
+                .addGroup(header_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(header_panelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(admin_logo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(header_panelLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(header_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(log_user, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(header_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(dab_text)
+                                .addComponent(jLabel1)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
+
+        getContentPane().add(header_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 65));
+
+        left_menu.setBackground(new java.awt.Color(51, 51, 51));
+
+        lm_allContent.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lm_allContent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lm_allContentMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lm_allContentMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lm_allContentMouseExited(evt);
+            }
+        });
+
+        lm_ac_text.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        lm_ac_text.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lm_ac_text.setText("All Content");
+        lm_ac_text.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lm_ac_text.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lm_ac_textMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout lm_allContentLayout = new javax.swing.GroupLayout(lm_allContent);
+        lm_allContent.setLayout(lm_allContentLayout);
+        lm_allContentLayout.setHorizontalGroup(
+            lm_allContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lm_ac_text, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        lm_allContentLayout.setVerticalGroup(
+            lm_allContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lm_ac_text, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+        );
+
+        lm_addContent.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lm_addContent.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lm_addContentMouseMoved(evt);
+            }
+        });
+        lm_addContent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lm_addContentMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lm_addContentMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lm_addContentMouseExited(evt);
+            }
+        });
+
+        lm_adc_text.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        lm_adc_text.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lm_adc_text.setText("Add Content");
+
+        javax.swing.GroupLayout lm_addContentLayout = new javax.swing.GroupLayout(lm_addContent);
+        lm_addContent.setLayout(lm_addContentLayout);
+        lm_addContentLayout.setHorizontalGroup(
+            lm_addContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lm_adc_text, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        lm_addContentLayout.setVerticalGroup(
+            lm_addContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lm_adc_text, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+        );
+
+        lm_authors.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lm_authors.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lm_authorsMouseClicked(evt);
+            }
+        });
+
+        lm_a_text.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        lm_a_text.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lm_a_text.setText("Authors");
+        lm_a_text.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lm_a_textMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout lm_authorsLayout = new javax.swing.GroupLayout(lm_authors);
+        lm_authors.setLayout(lm_authorsLayout);
+        lm_authorsLayout.setHorizontalGroup(
+            lm_authorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lm_authorsLayout.createSequentialGroup()
+                .addComponent(lm_a_text, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        lm_authorsLayout.setVerticalGroup(
+            lm_authorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lm_a_text, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout left_menuLayout = new javax.swing.GroupLayout(left_menu);
+        left_menu.setLayout(left_menuLayout);
+        left_menuLayout.setHorizontalGroup(
+            left_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(left_menuLayout.createSequentialGroup()
+                .addGroup(left_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lm_addContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lm_allContent, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lm_authors, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        left_menuLayout.setVerticalGroup(
+            left_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(left_menuLayout.createSequentialGroup()
+                .addComponent(lm_allContent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lm_addContent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lm_authors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(492, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(left_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 65, 200, 682));
+
+        Menu.setBackground(new java.awt.Color(255, 255, 255));
+        Menu.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
+        Menu.setPreferredSize(new java.awt.Dimension(898, 700));
+
+        dashboard.setBackground(new java.awt.Color(255, 255, 255));
+        dashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        author_count.setBackground(new java.awt.Color(0, 0, 0));
+
+        jPanel6.setBackground(new java.awt.Color(102, 204, 0));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 12, Short.MAX_VALUE)
+        );
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Author");
+
+        author_counter.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        author_counter.setForeground(new java.awt.Color(255, 255, 255));
+        author_counter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        author_counter.setText("0");
+
+        javax.swing.GroupLayout author_countLayout = new javax.swing.GroupLayout(author_count);
+        author_count.setLayout(author_countLayout);
+        author_countLayout.setHorizontalGroup(
+            author_countLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(author_countLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(author_counter, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
+            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        author_countLayout.setVerticalGroup(
+            author_countLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(author_countLayout.createSequentialGroup()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(author_counter, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+
+        int authorCounter = 1;
+
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String query1 = "Select * from `cms`.`author`";
+
+            PreparedStatement st1 = con.prepareStatement(query1);
+
+            ResultSet result1 = st1.executeQuery(); // record added.
+
+            while (result1.next()) {
+                author_counter.setText(Integer.toString(authorCounter++));
+            }
+
+        } catch (Exception e) {
+
+        }
+
+        dashboard.add(author_count, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 200, 140));
+
+        new_author_count.setBackground(new java.awt.Color(0, 0, 0));
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 102));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 12, Short.MAX_VALUE)
+        );
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("New Author");
+
+        new_author_counter.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        new_author_counter.setForeground(new java.awt.Color(255, 255, 255));
+        new_author_counter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        new_author_counter.setText("0");
+
+        javax.swing.GroupLayout new_author_countLayout = new javax.swing.GroupLayout(new_author_count);
+        new_author_count.setLayout(new_author_countLayout);
+        new_author_countLayout.setHorizontalGroup(
+            new_author_countLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(new_author_countLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(new_author_counter, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
+            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        new_author_countLayout.setVerticalGroup(
+            new_author_countLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(new_author_countLayout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(new_author_counter, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        int newAuthorCounter = 1;
+
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String query2 = "Select * from `cms`.`pr_authors`";
+
+            PreparedStatement st2 = con.prepareStatement(query2);
+
+            ResultSet result2 = st2.executeQuery();
+
+            while (result2.next()) {
+                new_author_counter.setText(Integer.toString(newAuthorCounter++));
+            }
+
+        } catch (Exception e) {
+
+        }
+
+        dashboard.add(new_author_count, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, -1, -1));
+
+        content_count.setBackground(new java.awt.Color(0, 0, 0));
+
+        jPanel4.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 12, Short.MAX_VALUE)
+        );
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Content");
+
+        content_counter.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        content_counter.setForeground(new java.awt.Color(255, 255, 255));
+        content_counter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        content_counter.setText("0");
+
+        javax.swing.GroupLayout content_countLayout = new javax.swing.GroupLayout(content_count);
+        content_count.setLayout(content_countLayout);
+        content_countLayout.setHorizontalGroup(
+            content_countLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(content_countLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(content_counter, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
+            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        content_countLayout.setVerticalGroup(
+            content_countLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(content_countLayout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(content_counter, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        int contentCounter = 1;
+
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String query3 = "Select * from `cms`.`content`";
+
+            PreparedStatement st3 = con.prepareStatement(query3);
+
+            ResultSet result3 = st3.executeQuery();
+
+            while (result3.next()) {
+                content_counter.setText(Integer.toString(contentCounter++));
+            }
+
+        } catch (Exception e) {
+
+        }
+
+        dashboard.add(content_count, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 200, 140));
+
+        new_content_count.setBackground(new java.awt.Color(0, 0, 0));
+
+        jPanel7.setBackground(new java.awt.Color(255, 102, 102));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 12, Short.MAX_VALUE)
+        );
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("New Content");
+
+        new_content_counter.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        new_content_counter.setForeground(new java.awt.Color(255, 255, 255));
+        new_content_counter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        new_content_counter.setText("0");
+
+        javax.swing.GroupLayout new_content_countLayout = new javax.swing.GroupLayout(new_content_count);
+        new_content_count.setLayout(new_content_countLayout);
+        new_content_countLayout.setHorizontalGroup(
+            new_content_countLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(new_content_countLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(new_content_counter, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
+            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        new_content_countLayout.setVerticalGroup(
+            new_content_countLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(new_content_countLayout.createSequentialGroup()
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(new_content_counter, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        int newContentCounter = 1;
+
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String query4 = "Select * from `cms`.`pr_content`";
+
+            PreparedStatement st4 = con.prepareStatement(query4);
+
+            ResultSet result4 = st4.executeQuery();
+
+            while (result4.next()) {
+                new_content_counter.setText(Integer.toString(newContentCounter++));
+            }
+        } catch (Exception e) {
+
+        }
+
+        dashboard.add(new_content_count, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, -1, -1));
+
+        Menu.addTab("tab1", dashboard);
+
+        all_content.setBackground(new java.awt.Color(255, 255, 255));
+        all_content.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                all_contentMouseClicked(evt);
+            }
+        });
+
+        table.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        table.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "SL", "Title", "Author", "Like", "Dislike", "Description"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table.setIntercellSpacing(new java.awt.Dimension(3, 3));
+        table.setRowHeight(30);
+        table.setShowGrid(true);
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(table);
+        if (table.getColumnModel().getColumnCount() > 0) {
+            table.getColumnModel().getColumn(0).setResizable(false);
+            table.getColumnModel().getColumn(0).setPreferredWidth(60);
+            table.getColumnModel().getColumn(1).setResizable(false);
+            table.getColumnModel().getColumn(1).setPreferredWidth(300);
+            table.getColumnModel().getColumn(2).setResizable(false);
+            table.getColumnModel().getColumn(2).setPreferredWidth(200);
+            table.getColumnModel().getColumn(3).setResizable(false);
+            table.getColumnModel().getColumn(3).setPreferredWidth(150);
+            table.getColumnModel().getColumn(3).setHeaderValue("Like");
+            table.getColumnModel().getColumn(4).setResizable(false);
+            table.getColumnModel().getColumn(4).setPreferredWidth(150);
+            table.getColumnModel().getColumn(4).setHeaderValue("Dislike");
+            table.getColumnModel().getColumn(5).setResizable(false);
+            table.getColumnModel().getColumn(5).setPreferredWidth(200);
+        }
+
+        all_cont_title.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        all_cont_desc.setColumns(20);
+        all_cont_desc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        all_cont_desc.setLineWrap(true);
+        all_cont_desc.setRows(5);
+        jScrollPane3.setViewportView(all_cont_desc);
+
+        all_cont_update.setBackground(new java.awt.Color(102, 204, 0));
+        all_cont_update.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
+        all_cont_update.setForeground(new java.awt.Color(255, 255, 255));
+        all_cont_update.setText("Update");
+        all_cont_update.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        all_cont_update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        all_cont_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                all_cont_updateActionPerformed(evt);
+            }
+        });
+
+        all_cont_delete.setBackground(new java.awt.Color(255, 0, 0));
+        all_cont_delete.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
+        all_cont_delete.setForeground(new java.awt.Color(255, 255, 255));
+        all_cont_delete.setText("Delete");
+        all_cont_delete.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        all_cont_delete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        all_cont_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                all_cont_deleteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout all_contentLayout = new javax.swing.GroupLayout(all_content);
+        all_content.setLayout(all_contentLayout);
+        all_contentLayout.setHorizontalGroup(
+            all_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(all_contentLayout.createSequentialGroup()
+                .addGroup(all_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(all_contentLayout.createSequentialGroup()
+                        .addGap(198, 198, 198)
+                        .addComponent(all_cont_update, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(135, 135, 135)
+                        .addComponent(all_cont_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(all_contentLayout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(all_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(all_cont_title)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2))))
+                .addContainerGap(78, Short.MAX_VALUE))
+        );
+        all_contentLayout.setVerticalGroup(
+            all_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(all_contentLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(all_cont_title, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(all_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(all_cont_update, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(all_cont_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(93, Short.MAX_VALUE))
+        );
+
+        Menu.addTab("tab2", all_content);
+
+        add_content.setBackground(new java.awt.Color(255, 255, 255));
+
+        add_title.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
+        add_title.setText("Add Title");
+
+        add_title_input.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        add_title_input.setToolTipText("Enter your title");
+        add_title_input.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        add_description.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
+        add_description.setText("Add Description");
+
+        add_image.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
+        add_image.setText("Add Image");
+
+        add_description_input.setColumns(20);
+        add_description_input.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        add_description_input.setLineWrap(true);
+        add_description_input.setRows(5);
+        add_description_input.setToolTipText("Enter your description");
+        add_description_input.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jScrollPane1.setViewportView(add_description_input);
+
+        add_content_submit.setBackground(new java.awt.Color(204, 204, 204));
+        add_content_submit.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
+        add_content_submit.setText("SUBMIT");
+        add_content_submit.setToolTipText("Submit now");
+        add_content_submit.setAlignmentY(0.0F);
+        add_content_submit.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        add_content_submit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add_content_submit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_content_submitActionPerformed(evt);
+            }
+        });
+
+        attach_image.setBackground(new java.awt.Color(255, 255, 255));
+        attach_image.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        attach_image.setForeground(new java.awt.Color(204, 204, 204));
+        attach_image.setText("+");
+        attach_image.setAlignmentY(0.0F);
+        attach_image.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        attach_image.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        attach_image.setIconTextGap(0);
+        attach_image.setInheritsPopupMenu(true);
+        attach_image.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                attach_imageActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout add_contentLayout = new javax.swing.GroupLayout(add_content);
+        add_content.setLayout(add_contentLayout);
+        add_contentLayout.setHorizontalGroup(
+            add_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(add_contentLayout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addGroup(add_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(attach_image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
+                    .addComponent(add_image, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(add_description, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(add_title, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(add_title_input)
+                    .addComponent(path, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(add_content_submit, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(215, Short.MAX_VALUE))
+        );
+        add_contentLayout.setVerticalGroup(
+            add_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(add_contentLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(add_title, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(add_title_input, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(add_description, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(add_image, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(attach_image, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(path)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(add_content_submit, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(85, Short.MAX_VALUE))
+        );
+
+        Menu.addTab("tab3", add_content);
+
+        authors.setBackground(new java.awt.Color(255, 255, 255));
+        authors.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                authorsMouseClicked(evt);
+            }
+        });
+
+        all_author_delete.setBackground(new java.awt.Color(255, 0, 0));
+        all_author_delete.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
+        all_author_delete.setForeground(new java.awt.Color(255, 255, 255));
+        all_author_delete.setText("Delete");
+        all_author_delete.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        all_author_delete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        all_author_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                all_author_deleteActionPerformed(evt);
+            }
+        });
+
+        all_author_table.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        all_author_table.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        all_author_table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "SL", "Author Name", "Author Email", "Total Content", "Comments"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        all_author_table.setIntercellSpacing(new java.awt.Dimension(3, 3));
+        all_author_table.setRowHeight(30);
+        all_author_table.setShowGrid(true);
+        all_author_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                all_author_tableMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(all_author_table);
+        if (all_author_table.getColumnModel().getColumnCount() > 0) {
+            all_author_table.getColumnModel().getColumn(0).setResizable(false);
+            all_author_table.getColumnModel().getColumn(0).setPreferredWidth(60);
+            all_author_table.getColumnModel().getColumn(1).setResizable(false);
+            all_author_table.getColumnModel().getColumn(1).setPreferredWidth(300);
+            all_author_table.getColumnModel().getColumn(2).setResizable(false);
+            all_author_table.getColumnModel().getColumn(2).setPreferredWidth(500);
+            all_author_table.getColumnModel().getColumn(3).setResizable(false);
+            all_author_table.getColumnModel().getColumn(3).setPreferredWidth(200);
+            all_author_table.getColumnModel().getColumn(4).setResizable(false);
+            all_author_table.getColumnModel().getColumn(4).setPreferredWidth(200);
+        }
+
+        javax.swing.GroupLayout authorsLayout = new javax.swing.GroupLayout(authors);
+        authors.setLayout(authorsLayout);
+        authorsLayout.setHorizontalGroup(
+            authorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(authorsLayout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(76, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, authorsLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(all_author_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(324, 324, 324))
+        );
+        authorsLayout.setVerticalGroup(
+            authorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(authorsLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(all_author_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(100, Short.MAX_VALUE))
+        );
+
+        Menu.addTab("tab6", authors);
+
+        update_profile_panel.setBackground(new java.awt.Color(255, 255, 255));
+
+        upadate_username_txt.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        upadate_username_txt.setText("Update Your Username: ");
+
+        update_username_input.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        update_username_input.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        update_username_input.setToolTipText("");
+        update_username_input.setActionCommand("<Not Set>");
+        update_username_input.setAlignmentX(0.0F);
+        update_username_input.setAlignmentY(0.0F);
+        update_username_input.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        update_username_input.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        update_username_input.setPreferredSize(null);
+
+        update_email_txt.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        update_email_txt.setText("Update Your Email: ");
+
+        update_email_input.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        update_email_input.setActionCommand("<Not Set>");
+        update_email_input.setAlignmentX(0.0F);
+        update_email_input.setAlignmentY(0.0F);
+        update_email_input.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        update_email_input.setMargin(new java.awt.Insets(4, 4, 4, 4));
+        update_email_input.setPreferredSize(null);
+
+        update_pass_txt.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        update_pass_txt.setText("Update Your Password: ");
+
+        update_pass_input.setActionCommand("<Not Set>");
+        update_pass_input.setAlignmentX(0.0F);
+        update_pass_input.setAlignmentY(0.0F);
+        update_pass_input.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        update_pass_input.setMargin(new java.awt.Insets(4, 4, 4, 4));
+        update_pass_input.setPreferredSize(null);
+
+        show_pass.setBackground(new java.awt.Color(255, 255, 255));
+        show_pass.setText("Show Password");
+        show_pass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                show_passActionPerformed(evt);
+            }
+        });
+
+        update_profile_btn.setBackground(new java.awt.Color(255, 255, 255));
+        update_profile_btn.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        update_profile_btn.setText("Update");
+        update_profile_btn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        update_profile_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        update_profile_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                update_profile_btnActionPerformed(evt);
+            }
+        });
+
+        tooltip.setForeground(new java.awt.Color(153, 204, 0));
+
+        username_important_text.setForeground(new java.awt.Color(255, 51, 51));
+
+        email_important_text.setForeground(new java.awt.Color(255, 51, 51));
+
+        password_important_text.setForeground(new java.awt.Color(255, 51, 51));
+
+        relogin.setFont(new java.awt.Font("Tempus Sans ITC", 0, 24)); // NOI18N
+        relogin.setForeground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout update_profile_panelLayout = new javax.swing.GroupLayout(update_profile_panel);
+        update_profile_panel.setLayout(update_profile_panelLayout);
+        update_profile_panelLayout.setHorizontalGroup(
+            update_profile_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(update_profile_panelLayout.createSequentialGroup()
+                .addGap(163, 163, 163)
+                .addGroup(update_profile_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(update_profile_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(show_pass)
+                    .addGroup(update_profile_panelLayout.createSequentialGroup()
+                        .addGroup(update_profile_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(update_pass_input, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(update_pass_txt)
+                            .addComponent(update_email_txt)
+                            .addComponent(update_email_input, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(upadate_username_txt)
+                            .addComponent(update_username_input, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32)
+                        .addGroup(update_profile_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(username_important_text, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(email_important_text, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(password_important_text, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(tooltip, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(relogin, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(105, Short.MAX_VALUE))
+        );
+        update_profile_panelLayout.setVerticalGroup(
+            update_profile_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(update_profile_panelLayout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(relogin)
+                .addGap(38, 38, 38)
+                .addComponent(upadate_username_txt)
+                .addGap(18, 18, 18)
+                .addGroup(update_profile_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(update_username_input, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(username_important_text, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(update_email_txt)
+                .addGap(18, 18, 18)
+                .addGroup(update_profile_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(update_email_input, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(email_important_text, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(update_pass_txt)
+                .addGap(18, 18, 18)
+                .addGroup(update_profile_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(update_pass_input, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(password_important_text, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(show_pass)
+                .addGap(18, 18, 18)
+                .addComponent(update_profile_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(tooltip)
+                .addContainerGap(137, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout update_profileLayout = new javax.swing.GroupLayout(update_profile);
+        update_profile.setLayout(update_profileLayout);
+        update_profileLayout.setHorizontalGroup(
+            update_profileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(update_profileLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(update_profile_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        update_profileLayout.setVerticalGroup(
+            update_profileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(update_profileLayout.createSequentialGroup()
+                .addComponent(update_profile_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        Menu.addTab("tab8", update_profile);
+
+        getContentPane().add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 820, 680));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void showPopUp(MouseEvent e) {
+        PopUp.show(this, 890, 90);
+    }
+//    
+    private void admin_logoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_admin_logoMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_admin_logoMouseClicked
+
+    private void admin_logoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_admin_logoMouseEntered
+        // TODO add your handling code here:
+        if (evt.isPopupTrigger()) {
+            showPopUp(evt);
+        }
+    }//GEN-LAST:event_admin_logoMouseEntered
+
+    private void admin_logoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_admin_logoMousePressed
+        // TODO add your handling code here:
+        if (evt.isPopupTrigger()) {
+            showPopUp(evt);
+        }
+    }//GEN-LAST:event_admin_logoMousePressed
+
+    private void admin_logoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_admin_logoMouseReleased
+        // TODO add your handling code here:
+        if (evt.isPopupTrigger()) {
+            showPopUp(evt);
+        }
+    }//GEN-LAST:event_admin_logoMouseReleased
+
+    private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        HomePage i = new HomePage();
+        i.setVisible(true);
+    }//GEN-LAST:event_LogoutActionPerformed
+
+    private void updateProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateProfileActionPerformed
+        // TODO add your handling code here:
+        Menu.setSelectedIndex(6);
+        lm_allContent.setBackground(new Color(204, 204, 204));
+        lm_addContent.setBackground(new Color(204, 204, 204));
+      
+        lm_authors.setBackground(new Color(204, 204, 204));
+       
+        update_username_input.setText(username);
+        update_email_input.setText(email);
+        update_pass_input.setText(password);
+
+    }//GEN-LAST:event_updateProfileActionPerformed
+
+    private void lm_allContentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_allContentMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_lm_allContentMouseClicked
+
+    public void dashboardInit() {
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+
+        int authorCounter = 1;
+        int newAuthorCounter = 1;
+        int contentCounter = 1;
+        int newContentCounter = 1;
+
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String query1 = "Select * from `cms`.`author`";
+            String query2 = "Select * from `cms`.`pr_authors`";
+            String query3 = "Select * from `cms`.`content`";
+            String query4 = "Select * from `cms`.`pr_content`";
+
+            PreparedStatement st1 = con.prepareStatement(query1);
+            PreparedStatement st2 = con.prepareStatement(query2);
+            PreparedStatement st3 = con.prepareStatement(query3);
+            PreparedStatement st4 = con.prepareStatement(query4);
+
+            ResultSet result1 = st1.executeQuery(); // record added. 
+            ResultSet result2 = st2.executeQuery();
+            ResultSet result3 = st3.executeQuery();
+            ResultSet result4 = st4.executeQuery();
+
+            while (result1.next()) {
+                author_counter.setText(Integer.toString(authorCounter++));
+            }
+
+            while (result2.next()) {
+                new_author_counter.setText(Integer.toString(newAuthorCounter++));
+            }
+            while (result3.next()) {
+                content_counter.setText(Integer.toString(contentCounter++));
+            }
+            while (result4.next()) {
+                new_content_counter.setText(Integer.toString(newContentCounter++));
+            }
+        } catch (Exception e) {
+
+        }
+    }
+
+    private void dab_textMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dab_textMouseClicked
+        // TODO add your handling code here:
+        Menu.setSelectedIndex(0);
+        lm_allContent.setBackground(new Color(204, 204, 204));
+        lm_addContent.setBackground(new Color(204, 204, 204));
+      
+        lm_authors.setBackground(new Color(204, 204, 204));
+     
+        dashboardInit();
+
+    }//GEN-LAST:event_dab_textMouseClicked
+
+    private void lm_addContentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_addContentMouseClicked
+        // TODO add your handling code here:
+        Menu.setSelectedIndex(2);
+        lm_allContent.setBackground(new Color(204, 204, 204));
+        lm_addContent.setBackground(Color.white);
+     
+        lm_authors.setBackground(new Color(204, 204, 204));
+      
+    }//GEN-LAST:event_lm_addContentMouseClicked
+
+    private void lm_authorsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_authorsMouseClicked
+        // TODO add your handling code here:
+        loadAuthors();
+
+    }//GEN-LAST:event_lm_authorsMouseClicked
+
+    private void lm_allContentMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_allContentMouseEntered
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_lm_allContentMouseEntered
+
+    private void lm_allContentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_allContentMouseExited
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_lm_allContentMouseExited
+
+    private void lm_addContentMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_addContentMouseEntered
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_lm_addContentMouseEntered
+
+    private void lm_addContentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_addContentMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lm_addContentMouseExited
+
+    private void lm_addContentMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_addContentMouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lm_addContentMouseMoved
+
+    private void updateProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateProfileMouseClicked
+        // TODO add your handling code here:
+        Menu.setSelectedIndex(7);
+    }//GEN-LAST:event_updateProfileMouseClicked
+
+
+    private void add_content_submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_content_submitActionPerformed
+        // TODO add your handling code here:
+
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+
+        String addTitle = add_title_input.getText();
+        String addDesc = add_description_input.getText();
+        String image = path.getText();
+
+//pushing content
+        if ("".equals(addTitle)) {
+            JOptionPane.showMessageDialog(this, "Please add your title!");
+        } else if (checkContent(addTitle)) {
+            JOptionPane.showMessageDialog(this, "Content already exist!");
+        } else if ("".equals(addDesc)) {
+            JOptionPane.showMessageDialog(this, "Please add description!");
+        } else {
+            try {
+                Class.forName("org.mariadb.jdbc.Driver");
+                Connection con = DriverManager.getConnection(url, user, passw);
+                String insertingToDB = "INSERT INTO `cms`.`content` (`title`, `description`, `author`, `image`) VALUES(?, ?, ?, ?)";
+
+                PreparedStatement st1 = con.prepareStatement(insertingToDB);
+
+                st1.setString(1, addTitle);
+                st1.setString(2, addDesc);
+                st1.setString(3, username);
+                st1.setString(4, image);
+
+                st1.executeUpdate(); // record added. 
+                con.close();
+                JOptionPane.showMessageDialog(this, "Data stored successfully");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+            }
+        }
+    }//GEN-LAST:event_add_content_submitActionPerformed
+
+    private void attach_imageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attach_imageActionPerformed
+        // TODO add your handling code here:
+        JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f = chooser.getSelectedFile();
+        filename = f.getAbsolutePath();
+        path.setText(filename);
+
+    }//GEN-LAST:event_attach_imageActionPerformed
+
+    private void all_contentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_all_contentMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_all_contentMouseClicked
+
+    public int click = 0;
+
+    //A functio for loalding content
+    public void loadContent() {
+
+        int count = 0;
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+
+        try {
+
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String query1 = "Select * from `cms`.`content`";
+            PreparedStatement st = con.prepareStatement(query1);
+
+//            st.setString(1, username);
+            ResultSet result = st.executeQuery();
+            while (result.next()) {
+
+                DefaultTableModel tb = (DefaultTableModel) table.getModel();
+
+                tb.setRowCount(0);
+
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+
+        try {
+
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String query1 = "Select * from `cms`.`content`";
+            PreparedStatement st = con.prepareStatement(query1);
+
+//            st.setString(1, username);
+            ResultSet result = st.executeQuery();
+            while (result.next()) {
+                count++;
+
+                String title = result.getString("title");
+                String desc = result.getString("description");
+                String like = String.valueOf(result.getInt("like"));
+                String dislike = String.valueOf(result.getInt("dislike"));
+                String authors = result.getString("author");
+
+                String tbData[] = {Integer.toString(count), title, authors, like, dislike, desc};
+                DefaultTableModel tb = (DefaultTableModel) table.getModel();
+                tb.addRow(tbData);
+
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+
+    }
+    private void lm_ac_textMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_ac_textMouseClicked
+        // TODO add your handling code here:
+        click++;
+        Menu.setSelectedIndex(1);
+        lm_allContent.setBackground(Color.white);
+        lm_addContent.setBackground(new Color(204, 204, 204));
+        
+        lm_authors.setBackground(new Color(204, 204, 204));
+     
+        loadContent();
+    }//GEN-LAST:event_lm_ac_textMouseClicked
+
+    private void all_cont_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_all_cont_deleteActionPerformed
+        // TODO add your handling code here:
+
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+
+        String newTitle = all_cont_title.getText();
+        String newDesc = all_cont_desc.getText();
+
+        int index = table.getSelectedRow();
+        TableModel model = table.getModel();
+        String oldTitle = model.getValueAt(index, 1).toString();
+
+//pushing content
+        try {
+
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+            String updateQuery = "DELETE FROM `content` WHERE `content`.`title` = ?";
+
+            PreparedStatement st1 = con.prepareStatement(updateQuery);
+            st1.setString(1, oldTitle);
+
+            st1.executeUpdate(); // record added. 
+            con.close();
+            JOptionPane.showMessageDialog(this, "Data Deleted successfully");
+            DefaultTableModel tb = (DefaultTableModel) table.getModel();
+
+            tb.setRowCount(0);
+
+            loadContent();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_all_cont_deleteActionPerformed
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        // TODO add your handling code here:
+        int index = table.getSelectedRow();
+        TableModel model = table.getModel();
+
+        String title = model.getValueAt(index, 1).toString();
+        String desc = model.getValueAt(index, 5).toString();
+        all_cont_title.setText(title);
+        all_cont_desc.setText(desc);
+
+    }//GEN-LAST:event_tableMouseClicked
+
+    private void all_cont_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_all_cont_updateActionPerformed
+        // TODO add your handling code here:
+
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+
+        String newTitle = all_cont_title.getText();
+        String newDesc = all_cont_desc.getText();
+
+        int index = table.getSelectedRow();
+        TableModel model = table.getModel();
+        String oldTitle = model.getValueAt(index, 1).toString();
+
+//pushing content
+        if (checkContent(newTitle)) {
+            JOptionPane.showMessageDialog(this, "Title already exist!");
+        } else {
+            try {
+
+                Class.forName("org.mariadb.jdbc.Driver");
+                Connection con = DriverManager.getConnection(url, user, passw);
+                String updateQuery = "UPDATE `content` SET `title` = ?, `description` = ?  WHERE `content`.`title` = ?";
+
+                PreparedStatement st1 = con.prepareStatement(updateQuery);
+
+                st1.setString(1, newTitle);
+                st1.setString(2, newDesc);
+                st1.setString(3, oldTitle);
+
+                st1.executeUpdate(); // record added. 
+                con.close();
+                JOptionPane.showMessageDialog(this, "Data Updated successfully");
+                loadContent();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+            }
+        }
+    }//GEN-LAST:event_all_cont_updateActionPerformed
+
+    public void loadAuthors() {
+
+        int count = 0;
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+
+        try {
+
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String query1 = "Select * from `cms`.`author`";
+            PreparedStatement st = con.prepareStatement(query1);
+
+            ResultSet result = st.executeQuery();
+            while (result.next()) {
+
+                DefaultTableModel tb = (DefaultTableModel) all_author_table.getModel();
+
+                tb.setRowCount(0);
+
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+
+        try {
+
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String query1 = "Select * from `cms`.`author`";
+            PreparedStatement st = con.prepareStatement(query1);
+
+//            st.setString(1, username);
+            ResultSet result = st.executeQuery();
+            while (result.next()) {
+                count++;
+
+                String author = result.getString("username");
+                String email = result.getString("email");
+
+                String tbData[] = {Integer.toString(count), author, email};
+                DefaultTableModel tb = (DefaultTableModel) all_author_table.getModel();
+                tb.addRow(tbData);
+
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+
+    }
+    private void all_author_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_all_author_deleteActionPerformed
+        // TODO add your handling code here:
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+
+        int index = all_author_table.getSelectedRow();
+        TableModel model = all_author_table.getModel();
+        String username = model.getValueAt(index, 1).toString();
+
+//deleting author
+        try {
+
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+            String updateQuery = "DELETE FROM `author` WHERE `author`.`username` = ?";
+
+            PreparedStatement st1 = con.prepareStatement(updateQuery);
+            st1.setString(1, username);
+
+            st1.executeUpdate(); // record added. 
+            con.close();
+            JOptionPane.showMessageDialog(this, "Author Deleted successfully");
+            DefaultTableModel tb = (DefaultTableModel) all_author_table.getModel();
+
+            tb.setRowCount(0);
+
+            loadAuthors();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_all_author_deleteActionPerformed
+
+    private void all_author_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_all_author_tableMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_all_author_tableMouseClicked
+
+    private void authorsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_authorsMouseClicked
+        // TODO add your handling code here:
+        loadAuthors();
+    }//GEN-LAST:event_authorsMouseClicked
+
+    private void lm_a_textMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_a_textMouseClicked
+        // TODO add your handling code here:
+        Menu.setSelectedIndex(4);
+        lm_allContent.setBackground(new Color(204, 204, 204));
+        lm_addContent.setBackground(new Color(204, 204, 204));
+        
+        lm_authors.setBackground(Color.white);
+        
+
+        loadAuthors();
+    }//GEN-LAST:event_lm_a_textMouseClicked
+
+    
+    private void show_passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_show_passActionPerformed
+        // TODO add your handling code here:
+        if (show_pass.isSelected()) {
+            update_pass_input.setEchoChar((char) 0);
+
+        } else {
+            update_pass_input.setEchoChar('*');
+
+        }
+    }//GEN-LAST:event_show_passActionPerformed
+
+    private void update_profile_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_profile_btnActionPerformed
+        // TODO add your handling code here:
+
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+
+        String newUsername = update_username_input.getText();
+        String newEmail = update_email_input.getText();
+        String newPass = new String(update_pass_input.getPassword());
+
+        if ("".equals(newUsername)) {
+            username_important_text.setText("Can't be empty!");
+            username_important_text.setForeground(Color.RED);
+            tooltip.setText("");
+        } else if (!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[g]{1}+[m]{1}+[a]{1}+[i]{1}+[l]{1}+[.]{1}+[c]{1}+[o]{1}+[m]{1}+$", newEmail))) {
+            email_important_text.setText("Not a valid email!");
+            email_important_text.setForeground(Color.RED);
+            tooltip.setText("");
+        } else if ("".equals(newEmail)) {
+            email_important_text.setText("Can't be empty!");
+            email_important_text.setForeground(Color.RED);
+            tooltip.setText("");
+        } else if ("".equals(newPass)) {
+            password_important_text.setText("Can't be empty!");
+            password_important_text.setForeground(Color.RED);
+            tooltip.setText("");
+        } else {
+            email_important_text.setText("✔");
+            email_important_text.setForeground(Color.GREEN);
+            password_important_text.setText("✔");
+            password_important_text.setForeground(Color.GREEN);
+            username_important_text.setText("✔");
+            username_important_text.setForeground(Color.GREEN);
+
+            try {
+                Class.forName("org.mariadb.jdbc.Driver");
+                Connection con = DriverManager.getConnection(url, user, passw);
+                String updateAdmin1 = "UPDATE `cms`.`admin` SET username=? WHERE email=?";
+                String updateAdmin2 = "UPDATE `cms`.`admin` SET email=? WHERE email=?";
+                String updateAdmin3 = "UPDATE `cms`.`admin` SET password=? WHERE email=?";
+                String userNameUpdate = "UPDATE `cms`.`content` SET author=? WHERE author=?";
+
+                PreparedStatement st1 = con.prepareStatement(updateAdmin1);
+                PreparedStatement st2 = con.prepareStatement(updateAdmin2);
+                PreparedStatement st3 = con.prepareStatement(updateAdmin3);
+                PreparedStatement userNameUpdateSt = con.prepareStatement(userNameUpdate);
+                st1.setString(1, newUsername);
+                st1.setString(2, email);
+                st1.executeUpdate();
+
+                st2.setString(1, newEmail);
+                st2.setString(2, email);
+                st2.executeUpdate();
+
+                st3.setString(1, newPass);
+                st3.setString(2, email);
+                st3.executeUpdate();
+
+                userNameUpdateSt.setString(1, newUsername);
+                userNameUpdateSt.setString(2, username);
+                userNameUpdateSt.executeUpdate();
+
+                tooltip.setText("All Changes Saved Successfully!");
+                relogin.setText("🚫" + "Please Re-login to see the effect");
+
+            } catch (Exception e) {
+                tooltip.setText(e.toString());
+            }
+        }
+
+
+    }//GEN-LAST:event_update_profile_btnActionPerformed
+
+    //Checking if the content is available in the main content table function definition
+    public boolean checkContent(String title) {
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+        boolean boolresult = false;
+
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String query = "SELECT * FROM `cms`.`content`";
+            PreparedStatement st = con.prepareStatement(query);
+
+            ResultSet result = st.executeQuery();
+
+            while (result.next()) {
+                String resTitle = result.getString("title");
+                if (resTitle.equals(title)) {
+                    boolresult = true;
+                    break;
+                } else {
+                    boolresult = false;
+                }
+            }
+
+        } catch (Exception e) {
+
+        }
+
+        return boolresult;
+    }
+
+    
     /**
      * @param args the command line arguments
      */
@@ -56,17 +1723,26 @@ public class AuthorDashboard extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AuthorDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuthorDashboard.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AuthorDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuthorDashboard.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AuthorDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuthorDashboard.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AuthorDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuthorDashboard.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -78,5 +1754,75 @@ public class AuthorDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Logout;
+    private javax.swing.JTabbedPane Menu;
+    private javax.swing.JPopupMenu PopUp;
+    private javax.swing.JPanel add_content;
+    private javax.swing.JButton add_content_submit;
+    private javax.swing.JLabel add_description;
+    private javax.swing.JTextArea add_description_input;
+    private javax.swing.JLabel add_image;
+    private javax.swing.JLabel add_title;
+    private javax.swing.JTextField add_title_input;
+    private javax.swing.JLabel admin_logo;
+    private javax.swing.JButton all_author_delete;
+    private javax.swing.JTable all_author_table;
+    private javax.swing.JButton all_cont_delete;
+    private javax.swing.JTextArea all_cont_desc;
+    private javax.swing.JTextField all_cont_title;
+    private javax.swing.JButton all_cont_update;
+    private javax.swing.JPanel all_content;
+    private javax.swing.JButton attach_image;
+    private javax.swing.JPanel author_count;
+    private javax.swing.JLabel author_counter;
+    private javax.swing.JPanel authors;
+    private javax.swing.JPanel content_count;
+    private javax.swing.JLabel content_counter;
+    private javax.swing.JLabel dab_text;
+    private javax.swing.JPanel dashboard;
+    private javax.swing.JLabel email_important_text;
+    private javax.swing.JPanel header_panel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JPanel left_menu;
+    private javax.swing.JLabel lm_a_text;
+    private javax.swing.JLabel lm_ac_text;
+    private javax.swing.JLabel lm_adc_text;
+    private javax.swing.JPanel lm_addContent;
+    private javax.swing.JPanel lm_allContent;
+    private javax.swing.JPanel lm_authors;
+    public javax.swing.JLabel log_user;
+    private javax.swing.JPanel new_author_count;
+    private javax.swing.JLabel new_author_counter;
+    private javax.swing.JPanel new_content_count;
+    private javax.swing.JLabel new_content_counter;
+    private javax.swing.JLabel password_important_text;
+    private javax.swing.JLabel path;
+    private javax.swing.JLabel relogin;
+    private javax.swing.JCheckBox show_pass;
+    private javax.swing.JTable table;
+    private javax.swing.JLabel tooltip;
+    private javax.swing.JLabel upadate_username_txt;
+    private javax.swing.JMenuItem updateProfile;
+    private javax.swing.JTextField update_email_input;
+    private javax.swing.JLabel update_email_txt;
+    private javax.swing.JPasswordField update_pass_input;
+    private javax.swing.JLabel update_pass_txt;
+    private javax.swing.JPanel update_profile;
+    private javax.swing.JButton update_profile_btn;
+    private javax.swing.JPanel update_profile_panel;
+    private javax.swing.JTextField update_username_input;
+    private javax.swing.JLabel username_important_text;
     // End of variables declaration//GEN-END:variables
 }

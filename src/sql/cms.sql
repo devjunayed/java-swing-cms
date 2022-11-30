@@ -26,7 +26,8 @@ CREATE TABLE `cms`.`author` (
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
+INSERT INTO `cms`.`author` (`id`, `username`, `email`, `question`, `answer`, `password`) VALUES
+(1, 'junayed', 'junayed@gmail.com', 'Whats your nickname', 'junayed', 'junayed');
 
 CREATE TABLE `cms`.`content` (
   `id` int(250) NOT NULL,

@@ -40,7 +40,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         String user = "root";
         String passw = "";
 
-        
         //getting username from database
         try {
             Class.forName("org.mariadb.jdbc.Driver");
@@ -60,7 +59,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         } catch (Exception e) {
 
         }
-        
+
         initComponents();
 
     }
@@ -1531,7 +1530,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         lm_previewContent.setBackground(new Color(204, 204, 204));
         lm_authors.setBackground(new Color(204, 204, 204));
         lm_newAuthors.setBackground(new Color(204, 204, 204));
-        
+
         dashboardInit();
 
     }//GEN-LAST:event_dab_textMouseClicked
@@ -2247,8 +2246,12 @@ public class AdminDashboard extends javax.swing.JFrame {
 
             st1.executeUpdate(); // record added. 
             con.close();
-            JOptionPane.showMessageDialog(this, "Content Approved successfully");
+            DefaultTableModel tb = (DefaultTableModel) pr_content_table.getModel();
+            tb.setRowCount(0);
+
             loadPreviewContent();
+            JOptionPane.showMessageDialog(this, "Content Approved successfully");
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
         }
@@ -2265,7 +2268,10 @@ public class AdminDashboard extends javax.swing.JFrame {
             st1.setString(1, prTitle);
 
             st1.executeUpdate(); // record added. 
+
             con.close();
+            DefaultTableModel tb = (DefaultTableModel) pr_content_table.getModel();
+            tb.setRowCount(0);
             loadPreviewContent();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
@@ -2300,6 +2306,9 @@ public class AdminDashboard extends javax.swing.JFrame {
             st1.executeUpdate(); // record added. 
             con.close();
             JOptionPane.showMessageDialog(this, "Content Deleted successfully");
+            DefaultTableModel tb = (DefaultTableModel) pr_content_table.getModel();
+            tb.setRowCount(0);
+
             loadPreviewContent();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
