@@ -241,9 +241,6 @@
       <SubComponents>
         <Container class="javax.swing.JPanel" name="lm_allContent">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="cc" red="cc" type="rgb"/>
-            </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -564,6 +561,9 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="0"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="String url = &quot;jdbc:mariadb://127.0.0.1:3306/cms&quot;;&#xa;        String user = &quot;root&quot;;&#xa;        String passw = &quot;&quot;;&#xa;&#xa;        int authorCounter = 1;&#xa;&#xa;        try {&#xa;            Class.forName(&quot;org.mariadb.jdbc.Driver&quot;);&#xa;            Connection con = DriverManager.getConnection(url, user, passw);&#xa;&#xa;            String query1 = &quot;Select * from `cms`.`author`&quot;;&#xa;           &#xa;            PreparedStatement st1 = con.prepareStatement(query1);&#xa;           &#xa;            ResultSet result1 = st1.executeQuery(); // record added. &#xa;           &#xa;            while (result1.next()) {&#xa;                author_counter.setText(Integer.toString(authorCounter++));&#xa;            }&#xa;&#xa;          &#xa;        } catch (Exception e) {&#xa;&#xa;        }"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
@@ -648,6 +648,9 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="0"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="int newAuthorCounter = 1;&#xa;&#xa;&#xa;        try {&#xa;            Class.forName(&quot;org.mariadb.jdbc.Driver&quot;);&#xa;            Connection con = DriverManager.getConnection(url, user, passw);&#xa;&#xa;&#xa;            String query2 = &quot;Select * from `cms`.`pr_authors`&quot;;&#xa;            &#xa;&#xa;           &#xa;            PreparedStatement st2 = con.prepareStatement(query2);&#xa;           &#xa;&#xa;           &#xa;            ResultSet result2 = st2.executeQuery();&#xa;&#xa;&#xa;          &#xa;&#xa;            while (result2.next()) {&#xa;                new_author_counter.setText(Integer.toString(newAuthorCounter++));&#xa;            }&#xa;          &#xa;        } catch (Exception e) {&#xa;&#xa;        }"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
@@ -732,6 +735,9 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="0"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="int contentCounter = 1;&#xa;       &#xa;&#xa;        try {&#xa;            Class.forName(&quot;org.mariadb.jdbc.Driver&quot;);&#xa;            Connection con = DriverManager.getConnection(url, user, passw);&#xa;&#xa;        &#xa;            String query3 = &quot;Select * from `cms`.`content`&quot;;&#xa;          &#xa;           &#xa;            PreparedStatement st3 = con.prepareStatement(query3);&#xa;            &#xa;         &#xa;            ResultSet result3 = st3.executeQuery();&#xa;           &#xa;           &#xa;            while (result3.next()) {&#xa;                content_counter.setText(Integer.toString(contentCounter++));&#xa;            }&#xa;           &#xa;        } catch (Exception e) {&#xa;&#xa;        }"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
@@ -816,6 +822,9 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="0"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="int newContentCounter = 1;&#xa;&#xa;        try {&#xa;            Class.forName(&quot;org.mariadb.jdbc.Driver&quot;);&#xa;            Connection con = DriverManager.getConnection(url, user, passw);&#xa;&#xa;            String query4 = &quot;Select * from `cms`.`pr_content`&quot;;&#xa;&#xa;           &#xa;            PreparedStatement st4 = con.prepareStatement(query4);&#xa;&#xa;         &#xa;            ResultSet result4 = st4.executeQuery();&#xa;&#xa;            while (result4.next()) {&#xa;                new_content_counter.setText(Integer.toString(newContentCounter++));&#xa;            }&#xa;        } catch (Exception e) {&#xa;&#xa;        }"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>

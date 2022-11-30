@@ -272,7 +272,6 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         left_menu.setBackground(new java.awt.Color(51, 51, 51));
 
-        lm_allContent.setBackground(new java.awt.Color(204, 204, 204));
         lm_allContent.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lm_allContent.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -515,6 +514,30 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+
+        int authorCounter = 1;
+
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String query1 = "Select * from `cms`.`author`";
+
+            PreparedStatement st1 = con.prepareStatement(query1);
+
+            ResultSet result1 = st1.executeQuery(); // record added.
+
+            while (result1.next()) {
+                author_counter.setText(Integer.toString(authorCounter++));
+            }
+
+        } catch (Exception e) {
+
+        }
+
         dashboard.add(author_count, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 200, 140));
 
         new_author_count.setBackground(new java.awt.Color(0, 0, 0));
@@ -563,6 +586,26 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        int newAuthorCounter = 1;
+
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String query2 = "Select * from `cms`.`pr_authors`";
+
+            PreparedStatement st2 = con.prepareStatement(query2);
+
+            ResultSet result2 = st2.executeQuery();
+
+            while (result2.next()) {
+                new_author_counter.setText(Integer.toString(newAuthorCounter++));
+            }
+
+        } catch (Exception e) {
+
+        }
 
         dashboard.add(new_author_count, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, -1, -1));
 
@@ -613,6 +656,26 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        int contentCounter = 1;
+
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String query3 = "Select * from `cms`.`content`";
+
+            PreparedStatement st3 = con.prepareStatement(query3);
+
+            ResultSet result3 = st3.executeQuery();
+
+            while (result3.next()) {
+                content_counter.setText(Integer.toString(contentCounter++));
+            }
+
+        } catch (Exception e) {
+
+        }
+
         dashboard.add(content_count, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 200, 140));
 
         new_content_count.setBackground(new java.awt.Color(0, 0, 0));
@@ -661,6 +724,25 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        int newContentCounter = 1;
+
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String query4 = "Select * from `cms`.`pr_content`";
+
+            PreparedStatement st4 = con.prepareStatement(query4);
+
+            ResultSet result4 = st4.executeQuery();
+
+            while (result4.next()) {
+                new_content_counter.setText(Integer.toString(newContentCounter++));
+            }
+        } catch (Exception e) {
+
+        }
 
         dashboard.add(new_content_count, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, -1, -1));
 
