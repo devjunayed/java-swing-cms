@@ -40,6 +40,8 @@ public class AdminDashboard extends javax.swing.JFrame {
         String user = "root";
         String passw = "";
 
+        
+        //getting username from database
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             Connection con = DriverManager.getConnection(url, user, passw);
@@ -52,11 +54,13 @@ public class AdminDashboard extends javax.swing.JFrame {
             ResultSet result = st.executeQuery(); // record added. 
 
             while (result.next()) {
+                //initializing user name to the instance variable
                 username = result.getString("username");
             }
         } catch (Exception e) {
 
         }
+        
         initComponents();
 
     }
@@ -379,6 +383,11 @@ public class AdminDashboard extends javax.swing.JFrame {
         lm_pc_text.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
         lm_pc_text.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lm_pc_text.setText("Preview Content");
+        lm_pc_text.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lm_pc_textMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout lm_previewContentLayout = new javax.swing.GroupLayout(lm_previewContent);
         lm_previewContent.setLayout(lm_previewContentLayout);
@@ -1385,25 +1394,16 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     }//GEN-LAST:event_lm_allContentMouseClicked
 
-    private void dab_textMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dab_textMouseClicked
-        // TODO add your handling code here:
-        Menu.setSelectedIndex(0);
-        lm_allContent.setBackground(new Color(204, 204, 204));
-        lm_addContent.setBackground(new Color(204, 204, 204));
-        lm_previewContent.setBackground(new Color(204, 204, 204));
-        lm_authors.setBackground(new Color(204, 204, 204));
-        lm_newAuthors.setBackground(new Color(204, 204, 204));
-
+    public void dashboardInit() {
         String url = "jdbc:mariadb://127.0.0.1:3306/cms";
         String user = "root";
         String passw = "";
-        
+
         int authorCounter = 1;
         int newAuthorCounter = 1;
         int contentCounter = 1;
         int newContentCounter = 1;
-          
-        
+
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             Connection con = DriverManager.getConnection(url, user, passw);
@@ -1417,29 +1417,40 @@ public class AdminDashboard extends javax.swing.JFrame {
             PreparedStatement st2 = con.prepareStatement(query2);
             PreparedStatement st3 = con.prepareStatement(query3);
             PreparedStatement st4 = con.prepareStatement(query4);
-            
+
             ResultSet result1 = st1.executeQuery(); // record added. 
             ResultSet result2 = st2.executeQuery();
             ResultSet result3 = st3.executeQuery();
             ResultSet result4 = st4.executeQuery();
-            
+
             while (result1.next()) {
                 author_counter.setText(Integer.toString(authorCounter++));
             }
-            
-            while(result2.next()){
+
+            while (result2.next()) {
                 new_author_counter.setText(Integer.toString(newAuthorCounter++));
             }
-            while(result3.next()){
+            while (result3.next()) {
                 content_counter.setText(Integer.toString(contentCounter++));
             }
-            while(result4.next()){
+            while (result4.next()) {
                 new_content_counter.setText(Integer.toString(newContentCounter++));
             }
         } catch (Exception e) {
 
         }
+    }
 
+    private void dab_textMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dab_textMouseClicked
+        // TODO add your handling code here:
+        Menu.setSelectedIndex(0);
+        lm_allContent.setBackground(new Color(204, 204, 204));
+        lm_addContent.setBackground(new Color(204, 204, 204));
+        lm_previewContent.setBackground(new Color(204, 204, 204));
+        lm_authors.setBackground(new Color(204, 204, 204));
+        lm_newAuthors.setBackground(new Color(204, 204, 204));
+        
+        dashboardInit();
 
     }//GEN-LAST:event_dab_textMouseClicked
 
@@ -1455,12 +1466,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     private void lm_previewContentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_previewContentMouseClicked
         // TODO add your handling code here:
-        Menu.setSelectedIndex(3);
-        lm_allContent.setBackground(new Color(204, 204, 204));
-        lm_addContent.setBackground(new Color(204, 204, 204));
-        lm_previewContent.setBackground(Color.white);
-        lm_authors.setBackground(new Color(204, 204, 204));
-        lm_newAuthors.setBackground(new Color(204, 204, 204));
+
     }//GEN-LAST:event_lm_previewContentMouseClicked
 
     private void lm_authorsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_authorsMouseClicked
@@ -1515,14 +1521,14 @@ public class AdminDashboard extends javax.swing.JFrame {
         String image = path.getText();
 
 //pushing content
-        try {
-
-            if ("".equals(addTitle)) {
-                JOptionPane.showMessageDialog(this, "Please add your title");
-            } else if ("".equals(addDesc)) {
-                JOptionPane.showMessageDialog(this, "Please add description");
-            } else {
-
+        if ("".equals(addTitle)) {
+            JOptionPane.showMessageDialog(this, "Please add your title!");
+        } else if (checkContent(addTitle)) {
+            JOptionPane.showMessageDialog(this, "Content already exist!");
+        } else if ("".equals(addDesc)) {
+            JOptionPane.showMessageDialog(this, "Please add description!");
+        } else {
+            try {
                 Class.forName("org.mariadb.jdbc.Driver");
                 Connection con = DriverManager.getConnection(url, user, passw);
                 String insertingToDB = "INSERT INTO `cms`.`content` (`title`, `description`, `author`, `image`) VALUES(?, ?, ?, ?)";
@@ -1537,9 +1543,9 @@ public class AdminDashboard extends javax.swing.JFrame {
                 st1.executeUpdate(); // record added. 
                 con.close();
                 JOptionPane.showMessageDialog(this, "Data stored successfully");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
         }
     }//GEN-LAST:event_add_content_submitActionPerformed
 
@@ -1696,24 +1702,28 @@ public class AdminDashboard extends javax.swing.JFrame {
         String oldTitle = model.getValueAt(index, 1).toString();
 
 //pushing content
-        try {
+        if (checkContent(newTitle)) {
+            JOptionPane.showMessageDialog(this, "Title already exist!");
+        } else {
+            try {
 
-            Class.forName("org.mariadb.jdbc.Driver");
-            Connection con = DriverManager.getConnection(url, user, passw);
-            String updateQuery = "UPDATE `content` SET `title` = ?, `description` = ?  WHERE `content`.`title` = ?";
+                Class.forName("org.mariadb.jdbc.Driver");
+                Connection con = DriverManager.getConnection(url, user, passw);
+                String updateQuery = "UPDATE `content` SET `title` = ?, `description` = ?  WHERE `content`.`title` = ?";
 
-            PreparedStatement st1 = con.prepareStatement(updateQuery);
+                PreparedStatement st1 = con.prepareStatement(updateQuery);
 
-            st1.setString(1, newTitle);
-            st1.setString(2, newDesc);
-            st1.setString(3, oldTitle);
+                st1.setString(1, newTitle);
+                st1.setString(2, newDesc);
+                st1.setString(3, oldTitle);
 
-            st1.executeUpdate(); // record added. 
-            con.close();
-            JOptionPane.showMessageDialog(this, "Data Updated successfully");
-            loadContent();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
+                st1.executeUpdate(); // record added. 
+                con.close();
+                JOptionPane.showMessageDialog(this, "Data Updated successfully");
+                loadContent();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+            }
         }
     }//GEN-LAST:event_all_cont_updateActionPerformed
 
@@ -2084,16 +2094,202 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_update_profile_btnActionPerformed
 
     private void pr_content_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pr_content_tableMouseClicked
-        // TODO add your handling code here:
+
+        int index = pr_content_table.getSelectedRow();
+        TableModel model = pr_content_table.getModel();
+
+        String title = model.getValueAt(index, 1).toString();
+        String desc = model.getValueAt(index, 3).toString();
+        pr_content_title.setText(title);
+        pr_content_description.setText(desc);
     }//GEN-LAST:event_pr_content_tableMouseClicked
 
+    //Checking if the content is available in the main content table function definition
+    public boolean checkContent(String title) {
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+        boolean boolresult = false;
+
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String query = "SELECT * FROM `cms`.`content`";
+            PreparedStatement st = con.prepareStatement(query);
+
+            ResultSet result = st.executeQuery();
+
+            while (result.next()) {
+                String resTitle = result.getString("title");
+                if (resTitle.equals(title)) {
+                    boolresult = true;
+                    break;
+                } else {
+                    boolresult = false;
+                }
+            }
+
+        } catch (Exception e) {
+
+        }
+
+        return boolresult;
+    }
+
     private void pr_content_approveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pr_content_approveActionPerformed
-        // TODO add your handling code here:
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+
+        int index = pr_content_table.getSelectedRow();
+        TableModel model = pr_content_table.getModel();
+
+        String prTitle = model.getValueAt(index, 1).toString();
+        String prAuthor = model.getValueAt(index, 2).toString();
+        String prDesc = model.getValueAt(index, 3).toString();
+
+//pushing content
+        try {
+
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String insertQuery = "INSERT INTO `cms`.`content`(`title`, `author`, `description`) VALUES (?, ?, ?)";
+
+            PreparedStatement st1 = con.prepareStatement(insertQuery);
+
+            st1.setString(1, prTitle);
+            st1.setString(2, prAuthor);
+            st1.setString(3, prDesc);
+
+            st1.executeUpdate(); // record added. 
+            con.close();
+            JOptionPane.showMessageDialog(this, "Content Approved successfully");
+            loadPreviewContent();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+
+        try {
+
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String deleteQuery = "DELETE FROM `cms`.`pr_content` WHERE `title`=? ";
+
+            PreparedStatement st1 = con.prepareStatement(deleteQuery);
+
+            st1.setString(1, prTitle);
+
+            st1.executeUpdate(); // record added. 
+            con.close();
+            loadPreviewContent();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+
     }//GEN-LAST:event_pr_content_approveActionPerformed
 
     private void pr_content_disapproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pr_content_disapproveActionPerformed
-        // TODO add your handling code here:
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+
+        int index = pr_content_table.getSelectedRow();
+        TableModel model = pr_content_table.getModel();
+
+        String prTitle = model.getValueAt(index, 1).toString();
+        String prAuthor = model.getValueAt(index, 2).toString();
+        String prDesc = model.getValueAt(index, 3).toString();
+
+//pushing content
+        try {
+
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String deleteQuery = "DELETE FROM `cms`.`pr_content` WHERE `title`=? ";
+
+            PreparedStatement st1 = con.prepareStatement(deleteQuery);
+
+            st1.setString(1, prTitle);
+
+            st1.executeUpdate(); // record added. 
+            con.close();
+            JOptionPane.showMessageDialog(this, "Content Deleted successfully");
+            loadPreviewContent();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
     }//GEN-LAST:event_pr_content_disapproveActionPerformed
+
+    public void loadPreviewContent() {
+        int count = 0;
+        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
+        String user = "root";
+        String passw = "";
+
+        try {
+
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String query1 = "Select * from `cms`.`pr_content`";
+            PreparedStatement st = con.prepareStatement(query1);
+
+//            st.setString(1, username);
+            ResultSet result = st.executeQuery();
+            while (result.next()) {
+
+                DefaultTableModel tb = (DefaultTableModel) pr_content_table.getModel();
+
+                tb.setRowCount(0);
+
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+
+        try {
+
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, passw);
+
+            String query1 = "Select * from `cms`.`pr_content`";
+            PreparedStatement st = con.prepareStatement(query1);
+
+//            st.setString(1, username);
+            ResultSet result = st.executeQuery();
+            while (result.next()) {
+                count++;
+
+                String title = result.getString("title");
+                String desc = result.getString("description");
+                String authors = result.getString("author");
+
+                String tbData[] = {Integer.toString(count), title, authors, desc};
+                DefaultTableModel tb = (DefaultTableModel) pr_content_table.getModel();
+                tb.addRow(tbData);
+
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+
+    }
+    private void lm_pc_textMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_pc_textMouseClicked
+        // TODO add your handling code here:
+        Menu.setSelectedIndex(3);
+        lm_allContent.setBackground(new Color(204, 204, 204));
+        lm_addContent.setBackground(new Color(204, 204, 204));
+        lm_previewContent.setBackground(Color.white);
+        lm_authors.setBackground(new Color(204, 204, 204));
+        lm_newAuthors.setBackground(new Color(204, 204, 204));
+        loadPreviewContent();
+    }//GEN-LAST:event_lm_pc_textMouseClicked
 
     /**
      * @param args the command line arguments
