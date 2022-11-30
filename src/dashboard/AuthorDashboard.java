@@ -17,6 +17,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import admin.AdminLogin;
 import static admin.AdminLogin.passEmailAddress;
+import author.AuthorLogin;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -29,7 +30,7 @@ public class AuthorDashboard extends javax.swing.JFrame {
     /**
      * Creates new form AdminDashboard
      */
-    AdminLogin ar1 = new AdminLogin();
+    AuthorLogin ar1 = new AuthorLogin();
     String email = ar1.passEmailAddress;
     String password = ar1.passPassword;
     String username;
@@ -45,10 +46,10 @@ public class AuthorDashboard extends javax.swing.JFrame {
             Class.forName("org.mariadb.jdbc.Driver");
             Connection con = DriverManager.getConnection(url, user, passw);
 
-            String query1 = "Select username from `cms`.`admin` where email=?";
+            String query1 = "Select username from `cms`.`author` where email=?";
             PreparedStatement st = con.prepareStatement(query1);
 
-            st.setString(1, passEmailAddress);
+            st.setString(1, email);
 
             ResultSet result = st.executeQuery(); // record added. 
 
@@ -125,7 +126,6 @@ public class AuthorDashboard extends javax.swing.JFrame {
         attach_image = new javax.swing.JButton();
         path = new javax.swing.JLabel();
         authors = new javax.swing.JPanel();
-        all_author_delete = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         all_author_table = new javax.swing.JTable();
         update_profile = new javax.swing.JPanel();
@@ -172,6 +172,7 @@ public class AuthorDashboard extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 102));
         setMinimumSize(new java.awt.Dimension(1000, 700));
+        setPreferredSize(new java.awt.Dimension(1000, 700));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -879,18 +880,6 @@ public class AuthorDashboard extends javax.swing.JFrame {
             }
         });
 
-        all_author_delete.setBackground(new java.awt.Color(255, 0, 0));
-        all_author_delete.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
-        all_author_delete.setForeground(new java.awt.Color(255, 255, 255));
-        all_author_delete.setText("Delete");
-        all_author_delete.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        all_author_delete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        all_author_delete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                all_author_deleteActionPerformed(evt);
-            }
-        });
-
         all_author_table.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         all_author_table.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         all_author_table.setModel(new javax.swing.table.DefaultTableModel(
@@ -939,19 +928,13 @@ public class AuthorDashboard extends javax.swing.JFrame {
                 .addGap(68, 68, 68)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(76, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, authorsLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(all_author_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(324, 324, 324))
         );
         authorsLayout.setVerticalGroup(
             authorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(authorsLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(all_author_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         Menu.addTab("tab6", authors);
@@ -1142,7 +1125,7 @@ public class AuthorDashboard extends javax.swing.JFrame {
 
     private void updateProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateProfileActionPerformed
         // TODO add your handling code here:
-        Menu.setSelectedIndex(6);
+        Menu.setSelectedIndex(4);
         lm_allContent.setBackground(new Color(204, 204, 204));
         lm_addContent.setBackground(new Color(204, 204, 204));
       
@@ -1259,7 +1242,7 @@ public class AuthorDashboard extends javax.swing.JFrame {
 
     private void updateProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateProfileMouseClicked
         // TODO add your handling code here:
-        Menu.setSelectedIndex(7);
+        Menu.setSelectedIndex(5);
     }//GEN-LAST:event_updateProfileMouseClicked
 
 
@@ -1285,7 +1268,7 @@ public class AuthorDashboard extends javax.swing.JFrame {
             try {
                 Class.forName("org.mariadb.jdbc.Driver");
                 Connection con = DriverManager.getConnection(url, user, passw);
-                String insertingToDB = "INSERT INTO `cms`.`content` (`title`, `description`, `author`, `image`) VALUES(?, ?, ?, ?)";
+                String insertingToDB = "INSERT INTO `cms`.`pr_content` (`title`, `description`, `author`, `image`) VALUES(?, ?, ?, ?)";
 
                 PreparedStatement st1 = con.prepareStatement(insertingToDB);
 
@@ -1296,7 +1279,7 @@ public class AuthorDashboard extends javax.swing.JFrame {
 
                 st1.executeUpdate(); // record added. 
                 con.close();
-                JOptionPane.showMessageDialog(this, "Data stored successfully");
+                JOptionPane.showMessageDialog(this, "Data stored request successfully\nIt may take few days for approval\nThank you");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e);
             }
@@ -1332,10 +1315,10 @@ public class AuthorDashboard extends javax.swing.JFrame {
             Class.forName("org.mariadb.jdbc.Driver");
             Connection con = DriverManager.getConnection(url, user, passw);
 
-            String query1 = "Select * from `cms`.`content`";
+            String query1 = "Select * from `cms`.`content` where `author`=?";
             PreparedStatement st = con.prepareStatement(query1);
 
-//            st.setString(1, username);
+            st.setString(1, username);
             ResultSet result = st.executeQuery();
             while (result.next()) {
 
@@ -1354,10 +1337,10 @@ public class AuthorDashboard extends javax.swing.JFrame {
             Class.forName("org.mariadb.jdbc.Driver");
             Connection con = DriverManager.getConnection(url, user, passw);
 
-            String query1 = "Select * from `cms`.`content`";
+            String query1 = "Select * from `cms`.`content` where `author`=?";
             PreparedStatement st = con.prepareStatement(query1);
 
-//            st.setString(1, username);
+            st.setString(1, username);
             ResultSet result = st.executeQuery();
             while (result.next()) {
                 count++;
@@ -1535,39 +1518,6 @@ public class AuthorDashboard extends javax.swing.JFrame {
         }
 
     }
-    private void all_author_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_all_author_deleteActionPerformed
-        // TODO add your handling code here:
-        String url = "jdbc:mariadb://127.0.0.1:3306/cms";
-        String user = "root";
-        String passw = "";
-
-        int index = all_author_table.getSelectedRow();
-        TableModel model = all_author_table.getModel();
-        String username = model.getValueAt(index, 1).toString();
-
-//deleting author
-        try {
-
-            Class.forName("org.mariadb.jdbc.Driver");
-            Connection con = DriverManager.getConnection(url, user, passw);
-            String updateQuery = "DELETE FROM `author` WHERE `author`.`username` = ?";
-
-            PreparedStatement st1 = con.prepareStatement(updateQuery);
-            st1.setString(1, username);
-
-            st1.executeUpdate(); // record added. 
-            con.close();
-            JOptionPane.showMessageDialog(this, "Author Deleted successfully");
-            DefaultTableModel tb = (DefaultTableModel) all_author_table.getModel();
-
-            tb.setRowCount(0);
-
-            loadAuthors();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
-        }
-    }//GEN-LAST:event_all_author_deleteActionPerformed
-
     private void all_author_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_all_author_tableMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_all_author_tableMouseClicked
@@ -1579,7 +1529,7 @@ public class AuthorDashboard extends javax.swing.JFrame {
 
     private void lm_a_textMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lm_a_textMouseClicked
         // TODO add your handling code here:
-        Menu.setSelectedIndex(4);
+        Menu.setSelectedIndex(3);
         lm_allContent.setBackground(new Color(204, 204, 204));
         lm_addContent.setBackground(new Color(204, 204, 204));
         
@@ -1639,14 +1589,14 @@ public class AuthorDashboard extends javax.swing.JFrame {
             try {
                 Class.forName("org.mariadb.jdbc.Driver");
                 Connection con = DriverManager.getConnection(url, user, passw);
-                String updateAdmin1 = "UPDATE `cms`.`admin` SET username=? WHERE email=?";
-                String updateAdmin2 = "UPDATE `cms`.`admin` SET email=? WHERE email=?";
-                String updateAdmin3 = "UPDATE `cms`.`admin` SET password=? WHERE email=?";
+                String updateAuthor1 = "UPDATE `cms`.`author` SET username=? WHERE email=?";
+                String updateAuthor2 = "UPDATE `cms`.`author` SET email=? WHERE email=?";
+                String updateAuthor3 = "UPDATE `cms`.`author` SET password=? WHERE email=?";
                 String userNameUpdate = "UPDATE `cms`.`content` SET author=? WHERE author=?";
 
-                PreparedStatement st1 = con.prepareStatement(updateAdmin1);
-                PreparedStatement st2 = con.prepareStatement(updateAdmin2);
-                PreparedStatement st3 = con.prepareStatement(updateAdmin3);
+                PreparedStatement st1 = con.prepareStatement(updateAuthor1);
+                PreparedStatement st2 = con.prepareStatement(updateAuthor2);
+                PreparedStatement st3 = con.prepareStatement(updateAuthor3);
                 PreparedStatement userNameUpdateSt = con.prepareStatement(userNameUpdate);
                 st1.setString(1, newUsername);
                 st1.setString(2, email);
@@ -1765,7 +1715,6 @@ public class AuthorDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel add_title;
     private javax.swing.JTextField add_title_input;
     private javax.swing.JLabel admin_logo;
-    private javax.swing.JButton all_author_delete;
     private javax.swing.JTable all_author_table;
     private javax.swing.JButton all_cont_delete;
     private javax.swing.JTextArea all_cont_desc;

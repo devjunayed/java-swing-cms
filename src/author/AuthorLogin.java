@@ -27,6 +27,9 @@ public final class AuthorLogin extends javax.swing.JFrame {
     /**
      * Creates new form AdminRegister
      */
+    
+    public static String passEmailAddress;
+    public static String passPassword;
     public AuthorLogin() {
         initComponents();
         ImageIcon image = new javax.swing.ImageIcon(getClass().getResource("/images/author_login.png"));
@@ -213,6 +216,7 @@ public final class AuthorLogin extends javax.swing.JFrame {
 
         password.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
+        chbox.setBackground(new java.awt.Color(255, 255, 255));
         chbox.setText("Show Password");
         chbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -357,16 +361,16 @@ public final class AuthorLogin extends javax.swing.JFrame {
             String user = "root";
             String passw = "";
             
-            String emailAddress = email.getText();
-            String passWord = new String(password.getPassword());
+            passEmailAddress = email.getText();
+            passPassword = new String(password.getPassword());
         
         
         try{
-            if(!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[g]{1}+[m]{1}+[a]{1}+[i]{1}+[l]{1}+[.]{1}+[c]{1}+[o]{1}+[m]{1}+$", emailAddress))){
+            if(!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[g]{1}+[m]{1}+[a]{1}+[i]{1}+[l]{1}+[.]{1}+[c]{1}+[o]{1}+[m]{1}+$", passEmailAddress))){
                  JOptionPane.showMessageDialog(this, "Pleass enter valid email");
-            }else if("".equals(emailAddress)){
+            }else if("".equals(passEmailAddress)){
                 JOptionPane.showMessageDialog(this, "Please enter email");
-            }else if("".equals(passWord)){
+            }else if("".equals(passPassword)){
                 JOptionPane.showMessageDialog(this, "Please enter password");
             }else{
                        Class.forName("org.mariadb.jdbc.Driver");
@@ -376,8 +380,8 @@ public final class AuthorLogin extends javax.swing.JFrame {
                       String query1="Select  email, password from `cms`.`author` where email=? and password=?";
                       PreparedStatement st = con.prepareStatement(query1); 
 
-                      st.setString(1, emailAddress);
-                      st.setString(2, passWord);
+                      st.setString(1, passEmailAddress);
+                      st.setString(2, passPassword);
                 
                       ResultSet result = st.executeQuery(); // record added. 
                       con.close(); 

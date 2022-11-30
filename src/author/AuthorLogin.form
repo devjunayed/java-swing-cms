@@ -368,6 +368,9 @@
             </Component>
             <Component class="javax.swing.JCheckBox" name="chbox">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Show Password"/>
               </Properties>
               <Events>
